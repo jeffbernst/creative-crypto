@@ -21,7 +21,11 @@ export const reducer = (state = initialState, action) => {
 				loading: true
 			};
 		case GET_RECENT_POSTS_SUCCESS:
-			return state;
+			return {
+				...state,
+				posts: action.payload,
+				loading: false
+			};
 		case GET_RECENT_POSTS_ERROR:
 			return state;
 		case FOCUS_ON_POST:

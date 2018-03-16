@@ -4,7 +4,7 @@ import {
 	GET_RECENT_POSTS_ERROR,
 	FOCUS_ON_POST,
 	RETURN_TO_POSTS,
-	GET_SINGLE_POST} from './actions/types';
+	GET_SINGLE_POST} from './types';
 
 import steem from 'steem';
 steem.api.setOptions({ url: 'https://api.steemit.com' });
@@ -43,18 +43,18 @@ const getSinglePost = post => ({
 // api call
 
 function getPosts() {
-	steem.api.getDiscussionsByBlog({tag: 'sndbox', limit: 10}, async function(err, result) {
+	return steem.api.getDiscussionsByBlog({tag: 'sndbox', limit: 10}, async function(err, result) {
 		return await result;
 	});
 }
 
 // redux thunk
 
-export const getRecentPosts = () => dispatch => {
+export const getRecentPosts = () => async dispatch => {
 	dispatch(getRecentPostsRequest());
 
 	try {
-		const recentPosts = getPosts();
+		const recentPosts = await getPosts();
 		dispatch(getRecentPostsSuccess(recentPosts));
 
 	} catch(err) {

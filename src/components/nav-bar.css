@@ -1,0 +1,64 @@
+.nav-container {
+  width: 100%;
+  box-sizing: border-box;
+  height: 80px;
+  background: linear-gradient(to right, #3b3efa, #218ffa);
+}
+
+.nav-content {
+  max-width: 1400px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.nav-title-and-prices {
+  max-width: 1400px;
+}
+
+.nav-title {
+  font-size: 45px;
+  font-weight: bold;
+  text-decoration: underline;
+  color: white;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-right {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.steem-label,
+.sbd-label {
+  color: #73bcfd;
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 30px;
+}
+
+.steem-price,
+.sbd-price {
+  word-spacing: 10px;
+}
+
+.question-button {
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid white;
+  margin-left: 30px;
+  /*width: 14px;*/
+  /*height: 14px;*/
+  line-height: 30px;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+  /*background-color: white;*/
+}

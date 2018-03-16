@@ -6,6 +6,11 @@ import {
 	RETURN_TO_POSTS,
 	GET_SINGLE_POST} from './actions/types';
 
+import steem from 'steem';
+steem.api.setOptions({ url: 'https://api.steemit.com' });
+
+// actions
+
 const getRecentPostsRequest = () => ({
 	type: GET_RECENT_POSTS_REQUEST
 });
@@ -35,10 +40,24 @@ const getSinglePost = post => ({
 	paylaod: post
 });
 
-export const getRecentPosts = () => async dispatch => {
+// api call
+
+function getPosts() {
+	steem.api.getDiscussionsByBlog({tag: 'sndbox', limit: 10}, async function(err, result) {
+		return await result;
+	});
+}
+
+// redux thunk
+
+export const getRecentPosts = () => dispatch => {
 	dispatch(getRecentPostsRequest());
 
 	try {
-		const recentPosts = await
+		const recentPosts = getPosts();
+		dispatch(getRecentPostsSuccess(recentPosts));
+
+	} catch(err) {
+		dispatch(getRecentPostsError(err))
 	}
 };

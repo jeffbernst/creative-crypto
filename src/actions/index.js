@@ -43,9 +43,12 @@ const getSinglePost = post => ({
 // api call
 
 function getPosts() {
-	return steem.api.getDiscussionsByBlog({tag: 'sndbox', limit: 10}, async function(err, result) {
-		return await result;
-	});
+	return new Promise((res, rej) => {
+		steem.api.getDiscussionsByBlog({tag: 'sndbox', limit: 10}, function(err, result) {
+			if (err) rej(err);
+			else res(result);
+		});
+	})
 }
 
 // redux thunk
@@ -61,3 +64,5 @@ export const getRecentPosts = () => async dispatch => {
 		dispatch(getRecentPostsError(err))
 	}
 };
+
+// TODO create get single post api request

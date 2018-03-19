@@ -9,7 +9,6 @@ import {
 
 const initialState = {
 	posts: [],
-	currentPost: null,
 	loading: false
 };
 

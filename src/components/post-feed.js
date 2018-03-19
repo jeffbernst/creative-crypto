@@ -2,6 +2,7 @@ import React from 'react';
 import Spinner from 'react-spinkit';
 import {connect} from 'react-redux';
 
+
 import './post-feed.css';
 
 import {PostFeedSmallTile} from "./post-feed-small-tile";
@@ -13,9 +14,10 @@ class PostFeed extends React.Component {
 	// create post feed with small and large tiles from state and then inject
 	componentDidMount() {
 		this.props.getRecentPosts();
+		// TODO check to see if i have the posts already, then do API call if not
 	}
 
-	createFeed() {
+	render() {
 		if (this.props.loading) {
 			return <Spinner spinnerName="circle" fadeIn='none' />;
 		}
@@ -23,6 +25,8 @@ class PostFeed extends React.Component {
 		if (this.props.error) {
 			return <strong>{this.props.error}</strong>;
 		}
+
+		console.log(this.props.posts);
 
 		return this.props.posts.map((post, index) => {
 			const title = post.title;
@@ -34,7 +38,7 @@ class PostFeed extends React.Component {
 			const createdData = post.created;
 			const pendingPayoutValue = post.pending_payout_value;
 			const postUrl = post.url;
-
+			const permlink = post.permlink;
 			// i make an array of all small tiles
 			// large tile gets hidden on smaller screens
 
@@ -44,22 +48,16 @@ class PostFeed extends React.Component {
 					image={image}
 					pendingPayoutValue={pendingPayoutValue}
 					numberOfVotes={numberOfVotes}
-					tags={tags} />
+					tags={tags}
+					permlink={permlink}/>
 			)
 		});
-	}
-
-	render() {
-		return (
-			this.createFeed()
-		)
 	}
 }
 
 function mapStateToProps(state) {
 	return {
 		posts: state.posts,
-		currentPost: state.currentPost,
 		loading: state.loading
 	};
 }
@@ -68,4 +66,4 @@ const mapDispatchToProps = {
 	getRecentPosts
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostFeed);
+export const ConnectedPostFeed = connect(mapStateToProps, mapDispatchToProps)(PostFeed);

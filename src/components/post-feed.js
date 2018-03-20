@@ -17,17 +17,7 @@ class PostFeed extends React.Component {
 		// TODO check to see if i have the posts already, then do API call if not
 	}
 
-	render() {
-		if (this.props.loading) {
-			return <Spinner spinnerName="circle" fadeIn='none' />;
-		}
-
-		if (this.props.error) {
-			return <strong>{this.props.error}</strong>;
-		}
-
-		console.log(this.props.posts);
-
+	createGrid() {
 		return this.props.posts.map((post, index) => {
 			const title = post.title;
 			const body = post.body;
@@ -51,7 +41,25 @@ class PostFeed extends React.Component {
 					tags={tags}
 					permlink={permlink}/>
 			)
-		});
+		})
+	}
+
+	render() {
+		if (this.props.loading) {
+			return <Spinner spinnerName="circle" fadeIn='none'/>;
+		}
+
+		if (this.props.error) {
+			return <strong>{this.props.error}</strong>;
+		}
+
+		console.log(this.props.posts);
+
+		return (
+			<div className="post-feed">
+				{this.createGrid()}
+			</div>
+		)
 	}
 }
 

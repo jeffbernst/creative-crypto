@@ -2,6 +2,7 @@
   max-width: 1400px;
   margin: 18px auto 50px auto;
   display: flex;
+  /*flex-flow: row wrap;*/
   justify-content: space-between;
 }
 

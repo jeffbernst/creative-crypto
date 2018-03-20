@@ -10,6 +10,8 @@
   width: 700px;
   height: 400px;
   background-color: white;
+  grid-column: 2 / 4;
+  grid-row: 1;
 }
 
 .big-post-tile img {
@@ -32,8 +34,9 @@
 }
 
 .post-tile:nth-child(2) {
-  grid-column: 2 / 4;
-  grid-row: 1;/* span from grid column line 1 to 3 (i.e., span 2 columns) */
+  /*grid-column: 2 / 4;*/
+  /*grid-row: 1;!* span from grid column line 1 to 3 (i.e., span 2 columns) *!*/
+  display: none;
 }
 
 .post-tile {

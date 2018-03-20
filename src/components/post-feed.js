@@ -1,13 +1,9 @@
 import React from 'react';
 import Spinner from 'react-spinkit';
 import {connect} from 'react-redux';
-
-
 import './post-feed.css';
-
 import {PostFeedSmallTile} from "./post-feed-small-tile";
 import {PostFeedLargeTile} from "./post-feed-large-tile";
-// import small and large post feed tiles
 import {getRecentPosts} from "../actions/index";
 
 class PostFeed extends React.Component {
@@ -18,7 +14,8 @@ class PostFeed extends React.Component {
 	}
 
 	createGrid() {
-		return this.props.posts.map((post, index) => {
+		// TODO use destructuring on these variables
+		const postGrid = this.props.posts.map((post, index) => {
 			const title = post.title;
 			const body = post.body;
 			const bodyPreview = body.slice(0, 70);
@@ -29,24 +26,39 @@ class PostFeed extends React.Component {
 			const pendingPayoutValue = post.pending_payout_value;
 			const postUrl = post.url;
 			const permlink = post.permlink;
-			// i make an array of all small tiles
-			// large tile gets hidden on smaller screens
 
-			return (
+			const smallTile = (
 				<PostFeedSmallTile
+					key={index + 1}
 					title={title}
 					image={image}
 					pendingPayoutValue={pendingPayoutValue}
 					numberOfVotes={numberOfVotes}
 					tags={tags}
 					permlink={permlink}/>
-			)
-		})
+			);
+
+			const largeTile = (
+				<PostFeedLargeTile
+					key={index}
+					title={title}
+					image={image}
+					pendingPayoutValue={pendingPayoutValue}
+					numberOfVotes={numberOfVotes}
+					tags={tags}
+					permlink={permlink}/>
+			);
+
+			if (index === 0) return [largeTile, smallTile];
+			else return [smallTile];
+		});
+
+		return postGrid;
 	}
 
 	render() {
 		if (this.props.loading) {
-			return <Spinner spinnerName="circle" fadeIn='none'/>;
+			return <Spinner />;
 		}
 
 		if (this.props.error) {

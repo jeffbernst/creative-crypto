@@ -9,7 +9,8 @@ import {
 
 const initialState = {
 	posts: [],
-	loading: false
+	loading: false,
+	error: null
 };
 
 export const reducer = (state = initialState, action) => {
@@ -26,7 +27,11 @@ export const reducer = (state = initialState, action) => {
 				loading: false
 			};
 		case GET_RECENT_POSTS_ERROR:
-			return state;
+			return {
+				...state,
+				loading: false,
+				error: action.payload
+			};
 		case FOCUS_ON_POST:
 			return state;
 		case RETURN_TO_POSTS:

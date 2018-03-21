@@ -9,7 +9,8 @@ import {getRecentPosts} from "../actions/index";
 class PostFeed extends React.Component {
 	// create post feed with small and large tiles from state and then inject
 	componentDidMount() {
-		this.props.getRecentPosts();
+		if (this.props.posts === undefined || this.props.posts.length === 0)
+			this.props.getRecentPosts();
 		// TODO check to see if i have the posts already, then do API call if not
 	}
 

@@ -13,6 +13,8 @@ class SinglePost extends React.Component {
 	}
 
 	render() {
+			console.log(this.props.currentPost);
+
 			if (this.props.loading) {
 				return <Spinner />;
 			}
@@ -22,11 +24,13 @@ class SinglePost extends React.Component {
 			}
 
 			if (this.props.currentPost) {
+				const currentPost = this.props.currentPost;
+
 				return (
-					<div>
-						{this.props.match.params.postId}
-						{this.props.currentPost[0].title}
-						here's a post
+					<div className="single-post">
+						<h1>{currentPost.title}</h1>
+						<div className="post-info-top">add time since posted &middot; category &middot; time to read</div>
+						<p>{currentPost.body}</p>
 					</div>
 				)
 			}

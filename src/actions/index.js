@@ -79,7 +79,7 @@ export const getSinglePost = permlink => async dispatch => {
 
 	try {
 		const singlePost = await getPost(permlink);
-		dispatch(getSinglePostSuccess(singlePost));
+		dispatch(getSinglePostSuccess(singlePost[0]));
 
 	} catch(err) {
 		dispatch(getSinglePostError(err))

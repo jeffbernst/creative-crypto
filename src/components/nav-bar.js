@@ -23,7 +23,9 @@ export class NavBar extends React.Component {
 
 		this.setState({
 			steemPrice,
-			sbdPrice
+			steemDirection,
+			sbdPrice,
+			sbdDirection
 		})
 	}
 

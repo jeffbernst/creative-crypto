@@ -8,12 +8,8 @@ import {getSinglePost} from "../actions";
 
 class SinglePost extends React.Component {
 	componentDidMount() {
-		// check if i have info already
-		if (this.props.posts === undefined || this.props.posts.length === 0) this.props.getSinglePost(this.props.match.params.postId);
-		// this.props.getSinglePost(this.props.match.params.postId);
-		// this.props.getRecentPosts();
-		// request for single post
-
+		if (this.props.posts === undefined || this.props.posts.length === 0)
+			this.props.getSinglePost(this.props.match.params.postId);
 	}
 
 	render() {
@@ -25,21 +21,24 @@ class SinglePost extends React.Component {
 				return <strong>{this.props.error}</strong>;
 			}
 
-			console.log('current post', this.props.currentPost);
+			if (this.props.currentPost) {
+				return (
+					<div>
+						{this.props.match.params.postId}
+						{this.props.currentPost[0].title}
+						here's a post
+					</div>
+				)
+			}
 
-			return (
-				<div>
-					{this.props.match.params.postId}
-					{/*{this.props.currentPost[0].title}*/}
-					here's a post
-				</div>
-		)
+			return <div>loading...</div>
 	}
 }
 
 function mapStateToProps(state, props) {
-	// maybe check if state.posts is empty and then map props accordingly
-	const currentPostState = (state.posts === undefined || state.posts.length === 0) ? state.currentPost : state.posts.find(post => props.match.params.postId === post.permlink);
+	const currentPostState =
+		(state.posts === undefined || state.posts.length === 0) ?
+			state.currentPost : state.posts.find(post => props.match.params.postId === post.permlink);
 
 	return {
 		posts: state.posts,
@@ -49,7 +48,6 @@ function mapStateToProps(state, props) {
 }
 
 const mapDispatchToProps = {
-	// get single post
 	getSinglePost
 };
 

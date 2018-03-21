@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 // import {getCurrentPrice} from "../actions/index";
 // import {connect} from 'react-redux';
 
@@ -23,7 +24,9 @@ export class NavBar extends React.Component {
 
 		this.setState({
 			steemPrice,
-			sbdPrice
+			steemDirection,
+			sbdPrice,
+			sbdDirection
 		})
 	}
 
@@ -37,7 +40,7 @@ export class NavBar extends React.Component {
 		return (
 			<nav className="nav-container">
 				<div className="nav-content">
-					<div className="nav-title">the creative crypto</div>
+					<Link to={'/'}><div className="nav-title">the creative crypto</div></Link>
 					<div className="nav-right">
 						<div className="steem-price">
 							<span className="steem-label">STEEM</span> {this.state.steemDirection} $ {this.state.steemPrice}

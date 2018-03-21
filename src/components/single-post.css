@@ -1,0 +1,25 @@
+.single-post {
+  box-shadow: 0 0 15px #d3ebfe;
+  background-color: white;
+  max-width: 1060px;
+  margin-right: 20px;
+  padding: 30px 50px 20px 50px;
+  box-sizing: border-box;
+}
+
+.single-post h1 {
+  color: #2e2e2e;
+}
+
+.single-post p {
+  color: #2e2e2e;
+}
+
+.post-info-top {
+  font-size: 14px;
+  /*margin-top: -20px;*/
+}
+
+.single-post img {
+  max-width: 100%;
+}

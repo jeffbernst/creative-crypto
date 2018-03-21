@@ -9,7 +9,8 @@ import {getRecentPosts} from "../actions/index";
 class PostFeed extends React.Component {
 	// create post feed with small and large tiles from state and then inject
 	componentDidMount() {
-		this.props.getRecentPosts();
+		if (this.props.posts === undefined || this.props.posts.length === 0)
+			this.props.getRecentPosts();
 		// TODO check to see if i have the posts already, then do API call if not
 	}
 
@@ -17,14 +18,14 @@ class PostFeed extends React.Component {
 		// TODO use destructuring on these variables
 		const postGrid = this.props.posts.map((post, index) => {
 			const title = post.title;
-			const body = post.body;
-			const bodyPreview = body.slice(0, 70);
+			// const body = post.body;
+			// const bodyPreview = body.slice(0, 70);
 			const tags = JSON.parse(post.json_metadata).tags;
 			const image = JSON.parse(post.json_metadata).image[0];
 			const numberOfVotes = post.active_votes.length;
-			const createdData = post.created;
+			// const createdData = post.created;
 			const pendingPayoutValue = post.pending_payout_value;
-			const postUrl = post.url;
+			// const postUrl = post.url;
 			const permlink = post.permlink;
 
 			const smallTile = (

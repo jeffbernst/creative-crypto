@@ -2,21 +2,20 @@ import React from 'react';
 import Spinner from 'react-spinkit';
 import {connect} from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import marked from 'marked';
 
 import './single-post.css';
 import {getSinglePost} from "../actions";
 
 class SinglePost extends React.Component {
 	componentDidMount() {
-		// check if i have info already
-		if (this.props.posts === undefined || this.props.posts.length === 0) this.props.getSinglePost(this.props.match.params.postId);
-		// this.props.getSinglePost(this.props.match.params.postId);
-		// this.props.getRecentPosts();
-		// request for single post
-
+		if (this.props.posts === undefined || this.props.posts.length === 0)
+			this.props.getSinglePost(this.props.match.params.postId);
 	}
 
 	render() {
+			console.log(this.props.currentPost);
+
 			if (this.props.loading) {
 				return <Spinner />;
 			}
@@ -25,21 +24,27 @@ class SinglePost extends React.Component {
 				return <strong>{this.props.error}</strong>;
 			}
 
-			console.log('current post', this.props.currentPost);
+			if (this.props.currentPost) {
+				const currentPost = this.props.currentPost;
+				const bodyMarkdown = marked(currentPost.body);
 
-			return (
-				<div>
-					{this.props.match.params.postId}
-					{/*{this.props.currentPost[0].title}*/}
-					here's a post
-				</div>
-		)
+				return (
+					<div className="single-post">
+						<h1>{currentPost.title}</h1>
+						<div className="post-info-top">add time since posted &middot; category &middot; time to read</div>
+						<div dangerouslySetInnerHTML={{__html: bodyMarkdown}} />
+					</div>
+				)
+			}
+
+			return <div>loading...</div>
 	}
 }
 
 function mapStateToProps(state, props) {
-	// maybe check if state.posts is empty and then map props accordingly
-	const currentPostState = (state.posts === undefined || state.posts.length === 0) ? state.currentPost : state.posts.find(post => props.match.params.postId === post.permlink);
+	const currentPostState =
+		(state.posts === undefined || state.posts.length === 0) ?
+			state.currentPost : state.posts.find(post => props.match.params.postId === post.permlink);
 
 	return {
 		posts: state.posts,
@@ -49,7 +54,6 @@ function mapStateToProps(state, props) {
 }
 
 const mapDispatchToProps = {
-	// get single post
 	getSinglePost
 };
 

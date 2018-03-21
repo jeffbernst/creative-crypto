@@ -65,8 +65,6 @@ class PostFeed extends React.Component {
 			return <strong>{this.props.error}</strong>;
 		}
 
-		console.log(this.props.posts);
-
 		return (
 			<div className="post-feed">
 				{this.createGrid()}

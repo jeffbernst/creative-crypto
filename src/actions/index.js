@@ -2,9 +2,9 @@ import {
 	GET_RECENT_POSTS_REQUEST,
 	GET_RECENT_POSTS_SUCCESS,
 	GET_RECENT_POSTS_ERROR,
-	FOCUS_ON_POST,
-	RETURN_TO_POSTS,
-	GET_SINGLE_POST} from './types';
+	GET_SINGLE_POST_REQUEST,
+	GET_SINGLE_POST_SUCCESS,
+	GET_SINGLE_POST_ERROR} from './types';
 
 import steem from 'steem';
 steem.api.setOptions({ url: 'https://api.steemit.com' });
@@ -25,19 +25,18 @@ const getRecentPostsError = error => ({
 	payload: error
 });
 
-const focusOnPost = post => ({
-	type: FOCUS_ON_POST,
+const getSinglePostRequest = () => ({
+	type: GET_SINGLE_POST_REQUEST
+});
+
+const getSinglePostSuccess = post => ({
+	type: GET_SINGLE_POST_SUCCESS,
 	payload: post
 });
 
-const returnToPosts = posts => ({
-	type: RETURN_TO_POSTS,
-	payload: posts
-});
-
-const getSinglePost = post => ({
-	type: GET_SINGLE_POST,
-	paylaod: post
+const getSinglePostError = error => ({
+	type: GET_SINGLE_POST_ERROR,
+	payload: error
 });
 
 // api call
@@ -45,6 +44,16 @@ const getSinglePost = post => ({
 function getPosts() {
 	return new Promise((res, rej) => {
 		steem.api.getDiscussionsByBlog({tag: 'sndbox', limit: 11}, function(err, result) {
+			if (err) rej(err);
+			else res(result);
+		});
+	})
+}
+
+function getPost(permlink) {
+	return new Promise((res, rej) => {
+		const currentDate = new Date().toISOString().split('.')[0];
+		steem.api.getDiscussionsByAuthorBeforeDate('sndbox', permlink, currentDate, 1, function(err, result) {
 			if (err) rej(err);
 			else res(result);
 		});
@@ -65,4 +74,14 @@ export const getRecentPosts = () => async dispatch => {
 	}
 };
 
-// TODO create get single post api request
+export const getSinglePost = permlink => async dispatch => {
+	dispatch(getSinglePostRequest());
+
+	try {
+		const singlePost = await getPost(permlink);
+		dispatch(getSinglePostSuccess(singlePost));
+
+	} catch(err) {
+		dispatch(getSinglePostError(err))
+	}
+};

@@ -2,13 +2,14 @@ import {
 	GET_RECENT_POSTS_REQUEST,
 	GET_RECENT_POSTS_SUCCESS,
 	GET_RECENT_POSTS_ERROR,
-	FOCUS_ON_POST,
-	RETURN_TO_POSTS,
-	GET_SINGLE_POST} from './actions/types';
+	GET_SINGLE_POST_REQUEST,
+	GET_SINGLE_POST_SUCCESS,
+	GET_SINGLE_POST_ERROR} from './actions/types';
 
 
 const initialState = {
 	posts: [],
+	currentPost: null,
 	loading: false,
 	error: null
 };
@@ -32,12 +33,23 @@ export const reducer = (state = initialState, action) => {
 				loading: false,
 				error: action.payload
 			};
-		case FOCUS_ON_POST:
-			return state;
-		case RETURN_TO_POSTS:
-			return state;
-		case GET_SINGLE_POST:
-			return state;
+		case GET_SINGLE_POST_REQUEST:
+			return {
+				...state,
+				loading: true
+			};
+		case GET_SINGLE_POST_SUCCESS:
+			return {
+				...state,
+				loading: false,
+				currentPost: action.payload
+			};
+		case GET_SINGLE_POST_ERROR:
+			return {
+				...state,
+				loading: false,
+				error: action.payload
+			};
 		default:
 			return state;
 	}

@@ -2,6 +2,7 @@ import React from 'react';
 import Spinner from 'react-spinkit';
 import {connect} from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import marked from 'marked';
 
 import './single-post.css';
 import {getSinglePost} from "../actions";
@@ -25,12 +26,13 @@ class SinglePost extends React.Component {
 
 			if (this.props.currentPost) {
 				const currentPost = this.props.currentPost;
+				const bodyMarkdown = marked(currentPost.body);
 
 				return (
 					<div className="single-post">
 						<h1>{currentPost.title}</h1>
 						<div className="post-info-top">add time since posted &middot; category &middot; time to read</div>
-						<p>{currentPost.body}</p>
+						<div dangerouslySetInnerHTML={{__html: bodyMarkdown}} />
 					</div>
 				)
 			}

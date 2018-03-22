@@ -16,6 +16,8 @@ class PostFeed extends React.Component {
 
 	createGrid() {
 		// TODO use destructuring on these variables
+		console.log(this.props.posts[1]);
+
 		const postGrid = this.props.posts.map((post, index) => {
 			const title = post.title;
 			// const body = post.body;
@@ -24,7 +26,8 @@ class PostFeed extends React.Component {
 			const image = JSON.parse(post.json_metadata).image[0];
 			const numberOfVotes = post.active_votes.length;
 			// const createdData = post.created;
-			const pendingPayoutValue = post.pending_payout_value;
+			const pendingPayoutValue =
+				Number(post.pending_payout_value.slice(0, post.pending_payout_value.indexOf(' '))).toFixed(2);
 			// const postUrl = post.url;
 			const permlink = post.permlink;
 

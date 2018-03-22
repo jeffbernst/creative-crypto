@@ -1,8 +1,9 @@
 body {
+  --text-color: #218ffa;
   margin: 0;
   padding: 0;
   font-family: 'Avenir Next', sans-serif;
-  color: #218ffa;
+  color: var(--text-color);
   background-color: #eff8ff;
 }
 

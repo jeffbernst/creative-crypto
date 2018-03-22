@@ -34,22 +34,18 @@
   box-shadow: 0 0 15px #d3ebfe;
   background-color: white;
   display: inline-block;
-}
-
-.small-post-tile {
-  height: 400px;
-  width: 340px;
-}
-
-.small-post-tile img {
-  width: 340px;
-  height: 200px;
-  margin: 0;
+  text-decoration: none;
+  color: var(--text-color);
 }
 
 .post-content-preview {
-  padding: 15px 30px 30px 30px;
+  padding: 15px 30px 15px 30px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 193px;
 }
 
 .post-tile-title {
@@ -66,9 +62,17 @@
 
 .post-tile-stats {
   font-size: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .post-tile-tags {
   font-size: 14px;
+}
+
+.post-tile-value {
+  font-weight: bold;
+}
+
+.post-tile-votes {
+  font-weight: bold;
 }

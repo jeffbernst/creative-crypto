@@ -7,13 +7,14 @@ export function PostFeedSmallTile(props) {
 	const tagArray = props.tags.map(tag => (
 		<div className="post-tile-tag">{tag}</div>
 	));
+	tagArray.shift();
 
 	return (
 		<div className="post-tile small-post-tile">
 			<Link to={`/${props.permlink}`}>
-				<div className="image">
+				<div className="small-tile-image">
 					<img src={props.image} alt=""/>
-					<div><span>stuff</span></div>
+					<div><span>{props.tags[0]}</span></div>
 				</div>
 				<div className="post-content-preview">
 					<div className="post-tile-title">{props.title}</div>

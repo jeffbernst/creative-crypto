@@ -1,3 +1,59 @@
+.post-tile:nth-child(2) {
+  display: none;
+}
+
+.post-tile {
+  box-shadow: 0 0 15px #d3ebfe;
+  background-color: white;
+  display: inline-block;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.post-tile:hover {
+  box-shadow: 0 0 15px #bdd3e4;
+  background-color: white;
+}
+
+.post-content-preview {
+  padding: 15px 30px 15px 30px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 193px;
+}
+
+.post-tile-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.post-tile-body-preview {
+  font-size: 12px;
+  overflow-wrap: break-word;
+  margin-bottom: 20px;
+}
+
+.post-tile-stats {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.post-tile-tags {
+  font-size: 14px;
+}
+
+.post-tile-value {
+  font-weight: bold;
+}
+
+.post-tile-votes {
+  font-weight: bold;
+}
+
 .small-post-tile {
   height: 400px;
   width: 340px;
@@ -14,20 +70,20 @@
   margin: 0;
 }
 
-.image {
+.small-tile-image {
   position: relative;
   width: 100%;
   text-align: right;
 }
 
-.image div {
+.small-tile-image div {
   position: absolute;
   width: 100%;
   bottom: 13px;
   right: 6px;
 }
 
-.image div span {
+.small-tile-image div span {
   text-transform: uppercase;
   padding: 3px 5px;
   font-weight: bold;

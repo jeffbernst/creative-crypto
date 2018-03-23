@@ -2,10 +2,14 @@ import React from 'react';
 import Spinner from 'react-spinkit';
 import {connect} from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import marked from 'marked';
+// import marked from 'marked';
+
+import Remarkable from 'remarkable';
 
 import './single-post.css';
 import {getSinglePost} from "../actions";
+
+const md = new Remarkable();
 
 class SinglePost extends React.Component {
 	componentDidMount() {
@@ -26,7 +30,7 @@ class SinglePost extends React.Component {
 
 			if (this.props.currentPost) {
 				const currentPost = this.props.currentPost;
-				const bodyMarkdown = marked(currentPost.body);
+				const bodyMarkdown = md.render(currentPost.body);
 
 				return (
 					<div className="single-post">

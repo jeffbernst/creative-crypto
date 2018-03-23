@@ -67,7 +67,31 @@ export const getRecentPosts = () => async dispatch => {
 
 	try {
 		const recentPosts = await getPosts();
-		dispatch(getRecentPostsSuccess(recentPosts));
+
+		const formattedPostsData = recentPosts.map(post => {
+			const title = post.title;
+			// const body = post.body;
+			// const bodyPreview = body.slice(0, 70);
+			const tags = JSON.parse(post.json_metadata).tags;
+			const image = JSON.parse(post.json_metadata).image[0];
+			const numberOfVotes = post.active_votes.length;
+			// const createdData = post.created;
+			const pendingPayoutValue =
+				Number(post.pending_payout_value.slice(0, post.pending_payout_value.indexOf(' '))).toFixed(2);
+			// const postUrl = post.url;
+			const permlink = post.permlink;
+
+			return {
+				title,
+				tags,
+				image,
+				numberOfVotes,
+				pendingPayoutValue,
+				permlink
+			}
+		});
+
+		dispatch(getRecentPostsSuccess(formattedPostsData));
 
 	} catch(err) {
 		dispatch(getRecentPostsError(err))

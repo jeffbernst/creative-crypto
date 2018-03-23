@@ -1,7 +1,3 @@
-.post-tile:nth-child(2) {
-  display: none;
-}
-
 .post-tile {
   box-shadow: 0 0 15px #d3ebfe;
   background-color: white;

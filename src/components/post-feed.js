@@ -14,52 +14,6 @@ class PostFeed extends React.Component {
 		// TODO check to see if i have the posts already, then do API call if not
 	}
 
-	createGrid() {
-		// TODO use destructuring on these variables
-		console.log(this.props.posts[1]);
-
-		const postGrid = this.props.posts.map((post, index) => {
-			const title = post.title;
-			// const body = post.body;
-			// const bodyPreview = body.slice(0, 70);
-			const tags = JSON.parse(post.json_metadata).tags;
-			const image = JSON.parse(post.json_metadata).image[0];
-			const numberOfVotes = post.active_votes.length;
-			// const createdData = post.created;
-			const pendingPayoutValue =
-				Number(post.pending_payout_value.slice(0, post.pending_payout_value.indexOf(' '))).toFixed(2);
-			// const postUrl = post.url;
-			const permlink = post.permlink;
-
-			const smallTile = (
-				<PostFeedSmallTile
-					key={index + 1}
-					title={title}
-					image={image}
-					pendingPayoutValue={pendingPayoutValue}
-					numberOfVotes={numberOfVotes}
-					tags={tags}
-					permlink={permlink}/>
-			);
-
-			const largeTile = (
-				<PostFeedLargeTile
-					key={index}
-					title={title}
-					image={image}
-					pendingPayoutValue={pendingPayoutValue}
-					numberOfVotes={numberOfVotes}
-					tags={tags}
-					permlink={permlink}/>
-			);
-
-			if (index === 0) return [largeTile, smallTile];
-			else return [smallTile];
-		});
-
-		return postGrid;
-	}
-
 	render() {
 		if (this.props.loading) {
 			return <Spinner />;
@@ -69,9 +23,37 @@ class PostFeed extends React.Component {
 			return <strong>{this.props.error}</strong>;
 		}
 
+		const postGrid = this.props.posts.map((post, index) => {
+
+			const smallTile = (
+				<PostFeedSmallTile
+					key={index + 1}
+					title={post.title}
+					image={post.image}
+					pendingPayoutValue={post.pendingPayoutValue}
+					numberOfVotes={post.numberOfVotes}
+					tags={post.tags}
+					permlink={post.permlink}/>
+			);
+
+			const largeTile = (
+				<PostFeedLargeTile
+					key={index}
+					title={post.title}
+					image={post.image}
+					pendingPayoutValue={post.pendingPayoutValue}
+					numberOfVotes={post.numberOfVotes}
+					tags={post.tags}
+					permlink={post.permlink}/>
+			);
+
+			if (index === 0) return [largeTile, smallTile];
+			else return [smallTile];
+		});
+
 		return (
 			<div className="post-feed">
-				{this.createGrid()}
+				{postGrid}
 			</div>
 		)
 	}

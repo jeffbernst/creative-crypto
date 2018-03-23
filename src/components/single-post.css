@@ -5,14 +5,30 @@
   margin-right: 20px;
   padding: 30px 50px 20px 50px;
   box-sizing: border-box;
+  font-family: 'Source Serif Pro', serif;
+  color: #292929;
+}
+
+.single-post a {
+  color: #292929;
+  /*border-bottom: 2px solid var(--text-color);*/
+  text-decoration: underline;
+  text-decoration-color: var(--text-color);
+  text-decoration-skip: spaces;
+}
+
+.single-post a:hover {
+  text-decoration-color: #292929;
 }
 
 .single-post h1 {
-  color: #2e2e2e;
+  /*font-family: Arial, sans-serif;*/
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
 }
 
-.single-post p {
-  color: #2e2e2e;
+.single-post p, ul, ol {
+  line-height: 30px;
 }
 
 .post-info-top {

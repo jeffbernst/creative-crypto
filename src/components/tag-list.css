@@ -1,10 +1,22 @@
 .top-tag-list {
   margin: 0 auto;
   height: 40px;
-  width: 1400px;
+  max-width: 700px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+}
+
+@media only screen and (min-width: 1080px) {
+  .top-tag-list {
+    max-width: 1040px;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .top-tag-list {
+    max-width: 1400px;
+  }
 }
 
 .top-tag {

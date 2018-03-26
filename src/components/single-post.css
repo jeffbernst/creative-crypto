@@ -1,12 +1,24 @@
 .single-post {
   box-shadow: 0 0 15px #d3ebfe;
   background-color: white;
-  max-width: 1060px;
+  max-width: 700px;
   margin-right: 20px;
   padding: 30px 50px 20px 50px;
   box-sizing: border-box;
   font-family: 'Source Serif Pro', serif;
   color: #292929;
+}
+
+@media only screen and (min-width: 1080px) {
+  .single-post {
+    max-width: 700px;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .single-post {
+    max-width: 1060px;
+  }
 }
 
 .single-post a {

@@ -6,7 +6,7 @@
 }
 
 .nav-content {
-  max-width: 1400px;
+  max-width: 700px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,7 +18,7 @@
 }
 
 .nav-title {
-  font-size: 45px;
+  font-size: 30px;
   font-weight: bold;
   text-decoration: underline;
   color: white;
@@ -61,4 +61,20 @@
   text-align: center;
   cursor: pointer;
   /*background-color: white;*/
+}
+
+@media only screen and (min-width: 1080px) {
+  .nav-content {
+    max-width: 1040px;
+  }
+
+  .nav-title {
+    font-size: 45px;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .nav-content {
+    max-width: 1400px;
+  }
 }

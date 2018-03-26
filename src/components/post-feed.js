@@ -1,6 +1,7 @@
 import React from 'react';
 import Spinner from 'react-spinkit';
 import {connect} from 'react-redux';
+
 import './post-feed.css';
 import {PostFeedSmallTile} from "./post-feed-small-tile";
 import {PostFeedLargeTile} from "./post-feed-large-tile";

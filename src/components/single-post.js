@@ -43,7 +43,7 @@ class SinglePost extends React.Component {
 				return (
 					<div className="single-post">
 						<h1>{currentPost.title}</h1>
-						<div className="post-info-top">add time since posted &middot; category &middot; time to read</div>
+						<div className="post-info-top">{currentPost.timeSincePosted} ago &middot; {currentPost.tags[0]}</div>
 						<div dangerouslySetInnerHTML={{__html: bodyMarkdown}} />
 						{/*<Markdown source={currentPost.body} escapeHtml={false}/>*/}
 					</div>

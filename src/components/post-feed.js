@@ -48,6 +48,7 @@ class PostFeed extends React.Component {
 				<PostFeedLargeTile
 					key={index}
 					title={post.title}
+					timeSincePosted={post.timeSincePosted}
 					body={post.body}
 					image={post.image}
 					pendingPayoutValue={post.pendingPayoutValue}

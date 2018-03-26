@@ -101,11 +101,9 @@ export const getRecentPosts = () => async dispatch => {
 		console.log(recentPosts[0]);
 
 		const formattedPostsData = recentPosts.map(post => {
-			const now = new Date();
-
 			const title = post.title;
 			const body = post.body;
-			const timeSincePosted = timeSince(post.created);
+			const timeSincePosted = timeSince(new Date(post.created + 'Z'));
 			// const bodyPreview = body.slice(0, 70);
 			const tags = JSON.parse(post.json_metadata).tags;
 			const image = JSON.parse(post.json_metadata).image[0];
@@ -144,6 +142,7 @@ export const getSinglePost = permlink => async dispatch => {
 
 		const title = singlePost.title;
 		const body = singlePost.body;
+		const timeSincePosted = timeSince(new Date(singlePost.created + 'Z'));
 		// const bodyPreview = body.slice(0, 70);
 		const tags = JSON.parse(singlePost.json_metadata).tags;
 		const image = JSON.parse(singlePost.json_metadata).image[0];
@@ -157,6 +156,7 @@ export const getSinglePost = permlink => async dispatch => {
 		dispatch(getSinglePostSuccess({
 			title,
 			body,
+			timeSincePosted,
 			tags,
 			image,
 			numberOfVotes,

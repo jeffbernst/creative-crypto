@@ -6,10 +6,14 @@ import {PostFeedSmallTile} from "./post-feed-small-tile";
 import {PostFeedLargeTile} from "./post-feed-large-tile";
 import {getRecentPosts} from "../actions/index";
 
+// const removeMd = require('remove-markdown');
+
+import removeMd from 'remove-markdown';
+
 class PostFeed extends React.Component {
 	// create post feed with small and large tiles from state and then inject
 	componentDidMount() {
-		if (this.props.posts === undefined || this.props.posts.length === 0)
+		if (this.props.posts.length <= 1)
 			this.props.getRecentPosts();
 		// TODO check to see if i have the posts already, then do API call if not
 	}
@@ -25,10 +29,14 @@ class PostFeed extends React.Component {
 
 		const postGrid = this.props.posts.map((post, index) => {
 
+			const postBodyPreview = removeMd(post.body.replace(/^!?\[\S*\)/ , ''));
+
 			const smallTile = (
 				<PostFeedSmallTile
 					key={index + 1}
 					title={post.title}
+					body={postBodyPreview}
+					timeSincePosted={post.timeSincePosted}
 					image={post.image}
 					pendingPayoutValue={post.pendingPayoutValue}
 					numberOfVotes={post.numberOfVotes}
@@ -40,6 +48,7 @@ class PostFeed extends React.Component {
 				<PostFeedLargeTile
 					key={index}
 					title={post.title}
+					body={post.body}
 					image={post.image}
 					pendingPayoutValue={post.pendingPayoutValue}
 					numberOfVotes={post.numberOfVotes}

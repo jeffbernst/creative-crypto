@@ -62,6 +62,34 @@ function getPost(permlink) {
 	})
 }
 
+function timeSince(date) {
+
+	const seconds = Math.floor((new Date() - date) / 1000);
+
+	let interval = Math.floor(seconds / 31536000);
+
+	if (interval > 1) {
+		return interval + " years";
+	}
+	interval = Math.floor(seconds / 2592000);
+	if (interval > 1) {
+		return interval + " months";
+	}
+	interval = Math.floor(seconds / 86400);
+	if (interval > 1) {
+		return interval + " days";
+	}
+	interval = Math.floor(seconds / 3600);
+	if (interval > 1) {
+		return interval + " hours";
+	}
+	interval = Math.floor(seconds / 60);
+	if (interval > 1) {
+		return interval + " minutes";
+	}
+	return Math.floor(seconds) + " seconds";
+}
+
 // redux thunks
 
 export const getRecentPosts = () => async dispatch => {
@@ -70,9 +98,14 @@ export const getRecentPosts = () => async dispatch => {
 	try {
 		const recentPosts = await getPosts();
 
+		console.log(recentPosts[0]);
+
 		const formattedPostsData = recentPosts.map(post => {
+			const now = new Date();
+
 			const title = post.title;
 			const body = post.body;
+			const timeSincePosted = timeSince(post.created);
 			// const bodyPreview = body.slice(0, 70);
 			const tags = JSON.parse(post.json_metadata).tags;
 			const image = JSON.parse(post.json_metadata).image[0];
@@ -85,6 +118,8 @@ export const getRecentPosts = () => async dispatch => {
 
 			return {
 				title,
+				body,
+				timeSincePosted,
 				tags,
 				image,
 				numberOfVotes,

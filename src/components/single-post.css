@@ -20,10 +20,10 @@
   text-decoration-color: #292929;
 }
 
-.single-post h1 {
+.single-post h1, h2, h3, h4, h5, h6 {
   /*font-family: Arial, sans-serif;*/
   font-family: 'Open Sans', sans-serif;
-  font-weight: bold;
+  /*font-weight: bold;*/
 }
 
 .single-post p, ul, ol {

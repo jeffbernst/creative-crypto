@@ -48,7 +48,7 @@ export class NavBar extends React.Component {
 						<div className="sbd-price">
 							<span className="sbd-label">SBD</span> {this.state.sbdDirection} $ {this.state.sbdPrice}
 						</div>
-						<div className="question-button">?</div>
+						{/*<div className="question-button">?</div>*/}
 					</div>
 				</div>
 			</nav>

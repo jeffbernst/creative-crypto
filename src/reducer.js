@@ -42,7 +42,7 @@ export const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				loading: false,
-				currentPost: action.payload
+				posts: [...state.posts, action.payload]
 			};
 		case GET_SINGLE_POST_ERROR:
 			return {

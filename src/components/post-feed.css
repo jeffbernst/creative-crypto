@@ -1,3 +1,17 @@
 .post-tile:nth-child(2) {
   display: none;
 }
+
+.post-feed {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  /*width: 1060px;*/
+  margin-right: 20px;
+}
+
+@media only screen and (min-width: 1400px) {
+  .post-feed {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

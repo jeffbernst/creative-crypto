@@ -1,15 +1,18 @@
 .main-container {
-  max-width: 1400px;
+  max-width: 700px;
   margin: 18px auto 50px auto;
   display: flex;
   justify-content: space-between;
 }
 
-.post-feed {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
-  width: 1060px;
-  margin-right: 20px;
+@media only screen and (min-width: 1080px) {
+  .main-container {
+    max-width: 1040px;
+  }
 }
 
+@media only screen and (min-width: 1400px) {
+  .main-container {
+    max-width: 1400px;
+  }
+}

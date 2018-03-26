@@ -1,7 +1,11 @@
 .newsfeed {
   height: 500px;
-  width: 340px;
-  /*box-shadow: 0 0 15px #d3ebfe;*/
-  /*background-color: white;*/
+  min-width: 320px;
   border: 1px solid black;
+}
+
+@media only screen and (max-width: 1060px) {
+  .newsfeed {
+    display: none;
+  }
 }

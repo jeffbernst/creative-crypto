@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import Shiitake from 'shiitake';
 
 import './post-feed-small-tile.css';
 
@@ -17,11 +18,13 @@ export function PostFeedSmallTile(props) {
 					<div><span>{props.tags[0]}</span></div>
 				</div>
 				<div className="post-content-preview">
-					<div className="post-tile-title">{props.title}</div>
+					<Shiitake lines={2} className="post-tile-title" >{props.title}</Shiitake>
+					<Shiitake lines={2} className="post-body-preview">{props.body}</Shiitake>
 					<div className="post-content-preview-bottom-container">
 						<div className="post-tile-stats">
 							<span className="post-tile-value">${props.pendingPayoutValue}</span>&nbsp;&nbsp;&nbsp;
-							<span className="post-tile-votes">&#x2303;{props.numberOfVotes}</span>
+							<span className="post-tile-votes">&#x2303;&nbsp;{props.numberOfVotes}</span>&nbsp;&nbsp;&nbsp;
+							<span className="post-tile-time">{props.timeSincePosted}</span> ago
 						</div>
 						<div className="post-tile-tag-list">{tagArray}</div>
 					</div>

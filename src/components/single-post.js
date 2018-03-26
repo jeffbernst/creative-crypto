@@ -3,18 +3,25 @@ import Spinner from 'react-spinkit';
 import {connect} from 'react-redux';
 import { withRouter } from 'react-router-dom';
 // import marked from 'marked';
+import Markdown from 'react-markdown';
 
 import Remarkable from 'remarkable';
 
 import './single-post.css';
 import {getSinglePost} from "../actions";
 
-const md = new Remarkable();
+const md = new Remarkable({html: true, linkify: true});
+// const ReactMarkdown = require('react-markdown');
 
 class SinglePost extends React.Component {
 	componentDidMount() {
-		if (this.props.posts === undefined || this.props.posts.length === 0)
+		// if (this.props.posts === undefined || this.props.posts.length === 0)
+		// 	this.props.getSinglePost(this.props.match.params.postId);
+
+		// if post is null, fetch it
+		if (!this.props.currentPost) {
 			this.props.getSinglePost(this.props.match.params.postId);
+		}
 	}
 
 	render() {
@@ -31,12 +38,14 @@ class SinglePost extends React.Component {
 			if (this.props.currentPost) {
 				const currentPost = this.props.currentPost;
 				const bodyMarkdown = md.render(currentPost.body);
+				// console.log(currentPost.body);
 
 				return (
 					<div className="single-post">
 						<h1>{currentPost.title}</h1>
-						<div className="post-info-top">add time since posted &middot; category &middot; time to read</div>
+						<div className="post-info-top">{currentPost.timeSincePosted} ago &middot; {currentPost.tags[0]}</div>
 						<div dangerouslySetInnerHTML={{__html: bodyMarkdown}} />
+						{/*<Markdown source={currentPost.body} escapeHtml={false}/>*/}
 					</div>
 				)
 			}
@@ -46,13 +55,12 @@ class SinglePost extends React.Component {
 }
 
 function mapStateToProps(state, props) {
-	const currentPostState =
-		(state.posts === undefined || state.posts.length === 0) ?
-			state.currentPost : state.posts.find(post => props.match.params.postId === post.permlink);
+	// const currentPostState =
+	// 	(state.posts === undefined || state.posts.length === 0) ?
+	// 		state.currentPost : state.posts.find(post => props.match.params.postId === post.permlink);
 
 	return {
-		posts: state.posts,
-		currentPost: currentPostState,
+		currentPost: state.posts.find(post => props.match.params.postId === post.permlink),
 		loading: state.loading
 	};
 }

@@ -63,6 +63,12 @@
   /*background-color: white;*/
 }
 
+@media only screen and (min-width: 710px) {
+  .nav-content {
+    max-width: 700px;
+  }
+}
+
 @media only screen and (min-width: 1080px) {
   .nav-content {
     max-width: 1040px;

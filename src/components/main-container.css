@@ -1,8 +1,14 @@
 .main-container {
-  max-width: 700px;
+  max-width: 100%;
   margin: 18px auto 50px auto;
   display: flex;
   justify-content: space-between;
+}
+
+@media only screen and (min-width: 710px) {
+  .main-container {
+    max-width: 700px;
+  }
 }
 
 @media only screen and (min-width: 1080px) {

@@ -1,13 +1,14 @@
 .nav-container {
   width: 100%;
   box-sizing: border-box;
-  height: 80px;
+  min-height: 80px;
   background: linear-gradient(to right, #2626FB, #2699FB);
 }
 
 .nav-content {
   max-width: 700px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
@@ -66,6 +67,12 @@
 @media only screen and (min-width: 710px) {
   .nav-content {
     max-width: 700px;
+  }
+
+  .nav-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 

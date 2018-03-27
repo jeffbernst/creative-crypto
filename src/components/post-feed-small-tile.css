@@ -43,12 +43,10 @@
   font-size: 14px;
 }
 
-.post-tile-value {
-  font-weight: bold;
-}
-
+.post-tile-value,
 .post-tile-votes {
   font-weight: bold;
+  margin-right: 15px;
 }
 
 .small-post-tile {
@@ -109,4 +107,11 @@
 .post-tile-tag-list {
   height: 34px;
   overflow: hidden;
+}
+
+img.upvote-img {
+  height: 5px;
+  width: 10px;
+  margin-bottom: 2px;
+  display: inline-block;
 }

@@ -36,20 +36,17 @@
 }
 
 .large-tile-title,
-.large-tile-body-preview {
+.large-tile-body-preview,
+.large-tile-tag {
   width: 600px;
-}
-
-.large-tile-title,
-.large-tile-body-preview span {
-  padding: 3px 5px;
-  font-weight: bold;
 }
 
 .large-tile-title span {
   background-color: white;
   font-family: 'Source Serif Pro', serif;
   font-size: 35px;
+  padding-left: 4px;
+  font-weight: bold;
 }
 
 .large-tile-body-preview span {
@@ -57,6 +54,12 @@
   color: white;
   font-size: 15px;
   line-height: 30px;
+  padding-left: 2px;
+}
+
+.large-tile-tag span {
+  color: var(--text-color);
+  background-color: white;
 }
 
 @media only screen and (min-width: 710px) {

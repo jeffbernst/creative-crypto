@@ -12,6 +12,7 @@
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
+  height: 80px;
 }
 
 .nav-title-and-prices {
@@ -19,13 +20,18 @@
 }
 
 .nav-title {
-  font-size: 30px;
-  font-weight: bold;
-  text-decoration: underline;
-  color: white;
+  /*font-size: 30px;*/
+  /*font-weight: bold;*/
+  /*text-decoration: underline;*/
+  /*color: white;*/
+  /*height: 36px;*/
   height: 80px;
   display: flex;
   align-items: center;
+}
+
+.nav-title img {
+  height: 36px;
 }
 
 .nav-right {

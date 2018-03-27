@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 // import {connect} from 'react-redux';
 
 import './nav-bar.css';
+import tcc_title from '../img/tcc_title.svg'
 
 export class NavBar extends React.Component {
 	state = {
@@ -40,7 +41,10 @@ export class NavBar extends React.Component {
 		return (
 			<nav className="nav-container">
 				<div className="nav-content">
-					<Link to={'/'}><div className="nav-title">the creative crypto</div></Link>
+					{/*<Link to={'/'}><div className="nav-title">the creative crypto</div></Link>*/}
+					<div className="nav-title">
+						<Link to={'/'}><img src={tcc_title} alt="the creative crypto title" className="nav-title"/></Link>
+					</div>
 					<div className="nav-right">
 						<div className="steem-price">
 							<span className="steem-label">STEEM</span> {this.state.steemDirection} $ {this.state.steemPrice}

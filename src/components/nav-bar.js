@@ -43,7 +43,7 @@ export class NavBar extends React.Component {
 				<div className="nav-content">
 					{/*<Link to={'/'}><div className="nav-title">the creative crypto</div></Link>*/}
 					<div className="nav-title">
-						<Link to={'/'}><img src={tcc_title} alt="the creative crypto title" className="nav-title"/></Link>
+						<Link to={'/'}><img src={tcc_title} alt="the creative crypto title" /></Link>
 					</div>
 					<div className="nav-right">
 						<div className="steem-price">

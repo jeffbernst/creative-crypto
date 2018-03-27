@@ -31,7 +31,7 @@
 }
 
 .nav-title img {
-  height: 36px;
+  height: 20px;
 }
 
 .nav-right {
@@ -44,13 +44,13 @@
 .steem-label,
 .sbd-label {
   color: #73bcfd;
-  font-size: 18px;
   font-weight: bold;
   margin-left: 30px;
 }
 
 .steem-price,
 .sbd-price {
+  font-size: 14px;
   word-spacing: 10px;
 }
 
@@ -75,10 +75,8 @@
     max-width: 700px;
   }
 
-  .nav-content {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  .nav-title img {
+    height: 30px;
   }
 }
 
@@ -90,10 +88,34 @@
   .nav-title {
     font-size: 45px;
   }
+
+  .nav-title img {
+    height: 30px;
+  }
+
+  .steem-price,
+  .sbd-price {
+    font-size: 16px;
+  }
+
+  .nav-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 @media only screen and (min-width: 1400px) {
   .nav-content {
     max-width: 1400px;
+  }
+
+  .nav-title img {
+    height: 36px;
+  }
+
+  .steem-price,
+  .sbd-price {
+    font-size: 18px;
   }
 }

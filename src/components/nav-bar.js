@@ -4,7 +4,8 @@ import {Link} from "react-router-dom";
 // import {connect} from 'react-redux';
 
 import './nav-bar.css';
-import tcc_title from '../img/tcc_title.svg'
+import tcc_title from '../img/tcc_title.svg';
+import upvote_white from '../img/upvote_white.svg';
 
 export class NavBar extends React.Component {
 	state = {
@@ -16,11 +17,11 @@ export class NavBar extends React.Component {
 
 	async componentDidMount() {
 		const steemPriceData = await this.getPrice('steem');
-		const steemDirection = parseFloat(steemPriceData[0].percent_change_1h) < 0 ? '\u2304' : '\u2303';
+		const steemDirection = parseFloat(steemPriceData[0].percent_change_1h) < 0 ? 'rotated' : '';
 		const steemPrice = parseFloat(steemPriceData[0].price_usd).toFixed(2);
 
 		const sbdPriceData = await this.getPrice('steem-dollars');
-		const sbdDirection = parseFloat(sbdPriceData[0].percent_change_1h) < 0 ? '\u2304' : '\u2303';
+		const sbdDirection = parseFloat(sbdPriceData[0].percent_change_1h) < 0 ? 'rotated' : '';
 		const sbdPrice = parseFloat(sbdPriceData[0].price_usd).toFixed(2);
 
 		this.setState({
@@ -47,10 +48,10 @@ export class NavBar extends React.Component {
 					</div>
 					<div className="nav-right">
 						<div className="steem-price">
-							<span className="steem-label">STEEM</span> {this.state.steemDirection} $ {this.state.steemPrice}
+							<span className="steem-label">STEEM</span> <img src={upvote_white} className={`ticker-arrow ${this.state.steemDirection}`}/> $ {this.state.steemPrice}
 						</div>
 						<div className="sbd-price">
-							<span className="sbd-label">SBD</span> {this.state.sbdDirection} $ {this.state.sbdPrice}
+							<span className="sbd-label">SBD</span> <img src={upvote_white} className={`ticker-arrow ${this.state.sbdDirection}`}/> $ {this.state.sbdPrice}
 						</div>
 						{/*<div className="question-button">?</div>*/}
 					</div>

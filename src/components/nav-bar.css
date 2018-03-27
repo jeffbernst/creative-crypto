@@ -70,6 +70,14 @@
   /*background-color: white;*/
 }
 
+.ticker-arrow {
+  height: 10px;
+}
+
+.rotated {
+  transform: rotate(180deg);
+}
+
 @media only screen and (min-width: 710px) {
   .nav-content {
     max-width: 700px;

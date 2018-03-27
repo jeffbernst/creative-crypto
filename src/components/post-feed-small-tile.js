@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import Shiitake from 'shiitake';
 
 import './post-feed-small-tile.css';
+import upvote_blue from '../img/upvote_blue.svg'
 
 export function PostFeedSmallTile(props) {
 	const tagArray = props.tags.map(tag => (
@@ -22,8 +23,8 @@ export function PostFeedSmallTile(props) {
 					<Shiitake lines={2} className="post-body-preview">{props.body}</Shiitake>
 					<div className="post-content-preview-bottom-container">
 						<div className="post-tile-stats">
-							<span className="post-tile-value">${props.pendingPayoutValue}</span>&nbsp;&nbsp;&nbsp;
-							<span className="post-tile-votes">&#x2303;&nbsp;{props.numberOfVotes}</span>&nbsp;&nbsp;&nbsp;
+							<span className="post-tile-value">${props.pendingPayoutValue}</span>
+							<span className="post-tile-votes"><img src={upvote_blue} alt="upvote blue" className="upvote-img"/> {props.numberOfVotes}</span>
 							<span className="post-tile-time">{props.timeSincePosted}</span> ago
 						</div>
 						<div className="post-tile-tag-list">{tagArray}</div>

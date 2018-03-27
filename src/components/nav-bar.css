@@ -1,16 +1,18 @@
 .nav-container {
   width: 100%;
   box-sizing: border-box;
-  height: 80px;
+  min-height: 80px;
   background: linear-gradient(to right, #2626FB, #2699FB);
 }
 
 .nav-content {
   max-width: 700px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
+  height: 80px;
 }
 
 .nav-title-and-prices {
@@ -18,13 +20,18 @@
 }
 
 .nav-title {
-  font-size: 30px;
-  font-weight: bold;
-  text-decoration: underline;
-  color: white;
+  /*font-size: 30px;*/
+  /*font-weight: bold;*/
+  /*text-decoration: underline;*/
+  /*color: white;*/
+  /*height: 36px;*/
   height: 80px;
   display: flex;
   align-items: center;
+}
+
+.nav-title img {
+  height: 20px;
 }
 
 .nav-right {
@@ -37,13 +44,13 @@
 .steem-label,
 .sbd-label {
   color: #73bcfd;
-  font-size: 18px;
   font-weight: bold;
   margin-left: 30px;
 }
 
 .steem-price,
 .sbd-price {
+  font-size: 14px;
   word-spacing: 10px;
 }
 
@@ -63,6 +70,25 @@
   /*background-color: white;*/
 }
 
+.ticker-arrow {
+  height: 8px;
+  margin-bottom: 2px;
+}
+
+.rotated {
+  transform: rotate(180deg);
+}
+
+@media only screen and (min-width: 710px) {
+  .nav-content {
+    max-width: 700px;
+  }
+
+  .nav-title img {
+    height: 30px;
+  }
+}
+
 @media only screen and (min-width: 1080px) {
   .nav-content {
     max-width: 1040px;
@@ -71,10 +97,34 @@
   .nav-title {
     font-size: 45px;
   }
+
+  .nav-title img {
+    height: 30px;
+  }
+
+  .steem-price,
+  .sbd-price {
+    font-size: 16px;
+  }
+
+  .nav-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 @media only screen and (min-width: 1400px) {
   .nav-content {
     max-width: 1400px;
+  }
+
+  .nav-title img {
+    height: 36px;
+  }
+
+  .steem-price,
+  .sbd-price {
+    font-size: 18px;
   }
 }

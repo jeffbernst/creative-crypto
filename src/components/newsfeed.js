@@ -22,16 +22,15 @@ class Newsfeed extends React.Component {
 		}
 
 		const tweets = this.props.newsfeed.map((tweet, index) => {
-			return <Tweet fullText={tweet.fullText} timeSinceTweeted={tweet.timeSinceTweeted}/>;
+			return <Tweet fullText={tweet.fullText} timeSinceTweeted={tweet.timeSinceTweeted} tweetId={tweet.tweetId}/>;
 		});
 
 		const firstTenTweets = tweets.slice(0, 9);
 
 		return (
 			<div className="newsfeed">
-				<div className="newsfeed-title-bar">NEWSFEED</div>
+				<a href="http://twitter.com/creative_crypto"><div className="newsfeed-title-bar">NEWSFEED</div></a>
 				{firstTenTweets}
-				<a href="http://twitter.com/creative_crypto"><div className="newsfeed-bottom-bar">VIEW ON TWITTER</div></a>
 			</div>
 		)
 	}

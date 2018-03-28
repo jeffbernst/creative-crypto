@@ -205,10 +205,12 @@ export const getCurrentNewsfeed = () => async dispatch => {
 		const formattedNewsfeed = newsfeed.map(tweet => {
 			const fullText = tweet.full_text;
 			const timeSinceTweeted = timeagoInstance.format(new Date(tweet.created_at));
+			const tweetId = tweet.id_str;
 
 			return {
 				fullText,
-				timeSinceTweeted
+				timeSinceTweeted,
+				tweetId
 			}
 		});
 

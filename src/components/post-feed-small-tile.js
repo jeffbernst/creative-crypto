@@ -25,7 +25,7 @@ export function PostFeedSmallTile(props) {
 						<div className="post-tile-stats">
 							<span className="post-tile-value">${props.pendingPayoutValue}</span>
 							<span className="post-tile-votes"><img src={upvote_blue} alt="upvote blue" className="upvote-img"/> {props.numberOfVotes}</span>
-							<span className="post-tile-time">{props.timeSincePosted}</span> ago
+							<span className="post-tile-time">{props.timeSincePosted}</span>
 						</div>
 						<div className="post-tile-tag-list">{tagArray}</div>
 					</div>

@@ -4,7 +4,7 @@ import {Route} from "react-router-dom";
 import './main-container.css';
 
 import {ConnectedPostFeed} from './post-feed';
-import {NewsFeed} from './newsfeed';
+import {ConnectedNewsfeed} from './newsfeed';
 import {ConnectedSinglePost} from "./single-post";
 
 export function MainContainer() {
@@ -12,7 +12,7 @@ export function MainContainer() {
 			<main className='main-container'>
 				<Route exact path="/" component={ConnectedPostFeed} />
 				<Route exact path="/:postId" component={ConnectedSinglePost} />
-				<NewsFeed />
+				<ConnectedNewsfeed />
 			</main>
 		)
 }

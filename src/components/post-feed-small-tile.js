@@ -19,7 +19,8 @@ export function PostFeedSmallTile(props) {
 					<div><span>{props.tags[0]}</span></div>
 				</div>
 				<div className="post-content-preview">
-					<Shiitake lines={2} className="post-tile-title" >{props.title}</Shiitake>
+					<Shiitake lines={4} className="post-tile-title" >{props.title}</Shiitake>
+					{/*<div className="post-tile-title">{props.title}</div>*/}
 					{/*<Shiitake lines={2} className="post-body-preview">{props.body}</Shiitake>*/}
 					<div className="post-content-preview-bottom-container">
 						<div className="post-tile-stats">

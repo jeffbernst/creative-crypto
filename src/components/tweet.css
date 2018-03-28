@@ -18,7 +18,7 @@
 .time-since-tweeted {
   position: absolute;
   height: 9px;
-  background: #eff8ff;
+  background: var(--background-color);
   bottom: -5px;
   right: 0;
   display: flex;

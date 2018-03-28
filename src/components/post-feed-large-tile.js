@@ -14,9 +14,9 @@ export function PostFeedLargeTile(props) {
 						<div className="large-tile-title">
 							<Shiitake lines={2} tagName="span">{props.title}</Shiitake>
 						</div>
-						<div className="large-tile-body-preview">
-							<Shiitake lines={2}>{props.body}</Shiitake>
-						</div>
+						{/*<div className="large-tile-body-preview">*/}
+							{/*<Shiitake lines={2}>{props.body}</Shiitake>*/}
+						{/*</div>*/}
 						<div className="large-tile-tag">
 							<span>{props.tags[0].toUpperCase()}</span>
 						</div>

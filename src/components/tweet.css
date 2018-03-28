@@ -1,0 +1,30 @@
+.tweet {
+  border-bottom: 1px solid var(--text-color);
+  font-size: 12px;
+  line-height: 25px;
+  padding: 20px 0;
+  position: relative;
+}
+
+.tweet:last-of-type {
+  border-bottom: none;
+}
+
+.time-since-tweeted {
+  position: absolute;
+  height: 9px;
+  background: #eff8ff;
+  bottom: -5px;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*padding-right: 10px;*/
+  z-index: 1;
+  padding-left: 8px;
+}
+
+.time-since-tweeted img {
+  height: 15px;
+  margin-right: 10px;
+}

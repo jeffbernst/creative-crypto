@@ -13,7 +13,7 @@ import {
 const initialState = {
 	posts: [],
 	currentPost: null,
-	newsfeed: null,
+	newsfeed: [],
 	loadingNewsfeed: false,
 	loading: false,
 	error: null

@@ -8,9 +8,11 @@ import {
 	GET_NEWSFEED_REQUEST,
 	GET_NEWSFEED_SUCCESS,
 	GET_NEWSFEED_ERROR
-} from './types';
+} from './types'
 
-import steem from 'steem';
+import steem from 'steem'
+import timeago from 'timeago.js'
+const timeagoInstance = timeago();
 
 steem.api.setOptions({url: 'https://api.steemit.com'});
 
@@ -85,33 +87,33 @@ async function getNewsfeed() {
 	return data;
 }
 
-function timeSince(date) {
-
-	const seconds = Math.floor((new Date() - date) / 1000);
-
-	let interval = Math.floor(seconds / 31536000);
-
-	if (interval > 1) {
-		return interval + " years";
-	}
-	interval = Math.floor(seconds / 2592000);
-	if (interval > 1) {
-		return interval + " months";
-	}
-	interval = Math.floor(seconds / 86400);
-	if (interval > 1) {
-		return interval + " days";
-	}
-	interval = Math.floor(seconds / 3600);
-	if (interval > 1) {
-		return interval + " hours";
-	}
-	interval = Math.floor(seconds / 60);
-	if (interval > 1) {
-		return interval + " minutes";
-	}
-	return Math.floor(seconds) + " seconds";
-}
+// function timeSince(date) {
+//
+// 	const seconds = Math.floor((new Date() - date) / 1000);
+//
+// 	let interval = Math.floor(seconds / 31536000);
+//
+// 	if (interval > 1) {
+// 		return interval + " years";
+// 	}
+// 	interval = Math.floor(seconds / 2592000);
+// 	if (interval > 1) {
+// 		return interval + " months";
+// 	}
+// 	interval = Math.floor(seconds / 86400);
+// 	if (interval > 1) {
+// 		return interval + " days";
+// 	}
+// 	interval = Math.floor(seconds / 3600);
+// 	if (interval > 1) {
+// 		return interval + " hours";
+// 	}
+// 	interval = Math.floor(seconds / 60);
+// 	if (interval > 1) {
+// 		return interval + " minutes";
+// 	}
+// 	return Math.floor(seconds) + " seconds";
+// }
 
 // redux thunks
 
@@ -197,10 +199,18 @@ export const getCurrentNewsfeed = () => async dispatch => {
 
 	try {
 		const newsfeed = await getNewsfeed();
-
 		console.log(newsfeed);
+		const formattedNewsfeed = newsfeed.map(tweet => {
+			const fullText = tweet.full_text;
+			const timeSinceTweeted = timeagoInstance.format(new Date(tweet.created_at));
 
-		dispatch(getNewsfeedSuccess(newsfeed));
+			return {
+				fullText,
+				timeSinceTweeted
+			}
+		});
+
+		dispatch(getNewsfeedSuccess(formattedNewsfeed));
 
 	} catch (err) {
 		dispatch(getNewsfeedError(err))

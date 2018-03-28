@@ -4,12 +4,17 @@ import {
 	GET_RECENT_POSTS_ERROR,
 	GET_SINGLE_POST_REQUEST,
 	GET_SINGLE_POST_SUCCESS,
-	GET_SINGLE_POST_ERROR} from './actions/types';
+	GET_SINGLE_POST_ERROR,
+	GET_NEWSFEED_REQUEST,
+	GET_NEWSFEED_SUCCESS,
+	GET_NEWSFEED_ERROR} from './actions/types';
 
 
 const initialState = {
 	posts: [],
 	currentPost: null,
+	newsfeed: [],
+	loadingNewsfeed: false,
 	loading: false,
 	error: null
 };
@@ -48,6 +53,22 @@ export const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				loading: false,
+				error: action.payload
+			};
+		case GET_NEWSFEED_REQUEST:
+			return {
+				...state,
+				loadingNewsfeed: true,
+			};
+		case GET_NEWSFEED_SUCCESS:
+			return {
+				...state,
+				loadingNewsfeed: false,
+				newsfeed: action.payload
+			};
+		case GET_NEWSFEED_ERROR:
+			return {
+				loadingNewsfeed: false,
 				error: action.payload
 			};
 		default:

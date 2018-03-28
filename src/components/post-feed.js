@@ -16,7 +16,6 @@ class PostFeed extends React.Component {
 	componentDidMount() {
 		if (this.props.posts.length <= 1)
 			this.props.getRecentPosts();
-		// TODO check to see if i have the posts already, then do API call if not
 	}
 
 	render() {

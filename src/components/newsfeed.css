@@ -1,7 +1,22 @@
 .newsfeed {
-  height: 500px;
-  min-width: 320px;
-  border: 1px solid black;
+  min-height: 500px;
+  width: 320px;
+}
+
+.newsfeed-title-bar,
+.newsfeed-bottom-bar {
+  height: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: var(--text-color);
+  font-size: 14px;
+}
+
+.newsfeed-bottom-bar {
+  margin-top: 15px;
 }
 
 @media only screen and (max-width: 1080px) {

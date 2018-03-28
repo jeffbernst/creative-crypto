@@ -16,7 +16,8 @@
     "remarkable": "^1.7.1",
     "remove-markdown": "^0.2.2",
     "shiitake": "^2.2.4",
-    "steem": "^0.7.1"
+    "steem": "^0.7.1",
+    "timeago.js": "^3.0.2"
   },
   "scripts": {
     "start": "react-scripts start",

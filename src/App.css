@@ -1,11 +1,13 @@
 body {
   --text-color: #2699FB;
+  --background-color: #f9f9f9;
+  /* original background blue #eff8ff */
   margin: 0;
   padding: 0;
   /*font-family: Arial, sans-serif;*/
   font-family: 'Open Sans', sans-serif;
   color: var(--text-color);
-  background-color: #eff8ff;
+  background-color: var(--background-color);
 }
 
 a {

@@ -133,12 +133,12 @@ export function linkify(content, mutate, hashtags, usertags, images, links) {
 
     content = content.replace(linksAny('gi'), ln => {
         if (linksRe.image.test(ln)) {
-            if (images) images.add(ln);
-            return `<img src="${ipfsPrefix(ln)}" />`;
+            // if (images) images.add(ln);
+            return `<img src="${ln}" />`;
         }
 
         // do not linkify .exe or .zip urls
-        if (/\.(zip|exe)$/i.test(ln)) return ln;
+        // if (/\.(zip|exe)$/i.test(ln)) return ln;
 
         // do not linkify phishy links
         // if (Phishing.looksPhishy(ln))
@@ -146,8 +146,8 @@ export function linkify(content, mutate, hashtags, usertags, images, links) {
         //         ln
         //     }</div>`;
 
-        if (links) links.add(ln);
-        return `<a href="${ipfsPrefix(ln)}">${ln}</a>`;
+        // if (links) links.add(ln);
+        return `<a href="${ln}">${ln}</a>`;
     });
     return content;
 }

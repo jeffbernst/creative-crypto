@@ -9,6 +9,8 @@ import Remarkable from 'remarkable';
 
 import './single-post.css';
 import {getSinglePost} from "../actions";
+import { any as linksAny } from '../condenser/Links'
+import linksRe from '../condenser/Links'
 
 const md = new Remarkable({html: true, linkify: true});
 // const ReactMarkdown = require('react-markdown');
@@ -37,6 +39,15 @@ class SinglePost extends React.Component {
 
 			if (this.props.currentPost) {
 				const currentPost = this.props.currentPost;
+
+        let content = currentPost.replace(linksAny('gi'), ln => {
+          if (linksRe.image.test(ln)) {
+            return `<img src="${ln}" />`;
+          }
+          return `<a href="${ln}">${ln}</a>`;
+        });
+        console.log(content)
+
 				const bodyMarkdown = md.render(currentPost.body);
 				// console.log(currentPost.body);
 

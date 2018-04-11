@@ -14,7 +14,7 @@
 //
 // The Steemit logo file that is stored in the repository is not included in the above license. The Steemit brand and logo are protected by intellectual property laws, including copyright and other proprietary rights of the United States and other countries. The purpose is to allow Steemit, Inc. to protect the brand and logo in ways that extend user safety. One may not make unauthorized commercial use of, reproduce, prepare derivative works, distribute copies, perform, or publicly display the Steemit logo or brand, except as permitted by the doctrine of fair use, or as authorized in writing by Steemit, Inc.
 
-import { PARAM_VIEW_MODE, VIEW_MODE_WHISTLE } from '../../shared/constants';
+// import { PARAM_VIEW_MODE, VIEW_MODE_WHISTLE } from '../../shared/constants';
 
 const urlChar = '[^\\s"<>\\]\\[\\(\\)]';
 const urlCharEnd = urlChar.replace(/\]$/, ".,']"); // insert bad chars to end on
@@ -74,55 +74,55 @@ export default {
  * @param allowedValues
  * @returns {*}
  */
-export const addToParams = (outputParams, inputParams, key, allowedValues) => {
-    const respParams = Object.assign({}, outputParams);
-    if (inputParams[key] && allowedValues.indexOf(inputParams[key]) > -1) {
-        respParams[key] = inputParams[key];
-    }
-    return respParams;
-};
-
-//TODO: possible this should go somewhere else.
-export const makeParams = (params, prefix) => {
-    let paramsList = [];
-    if (params.constructor === Array) {
-        paramsList = params;
-    } else {
-        Object.entries(params).forEach(([key, value]) => {
-            paramsList.push(`${key}=${value}`);
-        });
-    }
-    if (paramsList.length > 0) {
-        return (
-            (prefix !== false
-                ? typeof prefix === 'string' ? prefix : '?'
-                : '') + paramsList.join('&')
-        );
-    }
-    return '';
-};
-
-/**
- *
- * @param {string} search - window.location.search formatted string (may omit '?')
- * @returns {string}
- */
-export const determineViewMode = search => {
-    const searchList =
-        search.indexOf('?') === 0
-            ? search.substr(1).split('&')
-            : search.split('&');
-    for (let i = 0; i < searchList.length; i++) {
-        if (searchList[i].indexOf(PARAM_VIEW_MODE) === 0) {
-            if (searchList[i] == PARAM_VIEW_MODE + '=' + VIEW_MODE_WHISTLE) {
-                //we only want to support known view modes.
-                return VIEW_MODE_WHISTLE;
-            }
-            return '';
-        }
-    }
-    return '';
-};
+// export const addToParams = (outputParams, inputParams, key, allowedValues) => {
+//     const respParams = Object.assign({}, outputParams);
+//     if (inputParams[key] && allowedValues.indexOf(inputParams[key]) > -1) {
+//         respParams[key] = inputParams[key];
+//     }
+//     return respParams;
+// };
+//
+// //TODO: possible this should go somewhere else.
+// export const makeParams = (params, prefix) => {
+//     let paramsList = [];
+//     if (params.constructor === Array) {
+//         paramsList = params;
+//     } else {
+//         Object.entries(params).forEach(([key, value]) => {
+//             paramsList.push(`${key}=${value}`);
+//         });
+//     }
+//     if (paramsList.length > 0) {
+//         return (
+//             (prefix !== false
+//                 ? typeof prefix === 'string' ? prefix : '?'
+//                 : '') + paramsList.join('&')
+//         );
+//     }
+//     return '';
+// };
+//
+// /**
+//  *
+//  * @param {string} search - window.location.search formatted string (may omit '?')
+//  * @returns {string}
+//  */
+// export const determineViewMode = search => {
+//     const searchList =
+//         search.indexOf('?') === 0
+//             ? search.substr(1).split('&')
+//             : search.split('&');
+//     for (let i = 0; i < searchList.length; i++) {
+//         if (searchList[i].indexOf(PARAM_VIEW_MODE) === 0) {
+//             if (searchList[i] == PARAM_VIEW_MODE + '=' + VIEW_MODE_WHISTLE) {
+//                 //we only want to support known view modes.
+//                 return VIEW_MODE_WHISTLE;
+//             }
+//             return '';
+//         }
+//     }
+//     return '';
+// };
 
 // Original regex
 // const urlRegex = '^(?!mailto:)(?:(?:http|https|ftp)://)(?:\\S+(?::\\S*)?@)?(?:(?:(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[0-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))|(?:(?:[a-z\\u00a1-\\uffff0-9]+-?)*[a-z\\u00a1-\\uffff0-9]+)(?:\\.(?:[a-z\\u00a1-\\uffff0-9]+-?)*[a-z\\u00a1-\\uffff0-9]+)*(?:\\.(?:[a-z\\u00a1-\\uffff]{2,})))|localhost)(?::\\d{2,5})?(?:(/|\\?|#)[^\\s]*)?$';

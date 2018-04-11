@@ -225,19 +225,6 @@ function linkify(content, mutate, hashtags, usertags, images, links) {
     return `${space}<a href="/trending/${tagLower}">${tag}</a>`;
   });
 
-  // usertag (mention)
-  content = content.replace(/(^|\s)(@[a-z][-\.a-z\d]+[a-z\d])/gi, user => {
-    const space = /^\s/.test(user) ? user[0] : '';
-    const user2 = user.trim().substring(1);
-    const userLower = user2.toLowerCase();
-    const valid = validateAccountName(userLower) == null;
-    if (valid && usertags) usertags.add(userLower);
-    if (!mutate) return user;
-    // return space + (valid ? `<a href="/@${userLower}">@${user2}</a>` : `@${user2}`);
-    // modified original code here to change href for link
-    return space + (valid ? `<a href="https://steemit.com/@${userLower}">@${user2}</a>` : `@${user2}`);
-  });
-
   content = content.replace(linksRe.any, ln => {
     if (linksRe.image.test(ln)) {
       if (images) images.add(ln);
@@ -250,6 +237,21 @@ function linkify(content, mutate, hashtags, usertags, images, links) {
     if (links) links.add(ln);
     return `<a href="${ln}">${ln}</a>`;
   });
+
+  // usertag (mention)
+  // NOTE: moved this below above replace statement to avoid linkifying mentions
+  content = content.replace(/(^|\s)(@[a-z][-\.a-z\d]+[a-z\d])/gi, user => {
+    const space = /^\s/.test(user) ? user[0] : '';
+    const user2 = user.trim().substring(1);
+    const userLower = user2.toLowerCase();
+    const valid = validateAccountName(userLower) == null;
+    if (valid && usertags) usertags.add(userLower);
+    if (!mutate) return user;
+    // return space + (valid ? `<a href="/@${userLower}">@${user2}</a>` : `@${user2}`);
+    // modified original code here to change href for link
+    return space + (valid ? `<a href="https://steemit.com/@${userLower}">@${user2}</a>` : `@${user2}`);
+  });
+
   return content;
 }
 

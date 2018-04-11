@@ -1,3 +1,5 @@
+All code in this folder is from the [Busy](https://github.com/busyorg/busy) Github repo. The original license is below:
+
 MIT License
 
 Copyright (c) 2017 Busy

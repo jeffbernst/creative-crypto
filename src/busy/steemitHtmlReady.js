@@ -1,3 +1,5 @@
+// This file is from the Busy.org Github repo (April 11, 2018): https://github.com/busyorg/busy
+
 /**
  * This function is extracted from steemit.com source code and does the same tasks with some slight-
  * adjustments to meet our needs(Removed Embed and ipfs related code). Refer to the main one in case of future problems:

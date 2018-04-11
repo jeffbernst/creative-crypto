@@ -1,3 +1,5 @@
+// This file is from the Busy.org Github repo (April 11, 2018): https://github.com/busyorg/busy
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import './PostFeedEmbed.less';

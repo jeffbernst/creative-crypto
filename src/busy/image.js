@@ -1,3 +1,5 @@
+// This file is from the Busy.org Github repo (April 11, 2018): https://github.com/busyorg/busy
+
 import filesize from 'filesize';
 
 const IMG_PROXY = 'https://steemitimages.com/0x0/';

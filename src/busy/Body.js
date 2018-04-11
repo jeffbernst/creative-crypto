@@ -1,3 +1,5 @@
+// This file is from the Busy.org Github repo (April 11, 2018): https://github.com/busyorg/busy
+
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import PropTypes from 'prop-types';

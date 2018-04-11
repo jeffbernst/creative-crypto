@@ -11,6 +11,7 @@ import './single-post.css';
 import {getSinglePost} from "../actions";
 import { any as linksAny } from '../condenser/Links'
 import linksRe from '../condenser/Links'
+import { linkify } from '../condenser/HtmlReady'
 
 const md = new Remarkable({html: true, linkify: true});
 // const ReactMarkdown = require('react-markdown');
@@ -40,16 +41,25 @@ class SinglePost extends React.Component {
 			if (this.props.currentPost) {
 				const currentPost = this.props.currentPost;
 
-        let content = currentPost.replace(linksAny('gi'), ln => {
-          if (linksRe.image.test(ln)) {
-            return `<img src="${ln}" />`;
-          }
-          return `<a href="${ln}">${ln}</a>`;
-        });
-        console.log(content)
+				// console.log(currentPost)
+
+        // let content = linkify(currentPost.body)
+        // console.log(content)
 
 				const bodyMarkdown = md.render(currentPost.body);
 				// console.log(currentPost.body);
+
+        let content = linkify(bodyMarkdown)
+
+        content.replace(
+          /(^|[^a-zA-Z0-9_!#$%&*@＠\/]|(^|[^a-zA-Z0-9_+~.-\/#]))[@＠]([a-z][-\.a-z\d]+[a-z\d])/gi,
+          (match, preceeding1, preceeding2, user) => {
+            const userLower = user.toLowerCase();
+            return `<a href="https://steemit.com/@${userLower}">@${user}</a>`
+          }
+        );
+
+        console.log(content)
 
 				return (
 					<div className="single-post">

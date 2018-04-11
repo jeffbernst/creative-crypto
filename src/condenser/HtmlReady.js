@@ -15,9 +15,9 @@
 //
 // The Steemit logo file that is stored in the repository is not included in the above license. The Steemit brand and logo are protected by intellectual property laws, including copyright and other proprietary rights of the United States and other countries. The purpose is to allow Steemit, Inc. to protect the brand and logo in ways that extend user safety. One may not make unauthorized commercial use of, reproduce, prepare derivative works, distribute copies, perform, or publicly display the Steemit logo or brand, except as permitted by the doctrine of fair use, or as authorized in writing by Steemit, Inc.
 
-import xmldom from 'xmldom';
+// import xmldom from 'xmldom';
 // import tt from 'counterpart';
-import linksRe, { any as linksAny } from 'Links';
+import linksRe, { any as linksAny } from './Links';
 // import { validate_account_name } from 'app/utils/ChainValidation';
 // import proxifyImageUrl from 'app/utils/ProxifyUrl';
 // import * as Phishing from 'app/utils/Phishing';
@@ -98,38 +98,36 @@ import linksRe, { any as linksAny } from 'Links';
 */
 
 
-export function linkify(content, mutate, hashtags, usertags, images, links) {
+export function linkify(content) {
     // hashtag
-    content = content.replace(/(^|\s)(#[-a-z\d]+)/gi, tag => {
-        if (/#[\d]+$/.test(tag)) return tag; // Don't allow numbers to be tags
-        const space = /^\s/.test(tag) ? tag[0] : '';
-        const tag2 = tag.trim().substring(1);
-        const tagLower = tag2.toLowerCase();
-        if (hashtags) hashtags.add(tagLower);
-        if (!mutate) return tag;
-        return space + `<a href="/trending/${tagLower}">${tag}</a>`;
-    });
+    // content = content.replace(/(^|\s)(#[-a-z\d]+)/gi, tag => {
+    //     if (/#[\d]+$/.test(tag)) return tag; // Don't allow numbers to be tags
+    //     const space = /^\s/.test(tag) ? tag[0] : '';
+    //     const tag2 = tag.trim().substring(1);
+    //     const tagLower = tag2.toLowerCase();
+    //     // if (hashtags) hashtags.add(tagLower);
+    //     // if (!mutate) return tag;
+    //     return space + `<a href="https://steemit.com/trending/${tagLower}">${tag}</a>`;
+    // });
 
     // usertag (mention)
     // Cribbed from https://github.com/twitter/twitter-text/blob/v1.14.7/js/twitter-text.js#L90
-    content = content.replace(
-        /(^|[^a-zA-Z0-9_!#$%&*@＠\/]|(^|[^a-zA-Z0-9_+~.-\/#]))[@＠]([a-z][-\.a-z\d]+[a-z\d])/gi,
-        (match, preceeding1, preceeding2, user) => {
-            const userLower = user.toLowerCase();
-            // const valid = validate_account_name(userLower) == null;
-
-            // if (valid && usertags) usertags.add(userLower);
-            if (usertags) usertags.add(userLower);
-
-            const preceedings = (preceeding1 || '') + (preceeding2 || ''); // include the preceeding matches if they exist
-
-            if (!mutate) return `${preceedings}${user}`;
-
-            return valid
-                ? `${preceedings}<a href="/@${userLower}">@${user}</a>`
-                : `${preceedings}@${user}`;
-        }
-    );
+    // content = content.replace(
+    //     /(^|[^a-zA-Z0-9_!#$%&*@＠\/]|(^|[^a-zA-Z0-9_+~.-\/#]))[@＠]([a-z][-\.a-z\d]+[a-z\d])/gi,
+    //     (match, preceeding1, preceeding2, user) => {
+    //         const userLower = user.toLowerCase();
+    //         // const valid = validate_account_name(userLower) == null;
+    //
+    //         // if (valid && usertags) usertags.add(userLower);
+    //         // if (usertags) usertags.add(userLower);
+    //
+    //         // const preceedings = (preceeding1 || '') + (preceeding2 || ''); // include the preceeding matches if they exist
+    //
+    //         // if (!mutate) return `${preceedings}${user}`;
+    //
+    //         return `<a href="https://steemit.com/@${userLower}">@${user}</a>`
+    //     }
+    // );
 
     content = content.replace(linksAny('gi'), ln => {
         if (linksRe.image.test(ln)) {

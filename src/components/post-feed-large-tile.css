@@ -1,5 +1,5 @@
 .large-post-tile {
-  width: 1060px;
+  width: 1066px;
   height: 400px;
   background-color: white;
   grid-row: 1;
@@ -8,6 +8,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  overflow: hidden;
 }
 
 .large-post-tile:hover {
@@ -15,12 +16,67 @@
 }
 
 .large-post-tile img {
-  width: 600px;
-  height: 400px;
+  width: 726px;
+  /*height: 400px;*/
 }
 
 .large-post-tile:first-child a {
   height: 400px;
+}
+
+.post-body-preview {
+  font-size: 14px;
+  /*margin-bottom: 20px;*/
+  /*width: 100%;*/
+  padding: 0 10px 0 20px;
+}
+
+.large-tile-content-preview {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 344px;
+}
+
+img.upvote-img {
+  height: 15px;
+  width: 15px;
+  /*margin-bottom: 2px;*/
+  display: inline-block;
+}
+
+.post-tile-stats {
+  font-size: 12px;
+  margin: 0 10px 10px 20px;
+  padding: 0 2px;
+}
+
+/*.post-tile-tags {*/
+  /*font-size: 14px;*/
+/*}*/
+
+.post-tile-tag {
+  display: inline-block;
+  box-sizing: border-box;
+  color: #66affc;
+  height: 30px;
+  border: 1px solid #a0cffd;
+  background-color: #eff8ff;
+  border-radius: 5px;
+  font-size: 13px;
+  padding: 0 10px;
+  margin-right: 9px;
+  margin-bottom: 5px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 28px;
+}
+
+.post-tile-tag-list {
+  height: 34px;
+  overflow: hidden;
+  margin: 0 10px 10px 20px;
 }
 
 /*.large-tile-image {*/
@@ -52,20 +108,20 @@
   color: white;
   font-family: 'Source Serif Pro', serif;
   font-size: 35px;
-  font-weight: bold;
+  /*font-weight: bold;*/
   padding: 20px;
-  /*margin-left: -60px;*/
+  margin: 10px 10px 10px -70px;
 }
 
-.large-tile-body-preview span {
-  background-color: var(--text-color);
-  color: white;
-  font-size: 15px;
-  line-height: 30px;
-  padding-left: 2px;
-}
+/*.large-tile-body-preview span {*/
+  /*background-color: var(--text-color);*/
+  /*color: white;*/
+  /*font-size: 15px;*/
+  /*line-height: 30px;*/
+  /*padding-left: 2px;*/
+/*}*/
 
-.large-tile-tag span {
-  color: var(--text-color);
-  background-color: white;
-}
+/*.large-tile-tag span {*/
+  /*color: var(--text-color);*/
+  /*background-color: white;*/
+/*}*/

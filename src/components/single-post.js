@@ -10,6 +10,8 @@ import Remarkable from 'remarkable';
 import './single-post.css';
 import {getSinglePost} from "../actions";
 
+import { getHtml } from '../busy/Body';
+
 const md = new Remarkable({html: true, linkify: true});
 // const ReactMarkdown = require('react-markdown');
 
@@ -37,14 +39,17 @@ class SinglePost extends React.Component {
 
 			if (this.props.currentPost) {
 				const currentPost = this.props.currentPost;
+
 				const bodyMarkdown = md.render(currentPost.body);
-				// console.log(currentPost.body);
+
+        const htmlBody = getHtml(currentPost.body, {}, 'text');
+        console.log(htmlBody)
 
 				return (
 					<div className="single-post">
 						<h1>{currentPost.title}</h1>
 						<div className="post-info-top">{currentPost.timeSincePosted} ago &middot; {currentPost.tags[0]}</div>
-						<div dangerouslySetInnerHTML={{__html: bodyMarkdown}} />
+						<div dangerouslySetInnerHTML={{__html: htmlBody}} />
 						{/*<Markdown source={currentPost.body} escapeHtml={false}/>*/}
 					</div>
 				)

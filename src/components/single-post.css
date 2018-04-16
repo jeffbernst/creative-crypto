@@ -1,5 +1,5 @@
 .single-post {
-  box-shadow: 0 0 15px #d3ebfe;
+  box-shadow: 0 0 15px var(--shadow);
   background-color: white;
   max-width: 100%;
   margin-right: 20px;
@@ -28,14 +28,11 @@
 }
 
 .single-post a {
-  color: #292929;
-  /*border-bottom: 2px solid var(--text-color);*/
-  text-decoration: underline;
-  text-decoration-color: var(--text-color);
+  color: var(--text-color);
 }
 
 .single-post a:hover {
-  text-decoration-color: #292929;
+  color: #51adfb;
 }
 
 .single-post h1, h2, h3, h4, h5, h6 {

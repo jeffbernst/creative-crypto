@@ -2,7 +2,8 @@
   width: 100%;
   box-sizing: border-box;
   min-height: 80px;
-  background: linear-gradient(to right, #2626FB, #2699FB);
+  /*background: linear-gradient(to right, #2626FB, #2699FB);*/
+  background-color: var(--nav-bar-color);
 }
 
 .nav-content {
@@ -43,7 +44,7 @@
 
 .steem-label,
 .sbd-label {
-  color: #73bcfd;
+  color: white;
   font-weight: bold;
   margin-left: 30px;
 }

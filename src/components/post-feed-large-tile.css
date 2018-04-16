@@ -3,12 +3,12 @@
   height: 400px;
   background-color: white;
   grid-row: 1;
-  box-shadow: 0 0 15px #d3ebfe;
+  box-shadow: 0 0 15px var(--shadow);
   display: none;
 }
 
 .large-post-tile:hover {
-  box-shadow: 0 0 15px #bdd3e4;
+  box-shadow: 0 0 15px var(--dark-shadow);
 }
 
 .large-post-tile img {

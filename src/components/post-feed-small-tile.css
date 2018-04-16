@@ -1,5 +1,5 @@
 .post-tile {
-  box-shadow: 0 0 15px #d3ebfe;
+  box-shadow: 0 0 15px var(--shadow);
   background-color: white;
   display: inline-block;
   text-decoration: none;
@@ -7,7 +7,7 @@
 }
 
 .post-tile:hover {
-  box-shadow: 0 0 15px #bdd3e4;
+  box-shadow: 0 0 15px var(--dark-shadow);
   background-color: white;
 }
 

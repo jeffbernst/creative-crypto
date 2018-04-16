@@ -32,7 +32,7 @@ class Newsfeed extends React.Component {
 				{/*<a href="http://twitter.com/creative_crypto"><div className="newsfeed-title-bar">NEWSFEED</div></a>*/}
 				{/*{firstTenTweets}*/}
 				<a class="twitter-timeline"
-					 data-height="1660"
+					 data-height="1240"
 					 href="https://twitter.com/creative_crypto?ref_src=twsrc%5Etfw">
 					Tweets by creative_crypto
 				</a>

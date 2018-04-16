@@ -1,6 +1,10 @@
 body {
   --text-color: #2699FB;
-  --background-color: #f9f9f9;
+  --background-color: #f0f0f0;
+  --nav-bar-color: #00bcc1;
+  --nav-bar-light: #0ad3d6;
+  --shadow: #c7c7c7;
+  --dark-shadow: #b1b1b1;
   /* original background blue #eff8ff */
   margin: 0;
   padding: 0;

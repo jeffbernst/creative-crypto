@@ -28,7 +28,7 @@ export function PostFeedSmallTile(props) {
 							<span className="post-tile-votes"><img src={upvote_blue} alt="upvote blue" className="upvote-img"/> {props.numberOfVotes}</span>
 							<span className="post-tile-time">{props.timeSincePosted}</span>
 						</div>
-						<div className="post-tile-tag-list">{tagArray}</div>
+						{/*<div className="post-tile-tag-list">{tagArray}</div>*/}
 					</div>
 				</div>
 			</Link>

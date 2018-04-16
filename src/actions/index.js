@@ -64,7 +64,7 @@ const getNewsfeedError = error => ({
 
 function getPosts() {
 	return new Promise((res, rej) => {
-		steem.api.getDiscussionsByBlog({tag: 'sndbox', limit: 11}, function (err, result) {
+		steem.api.getDiscussionsByBlog({tag: 'creativecrypto', limit: 11}, function (err, result) {
 			if (err) rej(err);
 			else res(result);
 		});
@@ -74,7 +74,7 @@ function getPosts() {
 function getPost(permlink) {
 	return new Promise((res, rej) => {
 		const currentDate = new Date().toISOString().split('.')[0];
-		steem.api.getDiscussionsByAuthorBeforeDate('sndbox', permlink, currentDate, 1, function (err, result) {
+		steem.api.getDiscussionsByAuthorBeforeDate('creativecrypto', permlink, currentDate, 1, function (err, result) {
 			if (err) rej(err);
 			else res(result);
 		});

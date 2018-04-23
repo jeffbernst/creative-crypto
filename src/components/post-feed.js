@@ -21,7 +21,7 @@ class PostFeed extends React.Component {
 
   render () {
     if (this.props.loading) {
-      return <Spinner/>
+      return <Spinner color="var(--text-color)"/>
     }
 
     if (this.props.error) {

@@ -64,7 +64,7 @@ const getNewsfeedError = error => ({
 
 function getPosts() {
 	return new Promise((res, rej) => {
-		steem.api.getDiscussionsByBlog({tag: 'creativecrypto', limit: 11}, function (err, result) {
+		steem.api.getDiscussionsByBlog({tag: 'creativecrypto', limit: 50}, function (err, result) {
 			if (err) rej(err);
 			else res(result);
 		});

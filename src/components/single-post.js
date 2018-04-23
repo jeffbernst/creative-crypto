@@ -28,9 +28,9 @@ class SinglePost extends React.Component {
   }
 
   render () {
-    if (this.props.loading) {
-      return <Spinner color="var(--text-color)" name="wave"/>
-    }
+    // if (this.props.loading) {
+    //   return <Spinner color="var(--text-color)" name="wave"/>
+    // }
 
     if (this.props.error) {
       return <strong>{this.props.error}</strong>
@@ -45,14 +45,14 @@ class SinglePost extends React.Component {
       return (
         <div className="single-post">
           <h1>{currentPost.title}</h1>
-          <div className="post-info-top">{currentPost.timeSincePosted} ago &middot; {currentPost.tags[0]} &middot; {readingStats.text}</div>
+          <div className="post-info-top">{currentPost.timeSincePosted} &middot; {currentPost.tags[0]} &middot; {readingStats.text}</div>
           <div dangerouslySetInnerHTML={{__html: htmlBody}}/>
           {/*<Markdown source={currentPost.body} escapeHtml={false}/>*/}
         </div>
       )
     }
 
-    return <div>loading...</div>
+    return <div></div>
   }
 }
 

@@ -20,9 +20,9 @@ class PostFeed extends React.Component {
   }
 
   render () {
-    if (this.props.loading) {
-      return <Spinner color="var(--text-color)" name="wave"/>
-    }
+    // if (this.props.loading) {
+    //   return <Spinner color="var(--text-color)" name="wave"/>
+    // }
 
     if (this.props.error) {
       return <strong>{this.props.error}</strong>

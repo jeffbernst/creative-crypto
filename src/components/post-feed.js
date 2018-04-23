@@ -62,13 +62,14 @@ class PostFeed extends React.Component {
       else return [smallTile]
     })
 
-    // {/*<div className="post-feed">*/}
+    function loadMore() {
+      console.log('need to load more')
+    }
+
     return (
       <div>
         <InfiniteScroll
-          // pageStart={0}
-          // loadMore={loadFunc}
-          // hasMore={true}
+          loadMore={loadMore}
           className="post-feed"
           loader={<div className="loader" key={0}>Loading ...</div>}
         >

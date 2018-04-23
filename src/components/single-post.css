@@ -2,7 +2,6 @@
   box-shadow: 0 0 15px var(--shadow);
   background-color: white;
   max-width: 100%;
-  margin-right: 20px;
   padding: 30px 50px 20px 50px;
   box-sizing: border-box;
   font-family: 'Source Serif Pro', serif;
@@ -17,13 +16,14 @@
 
 @media only screen and (min-width: 1080px) {
   .single-post {
-    max-width: 700px;
+    max-width: 1080px;
   }
 }
 
 @media only screen and (min-width: 1410px) {
   .single-post {
     max-width: 1060px;
+    margin-right: 20px;
   }
 }
 
@@ -37,8 +37,10 @@
 
 .single-post h1, h2, h3, h4, h5, h6 {
   /*font-family: Arial, sans-serif;*/
-  font-family: 'Open Sans', sans-serif;
+  /*font-family: 'Open Sans', sans-serif;*/
   /*font-weight: bold;*/
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 700;
 }
 
 .single-post p, ul, ol {
@@ -48,8 +50,19 @@
 .post-info-top {
   font-size: 14px;
   /*margin-top: -20px;*/
+  /*font-family: 'Open Sans', sans-serif;*/
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #8ea0ac;
+  margin-top: -20px;
 }
 
 .single-post img {
   max-width: 100%;
+}
+
+.single-post hr {
+  color: #e6e3e4;
+  background-color: #e6e3e4;
+  border: none;
+  height: 1px;
 }

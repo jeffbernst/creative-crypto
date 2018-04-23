@@ -87,34 +87,6 @@ async function getNewsfeed() {
 	return data;
 }
 
-// function timeSince(date) {
-//
-// 	const seconds = Math.floor((new Date() - date) / 1000);
-//
-// 	let interval = Math.floor(seconds / 31536000);
-//
-// 	if (interval > 1) {
-// 		return interval + " years";
-// 	}
-// 	interval = Math.floor(seconds / 2592000);
-// 	if (interval > 1) {
-// 		return interval + " months";
-// 	}
-// 	interval = Math.floor(seconds / 86400);
-// 	if (interval > 1) {
-// 		return interval + " days";
-// 	}
-// 	interval = Math.floor(seconds / 3600);
-// 	if (interval > 1) {
-// 		return interval + " hours";
-// 	}
-// 	interval = Math.floor(seconds / 60);
-// 	if (interval > 1) {
-// 		return interval + " minutes";
-// 	}
-// 	return Math.floor(seconds) + " seconds";
-// }
-
 // redux thunks
 
 export const getRecentPosts = () => async dispatch => {
@@ -128,7 +100,6 @@ export const getRecentPosts = () => async dispatch => {
 		const formattedPostsData = recentPosts.map(post => {
 			const title = post.title;
 			const body = post.body;
-			// const timeagoInstance = timeago();
 			const timeSincePosted = timeagoInstance.format(new Date(post.created));
 			// const bodyPreview = body.slice(0, 70);
 			const tags = JSON.parse(post.json_metadata).tags;
@@ -165,19 +136,16 @@ export const getSinglePost = permlink => async dispatch => {
 
 	try {
 		const [singlePost] = await getPost(permlink);
+		console.log('single post response: ', singlePost)
 
 		const title = singlePost.title;
 		const body = singlePost.body;
-		// const timeagoInstance = timeago();
 		const timeSincePosted = timeagoInstance.format(new Date(singlePost.created));
-		// const bodyPreview = body.slice(0, 70);
 		const tags = JSON.parse(singlePost.json_metadata).tags;
 		const image = JSON.parse(singlePost.json_metadata).image[0];
 		const numberOfVotes = singlePost.active_votes.length;
-		// const createdData = singlePost.created;
 		const pendingPayoutValue =
 			Number(singlePost.pending_payout_value.slice(0, singlePost.pending_payout_value.indexOf(' '))).toFixed(2);
-		// const postUrl = singlePost.url;
 		const postPermlink = singlePost.permlink;
 
 		dispatch(getSinglePostSuccess({

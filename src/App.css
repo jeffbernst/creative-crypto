@@ -5,11 +5,10 @@ body {
   --nav-bar-light: #0ad3d6;
   --shadow: #c7c7c7;
   --dark-shadow: #b1b1b1;
-  /* original background blue #eff8ff */
   margin: 0;
   padding: 0;
-  /*font-family: Arial, sans-serif;*/
-  font-family: 'Open Sans', sans-serif;
+  /*font-family: 'Open Sans', sans-serif;*/
+  font-family: 'Source Sans Pro', sans-serif;
   color: var(--text-color);
   background-color: var(--background-color);
 }

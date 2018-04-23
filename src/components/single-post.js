@@ -1,8 +1,9 @@
 import React from 'react'
-import Spinner from 'react-spinkit'
+// import Spinner from 'react-spinkit'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import readingTime from 'reading-time'
+import upvote_blue from '../img/upvote_blue.svg'
 // import marked from 'marked';
 // import Markdown from 'react-markdown';
 
@@ -41,13 +42,24 @@ class SinglePost extends React.Component {
       const htmlBody = getHtml(currentPost.body, {}, 'text')
       console.log({currentPost})
       const readingStats = readingTime(currentPost.body)
+      const tagArray = currentPost.tags.map((tag, index) => (
+        <div className="post-tile-tag" key={index}>{tag}</div>
+      ))
 
       return (
         <div className="single-post">
           <h1>{currentPost.title}</h1>
-          <div className="post-info-top">{currentPost.timeSincePosted} &middot; {currentPost.tags[0]} &middot; {readingStats.text}</div>
+          <div
+            className="post-info-top">{currentPost.timeSincePosted} &middot; {currentPost.tags[0]} &middot; {readingStats.text}</div>
           <div dangerouslySetInnerHTML={{__html: htmlBody}}/>
-          {/*<Markdown source={currentPost.body} escapeHtml={false}/>*/}
+          <div className="single-post-stats-container">
+            <div className="post-tile-tag-list">{tagArray}</div>
+            <div className="single-post-stats">
+              <span className="single-post-footer-value">${currentPost.pendingPayoutValue}</span>
+              <span className="single-post-footer-votes"><img src={upvote_blue} alt="upvote blue" className="upvote-img"/> {currentPost.numberOfVotes}</span>
+              {/*<span className="post-tile-time">{currentPost.timeSincePosted}</span>*/}
+            </div>
+          </div>
         </div>
       )
     }
@@ -64,6 +76,10 @@ function mapStateToProps (state, props) {
   return {
     currentPost: state.posts.find(post => props.match.params.postId === post.permlink),
     loading: state.loading
+    // pendingPayoutValue: state.pendingPayoutValue,
+    // numberOfVotes: state.numberOfVotes,
+    // timeSincePosted: state.timeSincePosted,
+    // tags: state.tags
   }
 }
 

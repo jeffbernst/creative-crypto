@@ -1,5 +1,5 @@
 import React from 'react'
-import Spinner from 'react-spinkit'
+// import Spinner from 'react-spinkit'
 import { connect } from 'react-redux'
 import InfiniteScroll from 'react-infinite-scroller'
 

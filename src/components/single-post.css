@@ -37,9 +37,9 @@
 
 .single-post h1, h2, h3, h4, h5, h6 {
   /*font-family: Arial, sans-serif;*/
-  /*font-family: 'Open Sans', sans-serif;*/
+  font-family: 'Open Sans', sans-serif;
   /*font-weight: bold;*/
-  font-family: 'Source Sans Pro', sans-serif;
+  /*font-family: 'Source Sans Pro', sans-serif;*/
   font-weight: 700;
 }
 
@@ -50,8 +50,8 @@
 .post-info-top {
   font-size: 14px;
   /*margin-top: -20px;*/
-  /*font-family: 'Open Sans', sans-serif;*/
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  /*font-family: 'Source Sans Pro', sans-serif;*/
   color: #8ea0ac;
   margin-top: -20px;
 }
@@ -65,4 +65,23 @@
   background-color: #e6e3e4;
   border: none;
   height: 1px;
+}
+
+.single-post-stats-container {
+  margin-top: 30px;
+  color: var(--text-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+/*.single-post-stats {*/
+  /*margin-top: 20px;*/
+/*}*/
+
+.single-post-footer-value,
+.single-post-footer-votes {
+  font-weight: bold;
+  font-size: 16px;
+  margin-right: 15px;
 }

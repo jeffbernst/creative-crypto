@@ -6,8 +6,8 @@ import './post-feed-large-tile.css'
 import upvote_blue from '../img/upvote_blue.svg'
 
 export function PostFeedLargeTile (props) {
-  const tagArray = props.tags.map(tag => (
-    <div className="post-tile-tag">{tag}</div>
+  const tagArray = props.tags.map((tag, index) => (
+    <div className="post-tile-tag" key={index}>{tag}</div>
   ));
 
   return (

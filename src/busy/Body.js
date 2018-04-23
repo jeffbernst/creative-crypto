@@ -2,9 +2,9 @@
 
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import _ from 'lodash';
-import classNames from 'classnames';
+// import classNames from 'classnames';
 import sanitizeHtml from 'sanitize-html';
 import Remarkable from 'remarkable';
 import embedjs from 'embedjs';

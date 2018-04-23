@@ -3,16 +3,16 @@ import Spinner from 'react-spinkit';
 import {connect} from 'react-redux';
 import { withRouter } from 'react-router-dom';
 // import marked from 'marked';
-import Markdown from 'react-markdown';
+// import Markdown from 'react-markdown';
 
-import Remarkable from 'remarkable';
+// import Remarkable from 'remarkable';
 
 import './single-post.css';
 import {getSinglePost} from "../actions";
 
 import { getHtml } from '../busy/Body';
 
-const md = new Remarkable({html: true, linkify: true});
+// const md = new Remarkable({html: true, linkify: true});
 // const ReactMarkdown = require('react-markdown');
 
 class SinglePost extends React.Component {
@@ -40,7 +40,7 @@ class SinglePost extends React.Component {
 			if (this.props.currentPost) {
 				const currentPost = this.props.currentPost;
 
-				const bodyMarkdown = md.render(currentPost.body);
+				// const bodyMarkdown = md.render(currentPost.body);
 
         const htmlBody = getHtml(currentPost.body, {}, 'text');
         console.log(htmlBody)

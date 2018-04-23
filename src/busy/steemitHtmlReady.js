@@ -217,16 +217,7 @@ function linkifyNode(child, state) {
 }
 
 function linkify(content, mutate, hashtags, usertags, images, links) {
-  // hashtag
-  content = content.replace(/(^|\s)(#[-a-z\d]+)/gi, tag => {
-    if (/#[\d]+$/.test(tag)) return tag; // Don't allow numbers to be tags
-    const space = /^\s/.test(tag) ? tag[0] : '';
-    const tag2 = tag.trim().substring(1);
-    const tagLower = tag2.toLowerCase();
-    if (hashtags) hashtags.add(tagLower);
-    if (!mutate) return tag;
-    return `${space}<a href="/trending/${tagLower}">${tag}</a>`;
-  });
+
 
   content = content.replace(linksRe.any, ln => {
     if (linksRe.image.test(ln)) {
@@ -241,8 +232,19 @@ function linkify(content, mutate, hashtags, usertags, images, links) {
     return `<a href="${ln}">${ln}</a>`;
   });
 
+  // hashtag
+  // NOTE: moved this and the usertag replace below above replace statement to avoid linkifying mentions
+  content = content.replace(/(^|\s)(#[-a-z\d]+)/gi, tag => {
+    if (/#[\d]+$/.test(tag)) return tag; // Don't allow numbers to be tags
+    const space = /^\s/.test(tag) ? tag[0] : '';
+    const tag2 = tag.trim().substring(1);
+    const tagLower = tag2.toLowerCase();
+    if (hashtags) hashtags.add(tagLower);
+    if (!mutate) return tag;
+    return `${space}<a href="/trending/${tagLower}">${tag}</a>`;
+  });
+
   // usertag (mention)
-  // NOTE: moved this below above replace statement to avoid linkifying mentions
   // content = content.replace(/(^|\s)(@[a-z][-\.a-z\d]+[a-z\d])/gi, user => {
   content = content.replace(/(^|\s)(@[a-z][-.a-z\d]+[a-z\d])/gi, user => {
     const space = /^\s/.test(user) ? user[0] : '';

@@ -25,7 +25,7 @@ export function PostFeedSmallTile(props) {
 					{/*<Shiitake lines={2} className="post-body-preview">{props.body}</Shiitake>*/}
 					<div className="post-content-preview-bottom-container">
 						<div className="post-tile-stats">
-							<span className="post-tile-value">${props.pendingPayoutValue}</span>
+							<span className="post-tile-value">${props.payoutValue}</span>
 							<span className="post-tile-votes"><img src={upvote_blue} alt="upvote blue" className="upvote-img"/> {props.numberOfVotes}</span>
 							{/*<span className="post-tile-time">{props.timeSincePosted}</span>*/}
               <TimeAgo date={props.timeSincePosted} />

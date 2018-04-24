@@ -39,7 +39,7 @@ class PostFeed extends React.Component {
           body={postBodyPreview}
           timeSincePosted={post.timeSincePosted}
           image={post.image}
-          pendingPayoutValue={post.pendingPayoutValue}
+          payoutValue={post.payoutValue}
           numberOfVotes={post.numberOfVotes}
           tags={post.tags}
           permlink={post.permlink}/>
@@ -52,7 +52,7 @@ class PostFeed extends React.Component {
           body={postBodyPreview}
           timeSincePosted={post.timeSincePosted}
           image={post.image}
-          pendingPayoutValue={post.pendingPayoutValue}
+          payoutValue={post.payoutValue}
           numberOfVotes={post.numberOfVotes}
           tags={post.tags}
           permlink={post.permlink}/>

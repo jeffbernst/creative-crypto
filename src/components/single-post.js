@@ -58,7 +58,7 @@ class SinglePost extends React.Component {
           <div className="single-post-stats-container">
             <div className="post-tile-tag-list">{tagArray}</div>
             <div className="single-post-stats">
-              <span className="single-post-footer-value">${currentPost.pendingPayoutValue}</span>
+              <span className="single-post-footer-value">${currentPost.payoutValue}</span>
               <span className="single-post-footer-votes"><img src={upvote_blue} alt="upvote blue" className="upvote-img"/> {currentPost.numberOfVotes}</span>
               {/*<span className="post-tile-time">{currentPost.timeSincePosted}</span>*/}
             </div>

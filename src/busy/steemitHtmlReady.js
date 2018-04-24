@@ -136,6 +136,7 @@ function iframe(state, child) {
   const url = child.getAttribute('src');
   let domString;
   const embed = embedjs.get(url || '', { width: '100%', height: 400 });
+  const { mutate, resolveIframe } = state;
   if (embed && embed.id) {
     const { images, links } = state;
     links.add(embed.url);
@@ -143,7 +144,7 @@ function iframe(state, child) {
     if (!resolveIframe) domString = `~~~ embed:${embed.id} ${embed.provider_name} ${embed.url} ~~~`;
   }
 
-  const { mutate, resolveIframe } = state;
+  // const { mutate, resolveIframe } = state;
   if (!mutate) return;
 
   const tag = child.parentNode.tagName
@@ -216,16 +217,7 @@ function linkifyNode(child, state) {
 }
 
 function linkify(content, mutate, hashtags, usertags, images, links) {
-  // hashtag
-  content = content.replace(/(^|\s)(#[-a-z\d]+)/gi, tag => {
-    if (/#[\d]+$/.test(tag)) return tag; // Don't allow numbers to be tags
-    const space = /^\s/.test(tag) ? tag[0] : '';
-    const tag2 = tag.trim().substring(1);
-    const tagLower = tag2.toLowerCase();
-    if (hashtags) hashtags.add(tagLower);
-    if (!mutate) return tag;
-    return `${space}<a href="/trending/${tagLower}">${tag}</a>`;
-  });
+
 
   content = content.replace(linksRe.any, ln => {
     if (linksRe.image.test(ln)) {
@@ -240,9 +232,21 @@ function linkify(content, mutate, hashtags, usertags, images, links) {
     return `<a href="${ln}">${ln}</a>`;
   });
 
+  // hashtag
+  // NOTE: moved this and the usertag replace below above replace statement to avoid linkifying mentions
+  content = content.replace(/(^|\s)(#[-a-z\d]+)/gi, tag => {
+    if (/#[\d]+$/.test(tag)) return tag; // Don't allow numbers to be tags
+    const space = /^\s/.test(tag) ? tag[0] : '';
+    const tag2 = tag.trim().substring(1);
+    const tagLower = tag2.toLowerCase();
+    if (hashtags) hashtags.add(tagLower);
+    if (!mutate) return tag;
+    return `${space}<a href="/trending/${tagLower}">${tag}</a>`;
+  });
+
   // usertag (mention)
-  // NOTE: moved this below above replace statement to avoid linkifying mentions
-  content = content.replace(/(^|\s)(@[a-z][-\.a-z\d]+[a-z\d])/gi, user => {
+  // content = content.replace(/(^|\s)(@[a-z][-\.a-z\d]+[a-z\d])/gi, user => {
+  content = content.replace(/(^|\s)(@[a-z][-.a-z\d]+[a-z\d])/gi, user => {
     const space = /^\s/.test(user) ? user[0] : '';
     const user2 = user.trim().substring(1);
     const userLower = user2.toLowerCase();
@@ -285,16 +289,16 @@ function isEmbedable(child, links, images, resolveIframe) {
 }
 
 /** @return {id, url} or <b>null</b> */
-function youTubeId(data) {
-  if (!data) return null;
-
-  const m1 = data.match(linksRe.youTube);
-  const url = m1 ? m1[0] : null;
-  if (!url) return null;
-
-  const m2 = url.match(linksRe.youTubeId);
-  const id = m2 && m2.length >= 2 ? m2[1] : null;
-  if (!id) return null;
-
-  return { id, url };
-}
+// function youTubeId(data) {
+//   if (!data) return null;
+//
+//   const m1 = data.match(linksRe.youTube);
+//   const url = m1 ? m1[0] : null;
+//   if (!url) return null;
+//
+//   const m2 = url.match(linksRe.youTubeId);
+//   const id = m2 && m2.length >= 2 ? m2[1] : null;
+//   if (!id) return null;
+//
+//   return { id, url };
+// }

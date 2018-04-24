@@ -4,6 +4,8 @@
   min-height: 80px;
   /*background: linear-gradient(to right, #2626FB, #2699FB);*/
   background-color: var(--nav-bar-color);
+  display: flex;
+  align-items: center;
 }
 
 .nav-content {
@@ -13,7 +15,7 @@
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
-  height: 80px;
+  /*height: 80px;*/
 }
 
 .nav-title-and-prices {
@@ -26,13 +28,14 @@
   /*text-decoration: underline;*/
   /*color: white;*/
   /*height: 36px;*/
-  height: 80px;
+  height: 40px;
   display: flex;
   align-items: center;
+  padding: 10px 0;
 }
 
 .nav-title img {
-  height: 20px;
+  height: 15px;
 }
 
 .nav-right {
@@ -40,6 +43,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 0 10px 0;
 }
 
 .steem-label,
@@ -80,8 +84,15 @@
   transform: rotate(180deg);
 }
 
+@media only screen and (min-width: 515px) {
+  .nav-title img {
+    height: 20px;
+  }
+}
+
 @media only screen and (min-width: 710px) {
   .nav-content {
+    width: 700px;
     max-width: 700px;
   }
 
@@ -92,12 +103,13 @@
 
 @media only screen and (min-width: 1080px) {
   .nav-content {
+    width: 1040px;
     max-width: 1040px;
   }
 
-  .nav-title {
-    font-size: 45px;
-  }
+  /*.nav-title {*/
+    /*font-size: 45px;*/
+  /*}*/
 
   .nav-title img {
     height: 30px;
@@ -117,6 +129,7 @@
 
 @media only screen and (min-width: 1410px) {
   .nav-content {
+    width: 1400px;
     max-width: 1400px;
   }
 

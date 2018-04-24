@@ -1,10 +1,10 @@
 import React from 'react';
-import Spinner from 'react-spinkit';
+// import Spinner from 'react-spinkit';
 import {connect} from "react-redux";
 
 import './newsfeed.css';
 
-import {Tweet} from './tweet';
+// import {Tweet} from './tweet';
 import {getCurrentNewsfeed} from "../actions";
 
 class Newsfeed extends React.Component {
@@ -31,10 +31,10 @@ class Newsfeed extends React.Component {
 			<div className="newsfeed">
 				{/*<a href="http://twitter.com/creative_crypto"><div className="newsfeed-title-bar">NEWSFEED</div></a>*/}
 				{/*{firstTenTweets}*/}
-				<a class="twitter-timeline"
+				<a className="twitter-timeline"
 					 data-height="1240"
 					 href="https://twitter.com/creative_crypto?ref_src=twsrc%5Etfw">
-					Tweets by creative_crypto
+          {/*Loading twitter timeline...*/}
 				</a>
 			</div>
 		)

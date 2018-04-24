@@ -48,10 +48,10 @@ export class NavBar extends React.Component {
 					</div>
 					<div className="nav-right">
 						<div className="steem-price">
-							<span className="steem-label">STEEM</span> <img src={upvote_white} className={`ticker-arrow ${this.state.steemDirection}`}/> $ {this.state.steemPrice}
+							<span className="steem-label">STEEM</span> <img src={upvote_white} alt="ticker arrow" className={`ticker-arrow ${this.state.steemDirection}`}/> $ {this.state.steemPrice}
 						</div>
 						<div className="sbd-price">
-							<span className="sbd-label">SBD</span> <img src={upvote_white} className={`ticker-arrow ${this.state.sbdDirection}`}/> $ {this.state.sbdPrice}
+							<span className="sbd-label">SBD</span> <img src={upvote_white} alt="ticker arrow" className={`ticker-arrow ${this.state.sbdDirection}`}/> $ {this.state.sbdPrice}
 						</div>
 						{/*<div className="question-button">?</div>*/}
 					</div>

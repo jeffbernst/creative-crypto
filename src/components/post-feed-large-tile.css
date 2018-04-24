@@ -16,9 +16,9 @@
 }
 
 .large-post-tile img {
-  width: 726px;
+  width: 720px;
   /*height: 400px;*/
-  margin-top: -40px;
+  /*margin-top: -20px;*/
 }
 
 .large-post-tile:first-child a {
@@ -48,7 +48,7 @@ img.upvote-img {
   display: inline-block;
 }
 
-.post-tile-stats {
+.post-tile-stats-large-tile {
   font-size: 12px;
   margin: 0 10px 10px 0;
   padding: 0 2px;

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import Shiitake from 'shiitake';
+import TimeAgo from 'react-timeago'
 
 import './post-feed-small-tile.css';
 import upvote_blue from '../img/upvote_blue.svg'
@@ -26,7 +27,8 @@ export function PostFeedSmallTile(props) {
 						<div className="post-tile-stats">
 							<span className="post-tile-value">${props.pendingPayoutValue}</span>
 							<span className="post-tile-votes"><img src={upvote_blue} alt="upvote blue" className="upvote-img"/> {props.numberOfVotes}</span>
-							<span className="post-tile-time">{props.timeSincePosted}</span>
+							{/*<span className="post-tile-time">{props.timeSincePosted}</span>*/}
+              <TimeAgo date={props.timeSincePosted} />
 						</div>
 						{/*<div className="post-tile-tag-list">{tagArray}</div>*/}
 					</div>

@@ -6,6 +6,7 @@ import readingTime from 'reading-time'
 import upvote_blue from '../img/upvote_blue.svg'
 // import marked from 'marked';
 // import Markdown from 'react-markdown';
+import TimeAgo from 'react-timeago'
 
 // import Remarkable from 'remarkable';
 
@@ -50,7 +51,9 @@ class SinglePost extends React.Component {
         <div className="single-post">
           <h1>{currentPost.title}</h1>
           <div
-            className="post-info-top">{currentPost.timeSincePosted} &middot; {currentPost.tags[0]} &middot; {readingStats.text}</div>
+            // className="post-info-top">{currentPost.timeSincePosted} &middot; {currentPost.tags[0]} &middot; {readingStats.text}</div>
+          className="post-info-top"><TimeAgo date={currentPost.timeSincePosted} /> &middot; {currentPost.tags[0]} &middot; {readingStats.text}</div>
+
           <div dangerouslySetInnerHTML={{__html: htmlBody}}/>
           <div className="single-post-stats-container">
             <div className="post-tile-tag-list">{tagArray}</div>

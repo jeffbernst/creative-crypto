@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Shiitake from 'shiitake'
+import TimeAgo from 'react-timeago'
 
 import './post-feed-large-tile.css'
 import upvote_blue from '../img/upvote_blue.svg'
@@ -27,10 +28,11 @@ export function PostFeedLargeTile (props) {
             {/*<span>{props.tags[0].toUpperCase()}</span>*/}
           {/*</div>*/}
           <div className="post-content-preview-bottom-container">
-            <div className="post-tile-stats">
+            <div className="post-tile-stats-large-tile">
               <span className="post-tile-value">${props.pendingPayoutValue}</span>
               <span className="post-tile-votes"><img src={upvote_blue} alt="upvote blue" className="upvote-img"/> {props.numberOfVotes}</span>
-              <span className="post-tile-time">{props.timeSincePosted}</span>
+              {/*<span className="post-tile-time">{props.timeSincePosted}</span>*/}
+              <TimeAgo date={props.timeSincePosted} />
             </div>
             <div className="post-tile-tag-list">{tagArray}</div>
           </div>

@@ -122,7 +122,6 @@ export const getRecentPosts = () => async dispatch => {
         Number(post.total_payout_value.slice(0, post.total_payout_value.indexOf(' ')))
       const curatorPayoutValue =
         Number(post.curator_payout_value.slice(0, post.curator_payout_value.indexOf(' ')))
-      console.log(totalPayoutValue + curatorPayoutValue)
       const payoutValue =
         Number(pendingPayoutValue) === 0
           ? round(Number(totalPayoutValue) + Number(curatorPayoutValue), 2).toFixed(2)
@@ -168,7 +167,6 @@ export const getSinglePost = permlink => async dispatch => {
       Number(singlePost.total_payout_value.slice(0, singlePost.total_payout_value.indexOf(' ')))
     const curatorPayoutValue =
       Number(singlePost.curator_payout_value.slice(0, singlePost.curator_payout_value.indexOf(' ')))
-    console.log(totalPayoutValue + curatorPayoutValue)
     const payoutValue =
       Number(pendingPayoutValue) === 0
         ? round(Number(totalPayoutValue) + Number(curatorPayoutValue), 2).toFixed(2)

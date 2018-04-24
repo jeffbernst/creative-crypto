@@ -12,7 +12,7 @@ export function PostFeedLargeTile (props) {
   ));
 
   return (
-    <div className="large-post-tile">
+    <div className="post-tile large-post-tile">
       <Link to={`/${props.permlink}`}>
         <img src={props.image} alt=""/>
       </Link>

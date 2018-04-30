@@ -9,6 +9,64 @@
   margin: 0 20px;
 }
 
+.single-post p {
+  font-size: 22px;
+}
+
+.single-post a {
+  color: var(--text-color);
+}
+
+.single-post a:hover {
+  color: #51adfb;
+}
+
+.single-post h1, h2, h3, h4, h5, h6 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+}
+
+.single-post p, ul, ol {
+  line-height: 32px;
+}
+
+.post-info-top {
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+  color: #8ea0ac;
+  margin-top: -20px;
+}
+
+.single-post img {
+  max-width: 100%;
+}
+
+.single-post hr {
+  color: #e6e3e4;
+  background-color: #e6e3e4;
+  border: none;
+  height: 1px;
+}
+
+.single-post .dtube-image {
+  width: 100%;
+}
+
+.single-post-stats-container {
+  margin-top: 30px;
+  color: var(--text-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.single-post-footer-value,
+.single-post-footer-votes {
+  font-weight: bold;
+  font-size: 16px;
+  margin-right: 15px;
+}
+
 @media only screen and (min-width: 710px) {
   .single-post {
     max-width: 700px;
@@ -27,63 +85,4 @@
     max-width: 1060px;
     margin-right: 20px;
   }
-}
-
-.single-post a {
-  color: var(--text-color);
-}
-
-.single-post a:hover {
-  color: #51adfb;
-}
-
-.single-post h1, h2, h3, h4, h5, h6 {
-  /*font-family: Arial, sans-serif;*/
-  font-family: 'Open Sans', sans-serif;
-  /*font-weight: bold;*/
-  /*font-family: 'Source Sans Pro', sans-serif;*/
-  font-weight: 700;
-}
-
-.single-post p, ul, ol {
-  line-height: 30px;
-}
-
-.post-info-top {
-  font-size: 14px;
-  /*margin-top: -20px;*/
-  font-family: 'Open Sans', sans-serif;
-  /*font-family: 'Source Sans Pro', sans-serif;*/
-  color: #8ea0ac;
-  margin-top: -20px;
-}
-
-.single-post img {
-  max-width: 100%;
-}
-
-.single-post hr {
-  color: #e6e3e4;
-  background-color: #e6e3e4;
-  border: none;
-  height: 1px;
-}
-
-.single-post-stats-container {
-  margin-top: 30px;
-  color: var(--text-color);
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-}
-
-/*.single-post-stats {*/
-  /*margin-top: 20px;*/
-/*}*/
-
-.single-post-footer-value,
-.single-post-footer-votes {
-  font-weight: bold;
-  font-size: 16px;
-  margin-right: 15px;
 }

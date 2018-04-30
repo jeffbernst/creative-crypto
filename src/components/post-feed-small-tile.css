@@ -25,7 +25,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  height: 120px;
+  height: 160px;
 }
 
 .post-tile-title {
@@ -46,6 +46,10 @@
   width: 100%;
   text-align: right;
   overflow: hidden;
+}
+
+.small-tile-image img {
+  display: block;
 }
 
 .small-tile-image div {

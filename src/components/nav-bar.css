@@ -40,12 +40,16 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 0 0 0;
+  margin-bottom: 15px;
 }
 
 .steem-label,
 .sbd-label {
   color: white;
   font-weight: bold;
+}
+
+.sbd-label {
   margin-left: 30px;
 }
 
@@ -94,6 +98,10 @@
 
   .nav-title img {
     height: 30px;
+  }
+
+  .nav-right {
+    margin-bottom: 0;
   }
 }
 

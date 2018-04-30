@@ -31,7 +31,7 @@
 }
 
 .nav-title img {
-  height: 15px;
+  height: 13px;
 }
 
 .nav-right {
@@ -84,7 +84,13 @@
   transform: rotate(180deg);
 }
 
-@media only screen and (min-width: 515px) {
+@media only screen and (min-width: 370px) {
+  .nav-title img {
+    height: 15px;
+  }
+}
+
+@media only screen and (min-width: 500px) {
   .nav-title img {
     height: 20px;
   }

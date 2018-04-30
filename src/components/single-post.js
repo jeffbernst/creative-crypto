@@ -44,7 +44,7 @@ class SinglePost extends React.Component {
           </div>
           <div dangerouslySetInnerHTML={{__html: htmlBody}}/>
           <div className="single-post-stats-container">
-            <div className="post-tile-tag-list">{tagArray}</div>
+            <div className="post-tile-tag-list single-post-tag-list">{tagArray}</div>
             <div className="single-post-stats">
               <span className="single-post-footer-value">${currentPost.payoutValue}</span>
               <span className="single-post-footer-votes"><img src={upvote_blue} alt="upvote blue"

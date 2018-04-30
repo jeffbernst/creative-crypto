@@ -27,7 +27,7 @@ class SinglePost extends React.Component {
       const htmlBody = getHtml(currentPost.body, {}, 'text')
       console.log({currentPost})
       const readingStats = readingTime(currentPost.body)
-      const image = <img className='dtube-image' src={currentPost.image} alt=""/>
+      const image = <img src={currentPost.image} alt=""/>
       const dtubeOrDlive = currentPost.dtubeOrDlive
       const tagArray = currentPost.tags.map((tag, index) => (
         <div className="post-tile-tag" key={index}>{tag}</div>
@@ -39,7 +39,9 @@ class SinglePost extends React.Component {
           <div className="post-info-top">
             <TimeAgo date={currentPost.timeSincePosted}/> &middot; {currentPost.tags[0]} &middot; {readingStats.text}
           </div>
-          {dtubeOrDlive && image}
+          <div className="dtube-image">
+            {dtubeOrDlive && image}
+          </div>
           <div dangerouslySetInnerHTML={{__html: htmlBody}}/>
           <div className="single-post-stats-container">
             <div className="post-tile-tag-list">{tagArray}</div>

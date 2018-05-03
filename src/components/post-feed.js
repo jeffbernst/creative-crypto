@@ -22,6 +22,7 @@ class PostFeed extends React.Component {
   render () {
 
     if (this.props.error) {
+      console.log(this.props.error)
       return <strong>{this.props.error}</strong>
     }
 
@@ -80,7 +81,8 @@ class PostFeed extends React.Component {
 function mapStateToProps (state) {
   return {
     posts: state.posts,
-    loading: state.loading
+    loading: state.loading,
+    error: state.error
   }
 }
 

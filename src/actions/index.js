@@ -99,6 +99,10 @@ function round(number, precision) {
   return shift(Math.round(shift(number, precision, false)), precision, true);
 }
 
+function formatPostData(postData) {
+
+}
+
 // redux thunks
 
 export const getRecentPosts = () => async dispatch => {
@@ -107,15 +111,28 @@ export const getRecentPosts = () => async dispatch => {
   try {
     const recentPosts = await getPosts()
 
-    console.log(recentPosts[0])
-
     const formattedPostsData = recentPosts.map(post => {
       const title = post.title
       const body = post.body
       const timeSincePosted = new Date(post.created + 'Z')
-      const tags = JSON.parse(post.json_metadata).tags
-      const image = JSON.parse(post.json_metadata).image[0]
-      const dtubeOrDlive = JSON.parse(post.json_metadata).users.includes('dtube', 'dlive')
+      const jsonMetadata = JSON.parse(post.json_metadata)
+      const tags = jsonMetadata.tags
+
+
+      let image
+      if (typeof jsonMetadata.image !== 'undefined')
+        image = jsonMetadata.image[0]
+      else
+        image = jsonMetadata.thumbnail
+
+      let isDtube = false
+      let isDlive = false
+      if (typeof jsonMetadata.users !== 'undefined')
+         isDtube = jsonMetadata.users.includes('dtube')
+      else
+        // right now dlive only app not in users section of json metadata
+        isDlive = true
+
       const numberOfVotes = post.active_votes.length
       const pendingPayoutValue =
         Number(post.pending_payout_value.slice(0, post.pending_payout_value.indexOf(' '))).toFixed(2)
@@ -135,7 +152,8 @@ export const getRecentPosts = () => async dispatch => {
         timeSincePosted,
         tags,
         image,
-        dtubeOrDlive,
+        isDtube,
+        isDlive,
         numberOfVotes,
         payoutValue,
         permlink
@@ -145,7 +163,8 @@ export const getRecentPosts = () => async dispatch => {
     dispatch(getRecentPostsSuccess(formattedPostsData))
 
   } catch (err) {
-    dispatch(getRecentPostsError(err))
+    console.log('error message: ', err)
+    dispatch(getRecentPostsError(err.toString()))
   }
 }
 

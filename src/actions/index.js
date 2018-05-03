@@ -115,6 +115,7 @@ export const getRecentPosts = () => async dispatch => {
       const timeSincePosted = new Date(post.created + 'Z')
       const tags = JSON.parse(post.json_metadata).tags
       const image = JSON.parse(post.json_metadata).image[0]
+      const dtubeOrDlive = JSON.parse(post.json_metadata).users.includes('dtube', 'dlive')
       const numberOfVotes = post.active_votes.length
       const pendingPayoutValue =
         Number(post.pending_payout_value.slice(0, post.pending_payout_value.indexOf(' '))).toFixed(2)
@@ -134,6 +135,7 @@ export const getRecentPosts = () => async dispatch => {
         timeSincePosted,
         tags,
         image,
+        dtubeOrDlive,
         numberOfVotes,
         payoutValue,
         permlink
@@ -160,6 +162,7 @@ export const getSinglePost = permlink => async dispatch => {
     const timeSincePosted = new Date(singlePost.created + 'Z')
     const tags = JSON.parse(singlePost.json_metadata).tags
     const image = JSON.parse(singlePost.json_metadata).image[0]
+    const dtubeOrDlive = JSON.parse(singlePost.json_metadata).users.includes('dtube', 'dlive')
     const numberOfVotes = singlePost.active_votes.length
     const pendingPayoutValue =
       Number(singlePost.pending_payout_value.slice(0, singlePost.pending_payout_value.indexOf(' '))).toFixed(2)
@@ -179,6 +182,7 @@ export const getSinglePost = permlink => async dispatch => {
       timeSincePosted,
       tags,
       image,
+      dtubeOrDlive,
       numberOfVotes,
       payoutValue,
       permlink: postPermlink

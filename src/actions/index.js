@@ -13,6 +13,8 @@ import {
 import steem from 'steem'
 import timeago from 'timeago.js'
 
+import { getHtml } from '../busy/Body'
+
 const timeagoInstance = timeago()
 
 steem.api.setOptions({url: 'https://api.steemit.com'})
@@ -61,7 +63,7 @@ const getNewsfeedError = error => ({
   payload: error
 })
 
-// api call
+// api calls
 
 function getPosts () {
   return new Promise((res, rej) => {
@@ -102,26 +104,31 @@ function round(number, precision) {
 function formatPostData(postData) {
   const title = postData.title
   const body = postData.body
+  const bodyHtml = getHtml(postData.body, {}, 'text')
   const timeSincePosted = new Date(postData.created + 'Z')
   const jsonMetadata = JSON.parse(postData.json_metadata)
   const tags = jsonMetadata.tags
-
-
-  let image
-  if (typeof jsonMetadata.image !== 'undefined')
-    image = jsonMetadata.image[0]
-  else
-    image = jsonMetadata.thumbnail
+  const numberOfVotes = postData.active_votes.length
+  const permlink = postData.permlink
 
   let isDtube = false
   let isDlive = false
-  if (typeof jsonMetadata.users !== 'undefined')
-    isDtube = jsonMetadata.users.includes('dtube')
-  else
-  // right now dlive only app not in users section of json metadata
+  let isBusy = false
+  if (typeof jsonMetadata.community !=='undefined')
+    isBusy = true
+  if (typeof jsonMetadata.video !== 'undefined')
+    isDtube = true
+  if (jsonMetadata.tags[0] === 'dlive')
     isDlive = true
 
-  const numberOfVotes = postData.active_votes.length
+  let image
+  if (isDlive)
+    image = jsonMetadata.thumbnail
+  else if (isBusy)
+    image = bodyHtml.match(/<img.*?src=['"](.*?)['"]/)[1]
+  else
+    image = jsonMetadata.image[0]
+
   const pendingPayoutValue =
     Number(postData.pending_payout_value.slice(0, postData.pending_payout_value.indexOf(' '))).toFixed(2)
   const totalPayoutValue =
@@ -132,16 +139,17 @@ function formatPostData(postData) {
     Number(pendingPayoutValue) === 0
       ? round(Number(totalPayoutValue) + Number(curatorPayoutValue), 2).toFixed(2)
       : pendingPayoutValue
-  const permlink = postData.permlink
 
   return {
     title,
     body,
+    bodyHtml,
     timeSincePosted,
     tags,
     image,
     isDtube,
     isDlive,
+    isBusy,
     numberOfVotes,
     payoutValue,
     permlink

@@ -1,5 +1,4 @@
 import React from 'react'
-// import Spinner from 'react-spinkit'
 import { connect } from 'react-redux'
 import InfiniteScroll from 'react-infinite-scroller'
 
@@ -8,12 +7,9 @@ import { PostFeedSmallTile } from './post-feed-small-tile'
 import { PostFeedLargeTile } from './post-feed-large-tile'
 import { getRecentPosts } from '../actions/index'
 
-// const removeMd = require('remove-markdown');
-
 import removeMd from 'remove-markdown'
 
 class PostFeed extends React.Component {
-  // create post feed with small and large tiles from state and then inject
   componentDidMount () {
     if (this.props.posts.length <= 1)
       this.props.getRecentPosts()
@@ -22,6 +18,7 @@ class PostFeed extends React.Component {
   render () {
 
     if (this.props.error) {
+      console.log(this.props.error)
       return <strong>{this.props.error}</strong>
     }
 
@@ -80,7 +77,8 @@ class PostFeed extends React.Component {
 function mapStateToProps (state) {
   return {
     posts: state.posts,
-    loading: state.loading
+    loading: state.loading,
+    error: state.error
   }
 }
 

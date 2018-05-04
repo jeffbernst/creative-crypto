@@ -8,8 +8,6 @@ import TimeAgo from 'react-timeago'
 import './single-post.css'
 import { getSinglePost } from '../actions'
 
-import { getHtml } from '../busy/Body'
-
 class SinglePost extends React.Component {
   componentDidMount () {
     if (!this.props.currentPost) {
@@ -24,14 +22,13 @@ class SinglePost extends React.Component {
 
     if (this.props.currentPost) {
       const currentPost = this.props.currentPost
-      const htmlBody = getHtml(currentPost.body, {}, 'text')
-      console.log({currentPost})
       const readingStats = readingTime(currentPost.body)
       const image = <img src={currentPost.image} alt=""/>
-      const dtubeOrDlive = currentPost.dtubeOrDlive
       const tagArray = currentPost.tags.map((tag, index) => (
         <div className="post-tile-tag" key={index}>{tag}</div>
       ))
+
+      console.log({currentPost})
 
       return (
         <div className="single-post">
@@ -40,9 +37,9 @@ class SinglePost extends React.Component {
             <TimeAgo date={currentPost.timeSincePosted}/> &middot; {currentPost.tags[0]} &middot; {readingStats.text}
           </div>
           <div className="dtube-image">
-            {dtubeOrDlive && image}
+            {currentPost.isDtube && image}
           </div>
-          <div dangerouslySetInnerHTML={{__html: htmlBody}}/>
+          <div dangerouslySetInnerHTML={{__html: currentPost.bodyHtml}}/>
           <div className="single-post-stats-container">
             <div className="post-tile-tag-list single-post-tag-list">{tagArray}</div>
             <div className="single-post-stats">

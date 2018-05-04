@@ -13,6 +13,8 @@ import {
 import steem from 'steem'
 import timeago from 'timeago.js'
 
+import { getHtml } from '../busy/Body'
+
 const timeagoInstance = timeago()
 
 steem.api.setOptions({url: 'https://api.steemit.com'})
@@ -61,7 +63,7 @@ const getNewsfeedError = error => ({
   payload: error
 })
 
-// api call
+// api calls
 
 function getPosts () {
   return new Promise((res, rej) => {
@@ -99,6 +101,61 @@ function round(number, precision) {
   return shift(Math.round(shift(number, precision, false)), precision, true);
 }
 
+function formatPostData(postData) {
+  const title = postData.title
+  const body = postData.body
+  const bodyHtml = getHtml(postData.body, {}, 'text')
+  const timeSincePosted = new Date(postData.created + 'Z')
+  const jsonMetadata = JSON.parse(postData.json_metadata)
+  const tags = jsonMetadata.tags
+  const numberOfVotes = postData.active_votes.length
+  const permlink = postData.permlink
+
+  let isDtube = false
+  let isDlive = false
+  let isBusy = false
+  if (typeof jsonMetadata.community !=='undefined')
+    isBusy = true
+  if (typeof jsonMetadata.video !== 'undefined')
+    isDtube = true
+  if (jsonMetadata.tags[0] === 'dlive')
+    isDlive = true
+
+  let image
+  if (isDlive)
+    image = jsonMetadata.thumbnail
+  else if (isBusy)
+    image = bodyHtml.match(/<img.*?src=['"](.*?)['"]/)[1]
+  else
+    image = jsonMetadata.image[0]
+
+  const pendingPayoutValue =
+    Number(postData.pending_payout_value.slice(0, postData.pending_payout_value.indexOf(' '))).toFixed(2)
+  const totalPayoutValue =
+    Number(postData.total_payout_value.slice(0, postData.total_payout_value.indexOf(' ')))
+  const curatorPayoutValue =
+    Number(postData.curator_payout_value.slice(0, postData.curator_payout_value.indexOf(' ')))
+  const payoutValue =
+    Number(pendingPayoutValue) === 0
+      ? round(Number(totalPayoutValue) + Number(curatorPayoutValue), 2).toFixed(2)
+      : pendingPayoutValue
+
+  return {
+    title,
+    body,
+    bodyHtml,
+    timeSincePosted,
+    tags,
+    image,
+    isDtube,
+    isDlive,
+    isBusy,
+    numberOfVotes,
+    payoutValue,
+    permlink
+  }
+}
+
 // redux thunks
 
 export const getRecentPosts = () => async dispatch => {
@@ -107,45 +164,15 @@ export const getRecentPosts = () => async dispatch => {
   try {
     const recentPosts = await getPosts()
 
-    console.log(recentPosts[0])
-
     const formattedPostsData = recentPosts.map(post => {
-      const title = post.title
-      const body = post.body
-      const timeSincePosted = new Date(post.created + 'Z')
-      const tags = JSON.parse(post.json_metadata).tags
-      const image = JSON.parse(post.json_metadata).image[0]
-      const dtubeOrDlive = JSON.parse(post.json_metadata).users.includes('dtube', 'dlive')
-      const numberOfVotes = post.active_votes.length
-      const pendingPayoutValue =
-        Number(post.pending_payout_value.slice(0, post.pending_payout_value.indexOf(' '))).toFixed(2)
-      const totalPayoutValue =
-        Number(post.total_payout_value.slice(0, post.total_payout_value.indexOf(' ')))
-      const curatorPayoutValue =
-        Number(post.curator_payout_value.slice(0, post.curator_payout_value.indexOf(' ')))
-      const payoutValue =
-        Number(pendingPayoutValue) === 0
-          ? round(Number(totalPayoutValue) + Number(curatorPayoutValue), 2).toFixed(2)
-          : pendingPayoutValue
-      const permlink = post.permlink
-
-      return {
-        title,
-        body,
-        timeSincePosted,
-        tags,
-        image,
-        dtubeOrDlive,
-        numberOfVotes,
-        payoutValue,
-        permlink
-      }
+      return formatPostData(post)
     })
 
     dispatch(getRecentPostsSuccess(formattedPostsData))
 
   } catch (err) {
-    dispatch(getRecentPostsError(err))
+    console.log('error message: ', err)
+    dispatch(getRecentPostsError(err.toString()))
   }
 }
 
@@ -157,36 +184,26 @@ export const getSinglePost = permlink => async dispatch => {
     const [singlePost] = await getPost(permlink)
     console.log('single post response: ', singlePost)
 
-    const title = singlePost.title
-    const body = singlePost.body
-    const timeSincePosted = new Date(singlePost.created + 'Z')
-    const tags = JSON.parse(singlePost.json_metadata).tags
-    const image = JSON.parse(singlePost.json_metadata).image[0]
-    const dtubeOrDlive = JSON.parse(singlePost.json_metadata).users.includes('dtube', 'dlive')
-    const numberOfVotes = singlePost.active_votes.length
-    const pendingPayoutValue =
-      Number(singlePost.pending_payout_value.slice(0, singlePost.pending_payout_value.indexOf(' '))).toFixed(2)
-    const totalPayoutValue =
-      Number(singlePost.total_payout_value.slice(0, singlePost.total_payout_value.indexOf(' ')))
-    const curatorPayoutValue =
-      Number(singlePost.curator_payout_value.slice(0, singlePost.curator_payout_value.indexOf(' ')))
-    const payoutValue =
-      Number(pendingPayoutValue) === 0
-        ? round(Number(totalPayoutValue) + Number(curatorPayoutValue), 2).toFixed(2)
-        : pendingPayoutValue
-    const postPermlink = singlePost.permlink
+    // const title = singlePost.title
+    // const body = singlePost.body
+    // const timeSincePosted = new Date(singlePost.created + 'Z')
+    // const tags = JSON.parse(singlePost.json_metadata).tags
+    // const image = JSON.parse(singlePost.json_metadata).image[0]
+    // const dtubeOrDlive = JSON.parse(singlePost.json_metadata).users.includes('dtube', 'dlive')
+    // const numberOfVotes = singlePost.active_votes.length
+    // const pendingPayoutValue =
+    //   Number(singlePost.pending_payout_value.slice(0, singlePost.pending_payout_value.indexOf(' '))).toFixed(2)
+    // const totalPayoutValue =
+    //   Number(singlePost.total_payout_value.slice(0, singlePost.total_payout_value.indexOf(' ')))
+    // const curatorPayoutValue =
+    //   Number(singlePost.curator_payout_value.slice(0, singlePost.curator_payout_value.indexOf(' ')))
+    // const payoutValue =
+    //   Number(pendingPayoutValue) === 0
+    //     ? round(Number(totalPayoutValue) + Number(curatorPayoutValue), 2).toFixed(2)
+    //     : pendingPayoutValue
+    // const postPermlink = singlePost.permlink
 
-    dispatch(getSinglePostSuccess({
-      title,
-      body,
-      timeSincePosted,
-      tags,
-      image,
-      dtubeOrDlive,
-      numberOfVotes,
-      payoutValue,
-      permlink: postPermlink
-    }))
+    dispatch(getSinglePostSuccess(formatPostData(singlePost)))
 
   } catch (err) {
     dispatch(getSinglePostError(err))

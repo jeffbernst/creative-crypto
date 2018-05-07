@@ -13,7 +13,7 @@ export function MainContainer () {
     <main className='main-container'>
       <Route exact path="/" component={ConnectedPostFeed}/>
       <Route exact path="/:postId" component={ConnectedSinglePost}/>
-      <Route exact path="/about" component={ConnectedAbout}/>
+      <Route exact path="/about" component={About}/>
       <ConnectedNewsfeed/>
     </main>
   )

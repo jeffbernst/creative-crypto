@@ -48,9 +48,9 @@ export class About extends React.Component {
     }
     ]
 
-    const portraitComponents = portraitInfo.map(person => {
+    const portraitComponents = portraitInfo.map((person, index) => {
       return (
-        <div className="portrait">
+        <div key={index} className="portrait">
           <img src={person.portrait} alt={person.name}/>
           <div className="about-name">{person.name}</div>
           <div className="about-title">{person.title}</div>
@@ -62,21 +62,23 @@ export class About extends React.Component {
       <div className="about">
         <div className="mission-team">
           <div className="mission">
-            <h3>Mission</h3>
+            <h2>Mission</h2>
             <p><strong>The Creative Crypto</strong> is a Steem-powered magazine dedicated to all things creative on the
               blockchain.</p>
             <p>We are a news source for thoughtful, approachable and impactful stories surrounding art, design, and
               innovation in the cryptocurrency landscape.</p>
           </div>
           <div className="team">
-            <h3>Team</h3>
+            <h2>Team</h2>
             <p>The <strong>@creativecrypto</strong> is changing the way we think about cryptocurrency. Through a global
               and interdisciplinary team of editors, curators, developers and artists - we reward content creators and
               readers.</p>
           </div>
         </div>
         <div className="about-hr">
-          <img src={logo} alt="creative crypto logo" className="logo"/>
+          <div className="logo-background">
+            <img src={logo} alt="creative crypto logo" />
+          </div>
         </div>
         <div className="about-portraits">
           {portraitComponents}

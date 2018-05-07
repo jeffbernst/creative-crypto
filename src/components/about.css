@@ -12,19 +12,77 @@
   justify-content: space-between;
 }
 
+.mission-team h2 {
+  color: var(--text-color)
+}
+
 .mission,
 .team {
   width: 50%
 }
 
-.about-hr .logo {
-  width: 30px;
+.about-hr {
+  width: 50%;
+  border-bottom: 1px solid var(--shadow);
+  margin: 0 auto;
+}
+
+.about-hr .logo-background {
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--shadow);
+  width: 50px;
+  height: 50px;
+  margin: 0 auto -25px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+.logo-background img {
+  width: 20px;
+}
+
+.about-portraits {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .portrait {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .about-portraits img {
-  width: 200px;
+  width: 175px;
+}
+
+@media only screen and (min-width: 500px) {
+  .about {
+    padding: 30px 50px 80px 50px;
+  }
+}
+
+@media only screen and (min-width: 710px) {
+  .about {
+    max-width: 700px;
+  }
+}
+
+@media only screen and (min-width: 1080px) {
+  .about {
+    max-width: 1080px;
+  }
+}
+
+@media only screen and (min-width: 1410px) {
+  .about {
+    max-width: 1060px;
+    margin-right: 20px;
+  }
 }

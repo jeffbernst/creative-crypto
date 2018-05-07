@@ -184,25 +184,6 @@ export const getSinglePost = permlink => async dispatch => {
     const [singlePost] = await getPost(permlink)
     console.log('single post response: ', singlePost)
 
-    // const title = singlePost.title
-    // const body = singlePost.body
-    // const timeSincePosted = new Date(singlePost.created + 'Z')
-    // const tags = JSON.parse(singlePost.json_metadata).tags
-    // const image = JSON.parse(singlePost.json_metadata).image[0]
-    // const dtubeOrDlive = JSON.parse(singlePost.json_metadata).users.includes('dtube', 'dlive')
-    // const numberOfVotes = singlePost.active_votes.length
-    // const pendingPayoutValue =
-    //   Number(singlePost.pending_payout_value.slice(0, singlePost.pending_payout_value.indexOf(' '))).toFixed(2)
-    // const totalPayoutValue =
-    //   Number(singlePost.total_payout_value.slice(0, singlePost.total_payout_value.indexOf(' ')))
-    // const curatorPayoutValue =
-    //   Number(singlePost.curator_payout_value.slice(0, singlePost.curator_payout_value.indexOf(' ')))
-    // const payoutValue =
-    //   Number(pendingPayoutValue) === 0
-    //     ? round(Number(totalPayoutValue) + Number(curatorPayoutValue), 2).toFixed(2)
-    //     : pendingPayoutValue
-    // const postPermlink = singlePost.permlink
-
     dispatch(getSinglePostSuccess(formatPostData(singlePost)))
 
   } catch (err) {

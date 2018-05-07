@@ -24,7 +24,7 @@
 .about-hr {
   width: 50%;
   border-bottom: 1px solid var(--shadow);
-  margin: 0 auto;
+  margin: 20px auto 60px auto;
 }
 
 .about-hr .logo-background {
@@ -41,6 +41,7 @@
 
 .logo-background img {
   width: 20px;
+  margin-left: 2px;
 }
 
 .about-portraits {
@@ -56,10 +57,26 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.portrait .name {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.portrait .title {
+  font-size: 12px;
 }
 
 .about-portraits img {
   width: 175px;
+}
+
+.portrait img.kr-marketing {
+  width: 159px;
+  margin-bottom: 5px;
+  margin-top: 8px;
 }
 
 @media only screen and (min-width: 500px) {

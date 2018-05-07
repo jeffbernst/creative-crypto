@@ -51,9 +51,9 @@ export class About extends React.Component {
     const portraitComponents = portraitInfo.map((person, index) => {
       return (
         <div key={index} className="portrait">
-          <img src={person.portrait} alt={person.name}/>
-          <div className="about-name">{person.name}</div>
-          <div className="about-title">{person.title}</div>
+          <img src={person.portrait} alt={person.name} className={person.name === '@kr-marketing' ? 'kr-marketing' : undefined}/>
+          <div className="name">{person.name}</div>
+          <div className="title">{person.title}</div>
         </div>
       )
     })

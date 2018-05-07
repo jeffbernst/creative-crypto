@@ -8,7 +8,7 @@ export function TagList() {
 		<section className="top-tag-list">
       <Link to={'/'}><div className="top-tag top-tag-1">HOME</div></Link>
 			<div className="top-tag top-tag-2">RESOURCES</div>
-			<div className="top-tag top-tag-2">ABOUT</div>
+			<Link to={'/about'}><div className="top-tag top-tag-2">ABOUT</div></Link>
 		</section>
 	)
 }

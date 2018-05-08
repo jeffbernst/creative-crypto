@@ -10,7 +10,7 @@ import { getSinglePost } from '../actions'
 
 class SinglePost extends React.Component {
   componentDidMount () {
-    if (!this.props.currentPost && this.props.match.params.postId !== 'about') {
+    if (!this.props.currentPost) {
       this.props.getSinglePost(this.props.match.params.postId)
     }
   }

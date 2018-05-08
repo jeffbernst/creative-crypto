@@ -26,6 +26,7 @@
 
 .encyclopedia {
   text-align: center;
+  margin-top: 70px;
 }
 
 .encyclopedia-slides {
@@ -61,16 +62,16 @@
   }
 
   .resources,
-  .team {
+  .search {
     width: 50%
   }
 
   .resources {
-    padding-right: 10px;
+    padding-right: 30px;
   }
 
   .search {
-    padding-left: 10px;
+    padding-left: 30px;
   }
 
   .resources-search {

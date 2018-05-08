@@ -13,31 +13,32 @@ import './resources.css'
 
 export class Resources extends React.Component {
   render () {
-    const slidesInfo = [{
-      slide: blockHeader,
-      name: 'Block Header',
-    }, {
-      slide: blockHeight,
-      name: 'Block Height',
-    }, {
-      slide: block,
-      name: 'Block',
-    }, {
-      slide: blockchain,
-      name: 'Blockchain',
-    }, {
-      slide: genesisBlock,
-      name: 'Genesis Block',
-    }, {
-      slide: mainChain,
-      name: 'Main Chain',
-    }, {
-      slide: merkleTree,
-      name: 'Merkle Tree',
-    }, {
-      slide: orphanedBlock,
-      name: 'Orphaned Block',
-    }
+    const slidesInfo = [
+      {
+        slide: blockchain,
+        name: 'Blockchain',
+      }, {
+        slide: block,
+        name: 'Block',
+      }, {
+        slide: genesisBlock,
+        name: 'Genesis Block',
+      }, {
+        slide: blockHeader,
+        name: 'Block Header',
+      }, {
+        slide: blockHeight,
+        name: 'Block Height',
+      }, {
+        slide: mainChain,
+        name: 'Main Chain',
+      }, {
+        slide: orphanedBlock,
+        name: 'Orphaned Block',
+      }, {
+        slide: merkleTree,
+        name: 'Merkle Tree',
+      }
     ]
 
     const slideComponents = slidesInfo.map((slide, index) => {

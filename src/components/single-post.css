@@ -1,13 +1,10 @@
 .single-post {
   box-shadow: 0 0 15px var(--shadow);
   background-color: white;
-  /*max-width: 100%;*/
   padding: 10px 30px 20px 30px;
   box-sizing: border-box;
   font-family: 'Source Serif Pro', serif;
   color: #292929;
-  /*margin: 0 20px;*/
-  /*margin: 0 auto;*/
 }
 
 .single-post p {

@@ -15,18 +15,29 @@
   justify-content: center;
   align-items: center;
   font-size: 12px;
+  background-color: var(--nav-bar-light);
 }
 
 .top-tag-1 {
-  background-color: var(--nav-bar-color);
-  border-top: 1px solid #33c7ca;
-  border-left: 1px solid #33c7ca;
-  border-bottom: 1px solid #33c7ca;
+  border-top: 1px solid #4bd7d9;
+  border-left: 1px solid #4bd7d9;
+  border-bottom: 1px solid #4bd7d9;
 }
 
 .top-tag-2 {
-  background-color: var(--nav-bar-light);
   border: 1px solid #4bd7d9;
+}
+
+/*.tag-1-selected {*/
+  /*border-top: 1px solid #33c7ca;*/
+  /*border-left: 1px solid #33c7ca;*/
+  /*border-bottom: 1px solid #33c7ca;*/
+  /*background-color: var(--nav-bar-color) !important;*/
+/*}*/
+
+.nav-selected {
+  background-color: var(--nav-bar-color);
+  border: 1px solid #33c7ca;
 }
 
 @media only screen and (min-width: 420px) {

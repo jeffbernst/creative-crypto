@@ -1,0 +1,141 @@
+.about {
+  box-shadow: 0 0 15px var(--shadow);
+  background-color: white;
+  padding: 10px 30px 50px 30px;
+  box-sizing: border-box;
+  font-family: 'Source Serif Pro', serif;
+  color: #292929;
+}
+
+.mission-team {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.mission-team h2 {
+  color: var(--text-color)
+}
+
+.mission,
+.team {
+  width: 100%
+}
+
+.about-hr {
+  width: 50%;
+  border-bottom: 1px solid var(--shadow);
+  margin: 20px auto 60px auto;
+}
+
+.about-hr .logo-background {
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--shadow);
+  width: 50px;
+  height: 50px;
+  margin: 0 auto -25px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+.logo-background img {
+  width: 20px;
+  margin-left: 2px;
+}
+
+.about-portraits {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 30px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.portrait {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.portrait .name {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.portrait .title {
+  font-size: 12px;
+}
+
+.about-portraits img {
+  width: 175px;
+}
+
+.portrait img.kr-marketing {
+  width: 159px;
+  margin-bottom: 5px;
+  margin-top: 8px;
+}
+
+@media only screen and (min-width: 500px) {
+  .about {
+    padding: 30px 50px 80px 50px;
+  }
+
+  .mission,
+  .team {
+    width: 50%
+  }
+
+  .mission {
+    padding-right: 10px;
+  }
+
+  .team {
+    padding-left: 10px;
+  }
+
+  .mission-team {
+    flex-direction: row;
+  }
+
+  .about-portraits {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+  }
+}
+
+@media only screen and (min-width: 710px) {
+  .about {
+    max-width: 700px;
+  }
+
+  .about-portraits {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+
+}
+
+@media only screen and (min-width: 1080px) {
+  .about {
+    max-width: 1080px;
+  }
+
+  .about-portraits {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media only screen and (min-width: 1410px) {
+  .about {
+    max-width: 1060px;
+    margin-right: 20px;
+  }
+}

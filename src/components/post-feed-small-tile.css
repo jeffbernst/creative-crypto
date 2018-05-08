@@ -32,7 +32,8 @@
   font-size: 20px;
   font-weight: bold;
   line-height: 30px;
-  color: var(--gray-text)
+  /*color: var(--gray-text)*/
+  color: var(--tile-title);
 }
 
 .post-tile-value,

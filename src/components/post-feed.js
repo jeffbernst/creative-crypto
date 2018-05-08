@@ -16,10 +16,9 @@ class PostFeed extends React.Component {
   }
 
   render () {
-
     if (this.props.error) {
       console.log(this.props.error)
-      return <strong>{this.props.error}</strong>
+      return <strong>{this.props.error.toString()}</strong>
     }
 
     const postGrid = this.props.posts.map((post, index) => {
@@ -65,7 +64,7 @@ class PostFeed extends React.Component {
         <InfiniteScroll
           loadMore={loadMore}
           className="post-feed"
-          loader={<div className="loader" key={0}>Loading ...</div>}
+          loader={<div className="loader">Loading ...</div>}
         >
           {postGrid}
         </InfiniteScroll>

@@ -1,0 +1,116 @@
+.resources-page {
+  box-shadow: 0 0 15px var(--shadow);
+  background-color: white;
+  padding: 10px 30px 50px 30px;
+  box-sizing: border-box;
+  font-family: 'Source Serif Pro', serif;
+  color: #292929;
+}
+
+.resources-search {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.resources-search h2,
+.encyclopedia h2 {
+  color: var(--text-color);
+  margin-bottom: 20px;
+}
+
+.resources,
+.search {
+  width: 100%
+}
+
+.encyclopedia {
+  text-align: center;
+}
+
+.encyclopedia-slides {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 30px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Open Sans', sans-serif;
+  margin-top: 20px;
+}
+
+.slide .name {
+  font-weight: bold;
+  font-size: 18px;
+  padding: 10px;
+}
+
+.slide img {
+  width: 175px;
+}
+
+@media only screen and (min-width: 500px) {
+  .resources-page {
+    padding: 30px 50px 80px 50px;
+  }
+
+  .resources,
+  .team {
+    width: 50%
+  }
+
+  .resources {
+    padding-right: 10px;
+  }
+
+  .search {
+    padding-left: 10px;
+  }
+
+  .resources-search {
+    flex-direction: row;
+  }
+
+  .encyclopedia-slides {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+  }
+}
+
+@media only screen and (min-width: 710px) {
+  .resources-page {
+    max-width: 700px;
+  }
+
+  .encyclopedia-slides {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+
+}
+
+@media only screen and (min-width: 1080px) {
+  .resources-page {
+    max-width: 1080px;
+  }
+
+  .encyclopedia-slides {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media only screen and (min-width: 1410px) {
+  .resources-page {
+    max-width: 1060px;
+    margin-right: 20px;
+  }
+}

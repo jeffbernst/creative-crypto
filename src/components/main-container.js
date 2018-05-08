@@ -18,5 +18,3 @@ export function MainContainer () {
     </main>
   )
 }
-
-// TODO wrap post feed and single post in routes and display based on route

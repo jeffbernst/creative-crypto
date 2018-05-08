@@ -1,4 +1,5 @@
 import React from 'react'
+
 import logo from '../img/about/180407 The Creative Crypto Logo.svg'
 import michael from '../img/about/180425 CC Team - Michael.png'
 import kirk from '../img/about/180425 CC Team - Kirk.png'

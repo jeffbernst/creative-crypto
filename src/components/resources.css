@@ -66,6 +66,15 @@
 .language-buttons {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  margin-bottom: 20px;
 }
 
 .language-button {
@@ -81,6 +90,10 @@
   border: 1px solid var(--text-color);
   color: var(--text-color);
   cursor: pointer;
+}
+
+.language-button:first-of-type {
+  margin-right: 35px;
 }
 
 .language-button-active {
@@ -112,31 +125,54 @@
 .enlarged-slide {
   position: fixed;
   z-index: 2;
+  width: 70%;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  width: 70%;
+  border: 1px solid var(--text-color);
 }
 
 .enlarged-slide img {
   width: 100%;
+  display: block;
 }
 
-.enlarged-slide .close-button {
+.enlarged-slide .close-button,
+.enlarged-slide .next-button,
+.enlarged-slide .previous-button {
   text-align: center;
-  vertical-align: middle;
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  font-size: 25px;
-  font-weight: bold;
   background-color: white;
   box-shadow: 0 0 15px var(--shadow);
-  color: #9b9b9b;
   cursor: pointer;
   position: fixed;
+}
+
+.enlarged-slide .close-button {
   top: 0;
   right: -40px;
+  color: #9b9b9b;
+  font-size: 25px;
+  font-weight: bold;
+  vertical-align: middle;
+}
+
+.enlarged-slide .next-button,
+.enlarged-slide .previous-button {
+  top: 50%;
+  color: var(--text-color);
+  font-size: 30px;
+  line-height: 28px;
+}
+
+.enlarged-slide .next-button {
+  right: -40px;
+}
+
+.enlarged-slide .previous-button {
+  left: -40px;
 }
 
 @media only screen and (min-width: 500px) {
@@ -177,8 +213,6 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
-
-
 }
 
 @media only screen and (min-width: 1080px) {
@@ -189,6 +223,21 @@
   .encyclopedia-slides {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+  }
+
+  .language-buttons {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .button-container {
+    margin-bottom: 0;
+  }
+
+  .enlarged-slide {
+    width: 50%;
   }
 }
 

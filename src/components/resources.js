@@ -94,8 +94,17 @@ export class Resources extends React.Component {
     this.setState({enlargedSlide: undefined})
   }
 
+  nextSlide = nextSlide => {
+    this.setState({enlargedSlide: nextSlide})
+  }
+
+  previousSlide = previousSlide => {
+    this.setState({enlargedSlide: previousSlide})
+  }
+
   render () {
-    const slides = this.state.language === 'english' ? this.state.english : this.state.korean
+    const language = this.state.language
+    const slides = this.state[language]
 
     const slideComponents = slides.map((slide, index) => {
       return (
@@ -106,13 +115,25 @@ export class Resources extends React.Component {
       )
     })
 
+    let nextSlide
+    let previousSlide
     const enlargedSlide = this.state.enlargedSlide
+
+    if (typeof enlargedSlide !== 'undefined') {
+      const slideIndex = slides.map(slide => slide.name).indexOf(enlargedSlide.name)
+
+      nextSlide = slideIndex + 1 === slides.length ? slides[0] : slides[slideIndex + 1]
+      previousSlide = slideIndex === 0 ? slides[slides.length - 1] : slides[slideIndex - 1]
+    }
+
     const modal = (
       <div>
         <div className="modal" onClick={() => this.closeSlide()}></div>
         <div className="enlarged-slide">
-          <img src={typeof(enlargedSlide) !== 'undefined' && enlargedSlide.slide} alt={typeof(enlargedSlide) !== 'undefined' && enlargedSlide.name}/>
+          <img src={typeof enlargedSlide !== 'undefined' && enlargedSlide.slide} alt={typeof(enlargedSlide) !== 'undefined' && enlargedSlide.name}/>
           <div className="close-button" onClick={() => this.closeSlide()}>&times;</div>
+          <div className="next-button" onClick={() => this.nextSlide(nextSlide)}>&#8250;</div>
+          <div className="previous-button" onClick={() => this.previousSlide(previousSlide)}>&#8249;</div>
         </div>
       </div>
     )
@@ -129,14 +150,16 @@ export class Resources extends React.Component {
           </div>
           <div className="search">
             <div className="language-buttons">
-              <button
-                className={`language-button ${this.state.language === 'english' && 'language-button-active'}`}
-                onClick={(() => this.changeLanguage('english'))}>EN
-              </button>
-              <button
-                className={`language-button ${this.state.language === 'korean' && 'language-button-active'}`}
-                onClick={(() => this.changeLanguage('korean'))}>KR
-              </button>
+              <div className="button-container">
+                <button
+                  className={`language-button ${this.state.language === 'english' && 'language-button-active'}`}
+                  onClick={(() => this.changeLanguage('english'))}>EN
+                </button>
+                <button
+                  className={`language-button ${this.state.language === 'korean' && 'language-button-active'}`}
+                  onClick={(() => this.changeLanguage('korean'))}>KR
+                </button>
+              </div>
               <div className="toggle-message">Toggle the language icons to alternate English and Korean.</div>
             </div>
             <p><em>This resource page was created by @kr-marketing in collaboration with The Creative Crypto

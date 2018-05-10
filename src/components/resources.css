@@ -24,9 +24,13 @@
   width: 100%
 }
 
+.search {
+  margin-top: 16px;
+}
+
 .encyclopedia {
   text-align: center;
-  margin-top: 70px;
+  margin-top: 40px;
 }
 
 .encyclopedia-slides {
@@ -54,6 +58,86 @@
 
 .slide img {
   width: 175px;
+  border: 1px solid var(--text-color);
+  box-shadow: 0 0 15px var(--shadow);
+  cursor: pointer;
+}
+
+.language-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.language-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 0 15px var(--shadow);
+  border: 1px solid var(--text-color);
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.language-button-active {
+  background-color: var(--text-color);
+  color: white;
+}
+
+.toggle-message {
+  width: 60%;
+  color: var(--text-color);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.enlarged-slide {
+  position: fixed;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 70%;
+}
+
+.enlarged-slide img {
+  width: 100%;
+}
+
+.enlarged-slide .close-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 25px;
+  font-weight: bold;
+  background-color: white;
+  box-shadow: 0 0 15px var(--shadow);
+  color: #9b9b9b;
+  cursor: pointer;
+  position: fixed;
+  top: 0;
+  right: -40px;
 }
 
 @media only screen and (min-width: 500px) {

@@ -123,9 +123,8 @@
 }
 
 .enlarged-slide .close-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
+  vertical-align: middle;
   width: 30px;
   height: 30px;
   border-radius: 50%;

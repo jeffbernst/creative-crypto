@@ -57,15 +57,30 @@ export class About extends React.Component {
     const portraitComponents = portraitInfo.map((person, index) => {
       return (
         <div key={index} className="portrait">
-          <img src={person.portrait} alt={person.name} className={person.name === '@kr-marketing' ? 'kr-marketing' : undefined}/>
+          <img src={person.portrait} alt={person.name} className={person.name === '@kr-marketing' || '@keepit' ? 'kr-marketing' : undefined}/>
           <div className="name">{person.name}</div>
           <div className="title">{person.title}</div>
         </div>
       )
     })
 
+    // const signup = (
+    //       <div id="mc_embed_signup">
+    //         <form action="https://thecreativecrypto.us17.list-manage.com/subscribe/post?u=d8283fcff4083b6d35965e1b3&amp;id=b53263b57e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" className="validate" target="_blank" noValidate>
+    //           <div id="mc_embed_signup_scroll">
+    //             <label htmlFor="mce-EMAIL">Subscribe to our Weekly Newsletter!</label>
+    //             <input type="email" value="" name="EMAIL" className="email" id="mce-EMAIL" placeholder="email address" required />
+    //               {/* real people should not fill this in and expect good things - do not remove this or risk form bot signups */}
+    //               <div style={{position: 'absolute', left: '-5000px'}} aria-hidden="true"><input type="text" name="b_d8283fcff4083b6d35965e1b3_b53263b57e" tabIndex="-1" value="" /></div>
+    //               <div className="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" className="button" /></div>
+    //           </div>
+    //         </form>
+    //       </div>
+    //   )
+
     return (
       <div className="about">
+        {/*{signup}*/}
         <div className="mission-team">
           <div className="mission">
             <h2>Mission</h2>

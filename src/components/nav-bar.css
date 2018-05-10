@@ -66,13 +66,10 @@
   border-radius: 50%;
   border: 2px solid white;
   margin-left: 30px;
-  /*width: 14px;*/
-  /*height: 14px;*/
   line-height: 30px;
   font-size: 18px;
   text-align: center;
   cursor: pointer;
-  /*background-color: white;*/
 }
 
 .ticker-arrow {

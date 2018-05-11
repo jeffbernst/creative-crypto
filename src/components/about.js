@@ -1,4 +1,5 @@
 import React from 'react'
+import MailchimpSubscribe from "react-mailchimp-subscribe"
 
 import logo from '../img/about/180407 The Creative Crypto Logo.svg'
 import michael from '../img/about/180425 CC Team - Michael.png'
@@ -64,8 +65,17 @@ export class About extends React.Component {
       )
     })
 
+    const url = 'https://thecreativecrypto.us17.list-manage.com/subscribe/post?u=d8283fcff4083b6d35965e1b3&amp;id=b53263b57e'
+    const SimpleForm = () => <MailchimpSubscribe url={url}/>
+
     return (
       <div className="about">
+        <div className="subscribe-container">
+          <div className="subscribe-message">Subscribe to our Weekly Newsletter!</div>
+          <div className="subscribe-form">
+            <SimpleForm />
+          </div>
+        </div>
         <div className="mission-team">
           <div className="mission">
             <h2>Mission</h2>

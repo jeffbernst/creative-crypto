@@ -80,6 +80,51 @@
   margin-top: 8px;
 }
 
+.subscribe-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.subscribe-message {
+  margin-right: 10px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.subscribe-form div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.subscribe-form div div {
+  margin-bottom: 10px;
+}
+
+.about button {
+  background-color: var(--text-color);
+  border: none;
+  border-radius: 3px;
+  color: white;
+  padding: 4px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.about input {
+  height: 25px;
+  width: 100%;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid var(--gray-text);
+  box-sizing:border-box;
+}
+
 @media only screen and (min-width: 500px) {
   .about {
     padding: 30px 50px 80px 50px;
@@ -119,7 +164,27 @@
     grid-template-columns: repeat(3, 1fr);
   }
 
+  .subscribe-container {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+  }
 
+  .about input {
+    width: 250px;
+    margin-left: 10px;
+    padding-left: 5px;
+  }
+
+  .subscribe-form div {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+  }
+
+  .about button {
+    margin-left: 10px;
+  }
 }
 
 @media only screen and (min-width: 1080px) {

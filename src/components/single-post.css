@@ -76,6 +76,11 @@
   margin-right: 15px;
 }
 
+iframe {
+  display:block;
+  width:100%;
+}
+
 @media only screen and (min-width: 500px) {
   .single-post {
     padding: 30px 50px 20px 50px;

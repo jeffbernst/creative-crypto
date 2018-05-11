@@ -9,6 +9,7 @@ import zolt from '../img/about/180425 CC Team - Zsolt.png'
 import emre from '../img/about/180425 CC Team - Emre.png'
 import carrot from '../img/about/180425 CC Team - Carrotcake.png'
 import rambai from '../img/about/180425 CC Team - Rambai.png'
+import keepit from '../img/about/keepit.png'
 
 import './about.css'
 
@@ -44,15 +45,19 @@ export class About extends React.Component {
       title: 'Illustrator'
     }, {
       portrait: rambai,
-      name: 'ranbai',
+      name: '@rambai',
       title: 'Illustrator'
+    }, {
+      portrait: keepit,
+      name: '@keepit',
+      title: 'Korean Blockchain Journal'
     }
     ]
 
     const portraitComponents = portraitInfo.map((person, index) => {
       return (
         <div key={index} className="portrait">
-          <img src={person.portrait} alt={person.name} className={person.name === '@kr-marketing' ? 'kr-marketing' : undefined}/>
+          <img src={person.portrait} alt={person.name} className={person.name === '@kr-marketing' || '@keepit' ? 'kr-marketing' : undefined}/>
           <div className="name">{person.name}</div>
           <div className="title">{person.title}</div>
         </div>
@@ -70,7 +75,7 @@ export class About extends React.Component {
               innovation in the cryptocurrency landscape.</p>
           </div>
           <div className="team">
-            <h2>Team</h2>
+            <h2>Team and Contributors</h2>
             <p>The <strong>@creativecrypto</strong> is changing the way we think about cryptocurrency. Through a global
               and interdisciplinary team of editors, curators, developers and artists - we reward content creators and
               readers.</p>

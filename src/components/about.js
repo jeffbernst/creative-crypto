@@ -70,7 +70,7 @@ export class About extends React.Component {
 
     return (
       <div className="about">
-        <div className="email-subscribe">
+        <div className="subscribe-container">
           <div className="subscribe-message">Subscribe to our Weekly Newsletter!</div>
           <div className="subscribe-form">
             <SimpleForm />

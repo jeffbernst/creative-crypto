@@ -80,6 +80,43 @@
   margin-top: 8px;
 }
 
+.email-subscribe {
+  display: flex;
+  align-items: flex-end;
+}
+
+.subscribe-message {
+  display: inline-block;
+}
+
+.subscribe-form {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.subscribe-form div {
+  display: flex;
+  align-items: center;
+}
+
+.about button {
+  background-color: var(--text-color);
+  border: none;
+  border-radius: 3px;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.about input {
+  height: 20px;
+  width: 250px;
+}
+
 @media only screen and (min-width: 500px) {
   .about {
     padding: 30px 50px 80px 50px;
@@ -118,7 +155,6 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
-
 
 }
 

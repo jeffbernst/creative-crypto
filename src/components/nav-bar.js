@@ -1,7 +1,5 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-// import {getCurrentPrice} from "../actions/index";
-// import {connect} from 'react-redux';
 
 import './nav-bar.css';
 import tcc_title from '../img/tcc_title.svg';
@@ -24,11 +22,17 @@ export class NavBar extends React.Component {
 		const sbdDirection = parseFloat(sbdPriceData[0].percent_change_1h) < 0 ? 'rotated' : '';
 		const sbdPrice = parseFloat(sbdPriceData[0].price_usd).toFixed(2);
 
+    const bitcoinPriceData = await this.getPrice('bitcoin');
+    const bitcoinDirection = parseFloat(bitcoinPriceData[0].percent_change_1h) < 0 ? 'rotated' : '';
+    const bitcoinPrice = parseFloat(bitcoinPriceData[0].price_usd).toFixed(2);
+
 		this.setState({
 			steemPrice,
 			steemDirection,
 			sbdPrice,
-			sbdDirection
+			sbdDirection,
+			bitcoinPrice,
+      bitcoinDirection
 		})
 	}
 
@@ -42,27 +46,22 @@ export class NavBar extends React.Component {
 		return (
 			<nav className="nav-container">
 				<div className="nav-content">
-					{/*<Link to={'/'}><div className="nav-title">the creative crypto</div></Link>*/}
 					<div className="nav-title">
 						<Link to={'/'}><img src={tcc_title} alt="the creative crypto title" /></Link>
 					</div>
 					<div className="nav-right">
+            <div className="bitcoin-price">
+              <span className="bitcoin-label">BTC</span> <img src={upvote_white} alt="ticker arrow" className={`ticker-arrow ${this.state.sbdDirection}`}/> $ {this.state.bitcoinPrice}
+            </div>
 						<div className="steem-price">
 							<span className="steem-label">STEEM</span> <img src={upvote_white} alt="ticker arrow" className={`ticker-arrow ${this.state.steemDirection}`}/> $ {this.state.steemPrice}
 						</div>
 						<div className="sbd-price">
 							<span className="sbd-label">SBD</span> <img src={upvote_white} alt="ticker arrow" className={`ticker-arrow ${this.state.sbdDirection}`}/> $ {this.state.sbdPrice}
 						</div>
-						{/*<div className="question-button">?</div>*/}
 					</div>
 				</div>
 			</nav>
 		)
 	}
 }
-
-// const mapDispatchToProps = {
-// 	getCurrentPrice
-// };
-//
-// export const ConnectedNavBar = connect(mapDispatchToProps)(NavBar);

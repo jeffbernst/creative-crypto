@@ -54,7 +54,8 @@
 }
 
 .steem-price,
-.sbd-price {
+.sbd-price,
+.bitcoin-price {
   font-size: 14px;
   word-spacing: 10px;
 }

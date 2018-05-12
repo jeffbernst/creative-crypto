@@ -2,7 +2,6 @@
   width: 100%;
   box-sizing: border-box;
   min-height: 80px;
-  /*background: linear-gradient(to right, #2626FB, #2699FB);*/
   background-color: var(--nav-bar-color);
   display: flex;
   align-items: center;
@@ -15,7 +14,6 @@
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
-  /*height: 80px;*/
 }
 
 .nav-title-and-prices {
@@ -49,14 +47,16 @@
   font-weight: bold;
 }
 
-.sbd-label {
-  margin-left: 30px;
+.sbd-label,
+.steem-label {
+  margin-left: 20px;
 }
 
 .steem-price,
-.sbd-price {
-  font-size: 14px;
-  word-spacing: 10px;
+.sbd-price,
+.bitcoin-price {
+  font-size: 12px;
+  word-spacing: 5px;
 }
 
 .question-button {
@@ -73,7 +73,7 @@
 }
 
 .ticker-arrow {
-  height: 8px;
+  height: 6px;
   margin-bottom: 2px;
 }
 
@@ -90,6 +90,16 @@
 @media only screen and (min-width: 500px) {
   .nav-title img {
     height: 20px;
+  }
+
+  .sbd-label,
+  .steem-label {
+    margin-left: 30px;
+  }
+
+  .ticker-arrow {
+    height: 8px;
+    margin-bottom: 2px;
   }
 }
 
@@ -116,21 +126,19 @@
     max-width: 1060px;
   }
 
-  /*.nav-title {*/
-    /*font-size: 45px;*/
-  /*}*/
-
   .nav-right {
     margin-bottom: 0;
   }
 
   .nav-title img {
-    height: 30px;
+    height: 26px;
   }
 
   .steem-price,
-  .sbd-price {
-    font-size: 16px;
+  .sbd-price,
+  .bitcoin-price {
+    font-size: 14px;
+    word-spacing: 6px;
   }
 
   .nav-content {
@@ -151,7 +159,8 @@
   }
 
   .steem-price,
-  .sbd-price {
+  .sbd-price,
+  .bitcoin-price {
     font-size: 18px;
   }
 }

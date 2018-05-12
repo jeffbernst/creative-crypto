@@ -49,14 +49,14 @@
 
 .sbd-label,
 .steem-label {
-  margin-left: 30px;
+  margin-left: 20px;
 }
 
 .steem-price,
 .sbd-price,
 .bitcoin-price {
-  font-size: 14px;
-  word-spacing: 10px;
+  font-size: 12px;
+  word-spacing: 5px;
 }
 
 .question-button {
@@ -73,7 +73,7 @@
 }
 
 .ticker-arrow {
-  height: 8px;
+  height: 6px;
   margin-bottom: 2px;
 }
 
@@ -90,6 +90,16 @@
 @media only screen and (min-width: 500px) {
   .nav-title img {
     height: 20px;
+  }
+
+  .sbd-label,
+  .steem-label {
+    margin-left: 30px;
+  }
+
+  .ticker-arrow {
+    height: 8px;
+    margin-bottom: 2px;
   }
 }
 
@@ -121,13 +131,14 @@
   }
 
   .nav-title img {
-    height: 30px;
+    height: 26px;
   }
 
   .steem-price,
   .sbd-price,
   .bitcoin-price {
-    font-size: 16px;
+    font-size: 14px;
+    word-spacing: 6px;
   }
 
   .nav-content {

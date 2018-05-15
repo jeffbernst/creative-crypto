@@ -2,6 +2,7 @@ import React from 'react'
 import MailchimpSubscribe from "react-mailchimp-subscribe"
 
 import logo from '../img/about/180407 The Creative Crypto Logo.svg'
+import sndbox from '../img/about/180513 CC Sndbox.png'
 import michael from '../img/about/180425 CC Team - Michael.png'
 import kirk from '../img/about/180425 CC Team - Kirk.png'
 import krMarketing from '../img/about/180425 CC Kr-marketing.png'
@@ -17,6 +18,10 @@ import './about.css'
 export class About extends React.Component {
   render () {
     const portraitInfo = [{
+      portrait: sndbox,
+      name: 'Sndbox',
+      title: 'Developed by the Sndbox Incubator'
+    },{
       portrait: michael,
       name: 'Michael Lee',
       title: 'Director of Operations'
@@ -58,7 +63,7 @@ export class About extends React.Component {
     const portraitComponents = portraitInfo.map((person, index) => {
       return (
         <div key={index} className="portrait">
-          <img src={person.portrait} alt={person.name} className={person.name === '@kr-marketing' || '@keepit' ? 'kr-marketing' : undefined}/>
+          <img src={person.portrait} alt={person.name} className={person.name === '@kr-marketing' || '@keepit' || 'Snbox' ? 'kr-marketing' : undefined}/>
           <div className="name">{person.name}</div>
           <div className="title">{person.title}</div>
         </div>

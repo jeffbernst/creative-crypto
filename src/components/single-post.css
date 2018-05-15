@@ -84,6 +84,7 @@
 .single-post table {
   table-layout:fixed;
   width: 100%;
+  word-wrap: break-word;
 }
 
 @media only screen and (min-width: 500px) {

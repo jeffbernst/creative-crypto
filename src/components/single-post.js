@@ -7,6 +7,7 @@ import TimeAgo from 'react-timeago'
 
 import './single-post.css'
 import { getSinglePost } from '../actions'
+import {Blurb} from './blurb'
 
 class SinglePost extends React.Component {
   componentDidMount () {
@@ -31,23 +32,26 @@ class SinglePost extends React.Component {
       console.log({currentPost})
 
       return (
-        <div className="single-post">
-          <h1>{currentPost.title}</h1>
-          <div className="post-info-top">
-            <TimeAgo date={currentPost.timeSincePosted}/> &middot; {currentPost.tags[0]} &middot; {readingStats.text}
-          </div>
-          <div className="dtube-image">
-            {currentPost.isDtube && image}
-          </div>
-          <div dangerouslySetInnerHTML={{__html: currentPost.bodyHtml}}/>
-          <div className="single-post-stats-container">
-            <div className="post-tile-tag-list single-post-tag-list">{tagArray}</div>
-            <div className="single-post-stats">
-              <span className="single-post-footer-value">${currentPost.payoutValue}</span>
-              <span className="single-post-footer-votes"><img src={upvote_blue} alt="upvote blue"
-                                                              className="upvote-img"/> {currentPost.numberOfVotes}</span>
+        <div>
+          <div className="single-post">
+            <h1>{currentPost.title}</h1>
+            <div className="post-info-top">
+              <TimeAgo date={currentPost.timeSincePosted}/> &middot; {currentPost.tags[0]} &middot; {readingStats.text}
+            </div>
+            <div className="dtube-image">
+              {currentPost.isDtube && image}
+            </div>
+            <div dangerouslySetInnerHTML={{__html: currentPost.bodyHtml}}/>
+            <div className="single-post-stats-container">
+              <div className="post-tile-tag-list single-post-tag-list">{tagArray}</div>
+              <div className="single-post-stats">
+                <span className="single-post-footer-value">${currentPost.payoutValue}</span>
+                <span className="single-post-footer-votes"><img src={upvote_blue} alt="upvote blue"
+                                                                className="upvote-img"/> {currentPost.numberOfVotes}</span>
+              </div>
             </div>
           </div>
+          {!this.props.loading && <Blurb/>}
         </div>
       )
     }

@@ -7,7 +7,7 @@ import TimeAgo from 'react-timeago'
 
 import './single-post.css'
 import { getSinglePost } from '../actions'
-import {Blurb} from './blurb'
+import {Footer} from './footer'
 
 class SinglePost extends React.Component {
   componentDidMount () {
@@ -51,7 +51,7 @@ class SinglePost extends React.Component {
               </div>
             </div>
           </div>
-          {!this.props.loading && <Blurb/>}
+          {!this.props.loading && <Footer/>}
         </div>
       )
     }

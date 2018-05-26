@@ -6,7 +6,7 @@ import './post-feed.css'
 import { PostFeedSmallTile } from './post-feed-small-tile'
 import { PostFeedLargeTile } from './post-feed-large-tile'
 import { getRecentPosts } from '../actions/index'
-import { Blurb } from './blurb'
+import { Footer } from './footer'
 
 import removeMd from 'remove-markdown'
 
@@ -69,7 +69,7 @@ class PostFeed extends React.Component {
         >
           {postGrid}
         </InfiniteScroll>
-        {!this.props.loading && <Blurb/>}
+        {!this.props.loading && <Footer/>}
       </div>
     )
   }

@@ -1,5 +1,6 @@
 import React from 'react'
-import MailchimpSubscribe from "react-mailchimp-subscribe"
+import MailchimpSubscribe from 'react-mailchimp-subscribe'
+import { Footer } from './footer'
 
 import logo from '../img/about/180407 The Creative Crypto Logo.svg'
 import sndbox from '../img/about/180513 CC Sndbox.png'
@@ -21,7 +22,7 @@ export class About extends React.Component {
       portrait: sndbox,
       name: 'Sndbox',
       title: 'Developed by the Sndbox Incubator'
-    },{
+    }, {
       portrait: michael,
       name: 'Michael Lee',
       title: 'Director of Operations'
@@ -63,7 +64,8 @@ export class About extends React.Component {
     const portraitComponents = portraitInfo.map((person, index) => {
       return (
         <div key={index} className="portrait">
-          <img src={person.portrait} alt={person.name} className={person.name === '@kr-marketing' || '@keepit' || 'Snbox' ? 'kr-marketing' : undefined}/>
+          <img src={person.portrait} alt={person.name}
+               className={person.name === '@kr-marketing' || '@keepit' || 'Snbox' ? 'kr-marketing' : undefined}/>
           <div className="name">{person.name}</div>
           <div className="title">{person.title}</div>
         </div>
@@ -74,36 +76,41 @@ export class About extends React.Component {
     const SimpleForm = () => <MailchimpSubscribe url={url}/>
 
     return (
-      <div className="about">
-        <div className="subscribe-container">
-          <div className="subscribe-message">Subscribe to our Weekly Newsletter!</div>
-          <div className="subscribe-form">
-            <SimpleForm />
+      <div>
+        <div className="about">
+          <div className="subscribe-container">
+            <div className="subscribe-message">Subscribe to our Weekly Newsletter!</div>
+            <div className="subscribe-form">
+              <SimpleForm/>
+            </div>
+          </div>
+          <div className="mission-team">
+            <div className="mission">
+              <h2>Mission</h2>
+              <p><strong>The Creative Crypto</strong> is a Steem-powered magazine dedicated to all things creative on
+                the
+                blockchain.</p>
+              <p>We are a news source for thoughtful, approachable and impactful stories surrounding art, design, and
+                innovation in the cryptocurrency landscape.</p>
+            </div>
+            <div className="team">
+              <h2>Team and Contributors</h2>
+              <p>The <strong>@creativecrypto</strong> is changing the way we think about cryptocurrency. Through a
+                global
+                and interdisciplinary team of editors, curators, developers and artists - we reward content creators and
+                readers.</p>
+            </div>
+          </div>
+          <div className="about-hr">
+            <div className="logo-background">
+              <img src={logo} alt="creative crypto logo"/>
+            </div>
+          </div>
+          <div className="about-portraits">
+            {portraitComponents}
           </div>
         </div>
-        <div className="mission-team">
-          <div className="mission">
-            <h2>Mission</h2>
-            <p><strong>The Creative Crypto</strong> is a Steem-powered magazine dedicated to all things creative on the
-              blockchain.</p>
-            <p>We are a news source for thoughtful, approachable and impactful stories surrounding art, design, and
-              innovation in the cryptocurrency landscape.</p>
-          </div>
-          <div className="team">
-            <h2>Team and Contributors</h2>
-            <p>The <strong>@creativecrypto</strong> is changing the way we think about cryptocurrency. Through a global
-              and interdisciplinary team of editors, curators, developers and artists - we reward content creators and
-              readers.</p>
-          </div>
-        </div>
-        <div className="about-hr">
-          <div className="logo-background">
-            <img src={logo} alt="creative crypto logo" />
-          </div>
-        </div>
-        <div className="about-portraits">
-          {portraitComponents}
-        </div>
+        {!this.props.loading && <Footer/>}
       </div>
     )
   }

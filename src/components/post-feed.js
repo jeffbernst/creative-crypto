@@ -6,6 +6,7 @@ import './post-feed.css'
 import { PostFeedSmallTile } from './post-feed-small-tile'
 import { PostFeedLargeTile } from './post-feed-large-tile'
 import { getRecentPosts } from '../actions/index'
+import { Footer } from './footer'
 
 import removeMd from 'remove-markdown'
 
@@ -55,7 +56,7 @@ class PostFeed extends React.Component {
       else return [smallTile]
     })
 
-    function loadMore() {
+    function loadMore () {
       console.log('need to load more')
     }
 
@@ -68,7 +69,8 @@ class PostFeed extends React.Component {
         >
           {postGrid}
         </InfiniteScroll>
-    </div>
+        {!this.props.loading && <Footer/>}
+      </div>
     )
   }
 }

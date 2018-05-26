@@ -1,4 +1,5 @@
 import React from 'react'
+import { Footer } from './footer'
 
 // english images
 import blockHeader from '../img/resources/english/Encyclopedia - Block Header Slide.png'
@@ -130,7 +131,8 @@ export class Resources extends React.Component {
       <div>
         <div className="modal" onClick={() => this.closeSlide()}></div>
         <div className="enlarged-slide">
-          <img src={typeof enlargedSlide !== 'undefined' && enlargedSlide.slide} alt={typeof(enlargedSlide) !== 'undefined' && enlargedSlide.name}/>
+          <img src={typeof enlargedSlide !== 'undefined' && enlargedSlide.slide}
+               alt={typeof(enlargedSlide) !== 'undefined' && enlargedSlide.name}/>
           <div className="close-button" onClick={() => this.closeSlide()}>&times;</div>
           <div className="next-button" onClick={() => this.nextSlide(nextSlide)}>&#8250;</div>
           <div className="previous-button" onClick={() => this.previousSlide(previousSlide)}>&#8249;</div>
@@ -139,39 +141,43 @@ export class Resources extends React.Component {
     )
 
     return (
-      <div className="resources-page">
-        {this.state.enlargedSlide && modal}
-        <div className="resources-search">
-          <div className="resources">
-            <h2>Resources</h2>
-            <p><strong>Are you new to cryptocurrency?</strong> This channel has you covered. You can navigate all the
-              terms using the term search bar (to the left). Our team takes complicated topics and breaks them down into
-              easy-to-digest infographics and illustrations. Enjoy and explore!</p>
-          </div>
-          <div className="search">
-            <div className="language-buttons">
-              <div className="button-container">
-                <button
-                  className={`language-button ${this.state.language === 'english' && 'language-button-active'}`}
-                  onClick={(() => this.changeLanguage('english'))}>EN
-                </button>
-                <button
-                  className={`language-button ${this.state.language === 'korean' && 'language-button-active'}`}
-                  onClick={(() => this.changeLanguage('korean'))}>KR
-                </button>
-              </div>
-              <div className="toggle-message">Toggle the language icons to alternate English and Korean.</div>
+      <div>
+        <div className="resources-page">
+          {this.state.enlargedSlide && modal}
+          <div className="resources-search">
+            <div className="resources">
+              <h2>Resources</h2>
+              <p><strong>Are you new to cryptocurrency?</strong> This channel has you covered. You can navigate all the
+                terms using the term search bar (to the left). Our team takes complicated topics and breaks them down
+                into
+                easy-to-digest infographics and illustrations. Enjoy and explore!</p>
             </div>
-            <p><em>This resource page was created by @kr-marketing in collaboration with The Creative Crypto
-              Magazine.</em></p>
+            <div className="search">
+              <div className="language-buttons">
+                <div className="button-container">
+                  <button
+                    className={`language-button ${this.state.language === 'english' && 'language-button-active'}`}
+                    onClick={(() => this.changeLanguage('english'))}>EN
+                  </button>
+                  <button
+                    className={`language-button ${this.state.language === 'korean' && 'language-button-active'}`}
+                    onClick={(() => this.changeLanguage('korean'))}>KR
+                  </button>
+                </div>
+                <div className="toggle-message">Toggle the language icons to alternate English and Korean.</div>
+              </div>
+              <p><em>This resource page was created by @kr-marketing in collaboration with The Creative Crypto
+                Magazine.</em></p>
+            </div>
+          </div>
+          <div className="encyclopedia">
+            <h2>Encyclopedia</h2>
+            <div className="encyclopedia-slides">
+              {slideComponents}
+            </div>
           </div>
         </div>
-        <div className="encyclopedia">
-          <h2>Encyclopedia</h2>
-          <div className="encyclopedia-slides">
-            {slideComponents}
-          </div>
-        </div>
+        {!this.props.loading && <Footer/>}
       </div>
     )
   }

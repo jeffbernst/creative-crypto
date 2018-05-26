@@ -1,0 +1,13 @@
+.footer {
+  color: #adadb1;
+  font-size: 16px;
+  line-height: 28px;
+  margin-top: 30px;
+}
+
+@media only screen and (max-width: 710px) {
+  .footer {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}

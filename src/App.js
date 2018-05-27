@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
 
-import {NavBar} from "./components/nav-bar";
-import {TagList} from "./components/tag-list";
-import {MainContainer} from "./components/main-container";
+import { NavBar } from './components/nav-bar'
+import { TagList } from './components/tag-list'
+import ConnectedMainContainer from './components/main-container'
 
 export class App extends Component {
-  render() {
+  render () {
     return (
-    	<div>
-				<NavBar />
-				<TagList />
-				<MainContainer />
-			</div>
-    );
+      <div>
+        <NavBar/>
+        <TagList/>
+        <ConnectedMainContainer/>
+      </div>
+    )
   };
 }

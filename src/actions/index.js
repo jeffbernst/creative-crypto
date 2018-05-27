@@ -5,17 +5,11 @@ import {
   GET_SINGLE_POST_REQUEST,
   GET_SINGLE_POST_SUCCESS,
   GET_SINGLE_POST_ERROR,
-  GET_NEWSFEED_REQUEST,
-  GET_NEWSFEED_SUCCESS,
-  GET_NEWSFEED_ERROR
 } from './types'
 
 import steem from 'steem'
-import timeago from 'timeago.js'
 
 import { getHtml } from '../busy/Body'
-
-const timeagoInstance = timeago()
 
 steem.api.setOptions({url: 'https://api.steemit.com'})
 
@@ -49,20 +43,6 @@ const getSinglePostError = error => ({
   payload: error
 })
 
-const getNewsfeedRequest = () => ({
-  type: GET_NEWSFEED_REQUEST
-})
-
-const getNewsfeedSuccess = post => ({
-  type: GET_NEWSFEED_SUCCESS,
-  payload: post
-})
-
-const getNewsfeedError = error => ({
-  type: GET_NEWSFEED_ERROR,
-  payload: error
-})
-
 // api calls
 
 function getPosts () {
@@ -82,12 +62,6 @@ function getPost (permlink) {
       else res(result)
     })
   })
-}
-
-async function getNewsfeed () {
-  const response = await fetch('https://creative-crypto-api.herokuapp.com/')
-  const data = await response.json()
-  return data
 }
 
 function round(number, precision) {
@@ -188,30 +162,5 @@ export const getSinglePost = permlink => async dispatch => {
 
   } catch (err) {
     dispatch(getSinglePostError(err))
-  }
-}
-
-export const getCurrentNewsfeed = () => async dispatch => {
-  dispatch(getNewsfeedRequest())
-
-  try {
-    const newsfeed = await getNewsfeed()
-    console.log(newsfeed)
-    const formattedNewsfeed = newsfeed.map(tweet => {
-      const fullText = tweet.full_text
-      const timeSinceTweeted = timeagoInstance.format(new Date(tweet.created_at))
-      const tweetId = tweet.id_str
-
-      return {
-        fullText,
-        timeSinceTweeted,
-        tweetId
-      }
-    })
-
-    dispatch(getNewsfeedSuccess(formattedNewsfeed))
-
-  } catch (err) {
-    dispatch(getNewsfeedError(err))
   }
 }

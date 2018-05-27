@@ -1,6 +1,5 @@
 import React from 'react'
 import MailchimpSubscribe from 'react-mailchimp-subscribe'
-import { Footer } from './footer'
 
 import logo from '../img/about/180407 The Creative Crypto Logo.svg'
 import sndbox from '../img/about/180513 CC Sndbox.png'
@@ -76,7 +75,6 @@ export class About extends React.Component {
     const SimpleForm = () => <MailchimpSubscribe url={url}/>
 
     return (
-      <div>
         <div className="about">
           <div className="subscribe-container">
             <div className="subscribe-message">Subscribe to our Weekly Newsletter!</div>
@@ -110,8 +108,6 @@ export class About extends React.Component {
             {portraitComponents}
           </div>
         </div>
-        {!this.props.loading && <Footer/>}
-      </div>
     )
   }
 }

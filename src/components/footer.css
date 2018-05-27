@@ -3,11 +3,20 @@
   font-size: 16px;
   line-height: 28px;
   margin-top: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
-@media only screen and (max-width: 710px) {
+@media only screen and (min-width: 710px) {
   .footer {
-    margin-left: 20px;
-    margin-right: 20px;
+    max-width: 700px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media only screen and (min-width: 1080px) {
+  .footer {
+    max-width: 1060px;
   }
 }

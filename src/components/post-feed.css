@@ -4,7 +4,6 @@
   margin: 0 auto;
   grid-template-columns: 1fr;
   width: 100%;
-  /*padding: 0 20px;*/
 }
 
 .post-tile:nth-child(1) {
@@ -32,12 +31,12 @@
   .post-feed {
     grid-template-columns: repeat(3, 1fr);
     width: 1060px;
-    /*padding: 0;*/
   }
 }
 
 @media only screen and (min-width: 1410px) {
   .post-feed {
     margin-right: 20px;
+    margin-left: 0;
   }
 }

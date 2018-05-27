@@ -1,5 +1,4 @@
 import React from 'react'
-import { Footer } from './footer'
 
 // english images
 import blockHeader from '../img/resources/english/Encyclopedia - Block Header Slide.png'
@@ -141,7 +140,6 @@ export class Resources extends React.Component {
     )
 
     return (
-      <div>
         <div className="resources-page">
           {this.state.enlargedSlide && modal}
           <div className="resources-search">
@@ -177,8 +175,6 @@ export class Resources extends React.Component {
             </div>
           </div>
         </div>
-        {!this.props.loading && <Footer/>}
-      </div>
     )
   }
 }

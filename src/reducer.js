@@ -55,22 +55,6 @@ export const reducer = (state = initialState, action) => {
 				loading: false,
 				error: action.payload
 			};
-		case GET_NEWSFEED_REQUEST:
-			return {
-				...state,
-				loadingNewsfeed: true,
-			};
-		case GET_NEWSFEED_SUCCESS:
-			return {
-				...state,
-				loadingNewsfeed: false,
-				newsfeed: action.payload
-			};
-		case GET_NEWSFEED_ERROR:
-			return {
-				loadingNewsfeed: false,
-				error: action.payload
-			};
 		default:
 			return state;
 	}

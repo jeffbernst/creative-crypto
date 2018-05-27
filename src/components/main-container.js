@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom'
 import './main-container.css'
 
 import { ConnectedPostFeed } from './post-feed'
-import { ConnectedNewsfeed } from './newsfeed'
+import { Newsfeed } from './newsfeed'
 import { ConnectedSinglePost } from './single-post'
 import { About } from './about'
 import { Resources } from './resources'
@@ -25,7 +25,7 @@ class MainContainer extends React.Component {
           </Switch>
           {!this.props.loading && <Footer/>}
         </div>
-        <ConnectedNewsfeed/>
+        <Newsfeed/>
       </main>
     )
   }

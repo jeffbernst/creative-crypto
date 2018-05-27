@@ -64,18 +64,18 @@ function getPost (permlink) {
   })
 }
 
-function round(number, precision) {
+function round (number, precision) {
   const shift = function (number, precision, reverseShift) {
     if (reverseShift) {
-      precision = -precision;
+      precision = -precision
     }
-    const numArray = ("" + number).split("e");
-    return +(numArray[0] + "e" + (numArray[1] ? (+numArray[1] + precision) : precision));
-  };
-  return shift(Math.round(shift(number, precision, false)), precision, true);
+    const numArray = ('' + number).split('e')
+    return +(numArray[0] + 'e' + (numArray[1] ? (+numArray[1] + precision) : precision))
+  }
+  return shift(Math.round(shift(number, precision, false)), precision, true)
 }
 
-function formatPostData(postData) {
+function formatPostData (postData) {
   const title = postData.title
   const body = postData.body
   const bodyHtml = getHtml(postData.body, {}, 'text')
@@ -88,7 +88,7 @@ function formatPostData(postData) {
   let isDtube = false
   let isDlive = false
   let isBusy = false
-  if (typeof jsonMetadata.community !=='undefined')
+  if (typeof jsonMetadata.community !== 'undefined')
     isBusy = true
   if (typeof jsonMetadata.video !== 'undefined')
     isDtube = true

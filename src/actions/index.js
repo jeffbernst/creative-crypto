@@ -6,7 +6,6 @@ import {
   GET_SINGLE_POST_SUCCESS,
   GET_SINGLE_POST_ERROR,
 } from './types'
-
 import steem from 'steem'
 
 import { getHtml } from '../busy/Body'
@@ -47,7 +46,7 @@ const getSinglePostError = error => ({
 
 function getPosts () {
   return new Promise((res, rej) => {
-    steem.api.getDiscussionsByBlog({tag: 'creativecrypto', limit: 50}, function (err, result) {
+    steem.api.getDiscussionsByBlog({tag: 'tribesteemup', limit: 50}, function (err, result) {
       if (err) rej(err)
       else res(result)
     })
@@ -57,7 +56,7 @@ function getPosts () {
 function getPost (permlink) {
   return new Promise((res, rej) => {
     const currentDate = new Date().toISOString().split('.')[0]
-    steem.api.getDiscussionsByAuthorBeforeDate('creativecrypto', permlink, currentDate, 1, function (err, result) {
+    steem.api.getDiscussionsByAuthorBeforeDate('tribesteemup', permlink, currentDate, 1, function (err, result) {
       if (err) rej(err)
       else res(result)
     })
@@ -88,16 +87,18 @@ function formatPostData (postData) {
   let isDtube = false
   let isDlive = false
   let isBusy = false
-  if (typeof jsonMetadata.community !== 'undefined')
-    isBusy = true
   if (typeof jsonMetadata.video !== 'undefined')
     isDtube = true
-  if (jsonMetadata.tags[0] === 'dlive')
+  else if (typeof jsonMetadata.community !== 'undefined')
+    isBusy = true
+  else if (jsonMetadata.tags[0] === 'dlive')
     isDlive = true
 
   let image
   if (isDlive)
     image = jsonMetadata.thumbnail
+  else if (isDtube)
+    image = bodyHtml.match(/<img.*?src=['"](.*?)['"]/)[1]
   else if (isBusy)
     image = bodyHtml.match(/<img.*?src=['"](.*?)['"]/)[1]
   else
@@ -137,6 +138,7 @@ export const getRecentPosts = () => async dispatch => {
 
   try {
     const recentPosts = await getPosts()
+    console.log({recentPosts})
 
     const formattedPostsData = recentPosts.map(post => {
       return formatPostData(post)

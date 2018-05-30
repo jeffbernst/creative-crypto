@@ -23,7 +23,6 @@ class SinglePost extends React.Component {
     if (this.props.currentPost) {
       const currentPost = this.props.currentPost
       const readingStats = readingTime(currentPost.body)
-      const image = <img src={currentPost.image} alt=""/>
       const tagArray = currentPost.tags.map((tag, index) => (
         <div className="post-tile-tag" key={index}>{tag}</div>
       ))

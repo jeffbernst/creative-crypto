@@ -27,8 +27,6 @@ class SinglePost extends React.Component {
         <div className="post-tile-tag" key={index}>{tag}</div>
       ))
 
-      console.log({currentPost})
-
       return (
           <div className="single-post">
             <h1>{currentPost.title}</h1>

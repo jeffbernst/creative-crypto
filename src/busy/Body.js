@@ -10,7 +10,9 @@ import Remarkable from 'remarkable';
 import embedjs from 'embedjs';
 import { jsonParse } from './formatter';
 import sanitizeConfig from './SanitizeConfig';
-import { imageRegex, dtubeImageRegex } from './regexHelpers';
+// originally imported dtubeImageRegex also
+// import { imageRegex, dtubeImageRegex } from './regexHelpers';
+import { imageRegex } from './regexHelpers';
 import htmlReady from './steemitHtmlReady';
 import PostFeedEmbed from './PostFeedEmbed';
 import './Body.less';
@@ -56,7 +58,9 @@ export function getHtml(body, jsonMetadata = {}, returnType = 'Object', options 
   const htmlReadyOptions = { mutate: true, resolveIframe: returnType === 'text' };
   parsedBody = remarkable.render(parsedBody);
   parsedBody = htmlReady(parsedBody, htmlReadyOptions).html;
-  parsedBody = parsedBody.replace(dtubeImageRegex, '');
+  // this line originally uncommented in Busy code base
+  // commented here so thumbnail shows up in DTube post body
+  // parsedBody = parsedBody.replace(dtubeImageRegex, '');
   parsedBody = sanitizeHtml(parsedBody, sanitizeConfig({}));
   if (returnType === 'text') {
     return parsedBody;

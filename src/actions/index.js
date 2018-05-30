@@ -6,7 +6,6 @@ import {
   GET_SINGLE_POST_SUCCESS,
   GET_SINGLE_POST_ERROR,
 } from './types'
-
 import steem from 'steem'
 
 import { getHtml } from '../busy/Body'
@@ -88,17 +87,17 @@ function formatPostData (postData) {
   let isDtube = false
   let isDlive = false
   let isBusy = false
-  if (typeof jsonMetadata.community !== 'undefined')
-    isBusy = true
   if (typeof jsonMetadata.video !== 'undefined')
     isDtube = true
-  if (jsonMetadata.tags[0] === 'dlive')
+  else if (typeof jsonMetadata.community !== 'undefined')
+    isBusy = true
+  else if (jsonMetadata.tags[0] === 'dlive')
     isDlive = true
 
   let image
   if (isDlive)
     image = jsonMetadata.thumbnail
-  else if (isBusy)
+  else if (isBusy || isDtube)
     image = bodyHtml.match(/<img.*?src=['"](.*?)['"]/)[1]
   else
     image = jsonMetadata.image[0]
@@ -156,7 +155,6 @@ export const getSinglePost = permlink => async dispatch => {
 
   try {
     const [singlePost] = await getPost(permlink)
-    console.log('single post response: ', singlePost)
 
     dispatch(getSinglePostSuccess(formatPostData(singlePost)))
 

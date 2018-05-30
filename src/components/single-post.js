@@ -36,9 +36,6 @@ class SinglePost extends React.Component {
             <div className="post-info-top">
               <TimeAgo date={currentPost.timeSincePosted}/> &middot; {currentPost.tags[0]} &middot; {readingStats.text}
             </div>
-            <div className="dtube-image">
-              {currentPost.isDtube && image}
-            </div>
             <div dangerouslySetInnerHTML={{__html: currentPost.bodyHtml}}/>
             <div className="single-post-stats-container">
               <div className="post-tile-tag-list single-post-tag-list">{tagArray}</div>

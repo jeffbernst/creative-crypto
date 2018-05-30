@@ -97,9 +97,7 @@ function formatPostData (postData) {
   let image
   if (isDlive)
     image = jsonMetadata.thumbnail
-  else if (isDtube)
-    image = bodyHtml.match(/<img.*?src=['"](.*?)['"]/)[1]
-  else if (isBusy)
+  else if (isBusy || isDtube)
     image = bodyHtml.match(/<img.*?src=['"](.*?)['"]/)[1]
   else
     image = jsonMetadata.image[0]
@@ -138,7 +136,6 @@ export const getRecentPosts = () => async dispatch => {
 
   try {
     const recentPosts = await getPosts()
-    console.log({recentPosts})
 
     const formattedPostsData = recentPosts.map(post => {
       return formatPostData(post)
@@ -158,7 +155,6 @@ export const getSinglePost = permlink => async dispatch => {
 
   try {
     const [singlePost] = await getPost(permlink)
-    console.log('single post response: ', singlePost)
 
     dispatch(getSinglePostSuccess(formatPostData(singlePost)))
 
